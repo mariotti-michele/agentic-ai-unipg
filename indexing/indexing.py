@@ -28,14 +28,17 @@ QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
 EMBED_MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
 COLLECTION = os.getenv("COLLECTION", "ing_info_mag_docs")
 
+# Pulisce una stringa (es. URL o filename) per farla diventare sicura come nome file
 def slugify(s: str) -> str:
     s = re.sub(r"[^\w\-.]+", "_", s.strip())
     return s[:120] if s else "file"
 
+# SHA256 di una stringa (es. URL) per usarla come ID univoco
 def sha(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
-async def scrape_page(url: str, same_domain_only: bool = True, max_links: int = 60):
+# Scraping con Playwright
+async def scrape_page(url: str, same_domain_only: bool = False):
     """
     Rende la pagina, salva l'HTML e raccoglie i link (in particolare PDF).
     """
@@ -62,33 +65,39 @@ async def scrape_page(url: str, same_domain_only: bool = True, max_links: int = 
     origin = urlparse(url).netloc
     seen = set()
     abs_links = []
+    
     for l in links:
-        if not l: continue
-        try:
-            u = urlparse(l)
-            if not u.scheme:
-                l = urljoin(url, l)
+        if l:  # controlla subito che non sia None o stringa vuota
+            try:
                 u = urlparse(l)
-            if same_domain_only and u.netloc and u.netloc != origin:
-                continue
-            if l not in seen:
-                seen.add(l)
-                abs_links.append(l)
-        except Exception:
-            pass
+
+                # se non c'è schema (http/https), completa l'URL
+                if not u.scheme:
+                    l = urljoin(url, l)
+                    u = urlparse(l)
+
+                # aggiungi solo se: 
+                # - o non filtriamo per dominio
+                # - oppure il dominio coincide con quello di origine
+                if (not same_domain_only) or (u.netloc and u.netloc == origin):
+                    if l not in seen:
+                        seen.add(l)
+                        abs_links.append(l)
+
+            except Exception as e:
+                # qui puoi loggare l'errore invece di passare in silenzio
+                print(f"[WARN] Link scartato {l}: {e}")
 
     # PDF + sottopagine HTML della stessa sezione (facoltativo)
     pdf_links = [l for l in abs_links if l.lower().endswith(".pdf")]
     html_links = [l for l in abs_links if (l.startswith("http") and not l.lower().endswith(".pdf"))]
 
-    # limiti di cortesia
-    pdf_links = pdf_links[:max_links]
-    html_links = html_links[:max_links]
-
     return title, html_path, pdf_links, html_links
 
 async def download_pdfs(urls: list[str]) -> list[Path]:
     saved = []
+
+    # headers per sembrare un browser reale
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -126,33 +135,32 @@ async def download_pdfs(urls: list[str]) -> list[Path]:
 
 def to_documents_from_html(file_path: Path, source_url: str, page_title: str) -> list[Document]:
     # Unstructured: scompone in elementi tipizzati (Title, NarrativeText, ListItem, Table, ...)
-    elements = partition_html(filename=str(file_path), include_page_breaks=False)
+    elements = partition_html(filename=str(file_path), include_page_breaks=False, languages=["ita", "eng"])
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
     for el in elements:
         text = str(el).strip()
-        if not text: 
-            continue
-        meta = getattr(el, "metadata", None)
-        meta = meta.to_dict() if meta is not None else {}
-        doc = Document(
-            page_content=text,
-            metadata={
-                "source_url": source_url,
-                "doc_type": "html",
-                "page_title": page_title,
-                "section": meta.get("category", None),
-                "lang": meta.get("languages", None),
-                "crawl_ts": crawl_ts,
-                "doc_id": sha(source_url),
-            },
-        )
-        docs.append(doc)
+        if text: 
+            meta = getattr(el, "metadata", None)
+            meta = meta.to_dict() if meta is not None else {}
+            doc = Document(
+                page_content=text,
+                metadata={
+                    "source_url": source_url,
+                    "doc_type": "html",
+                    "page_title": page_title,
+                    "section": meta.get("category", None),
+                    "lang": meta.get("languages", None),
+                    "crawl_ts": crawl_ts,
+                    "doc_id": sha(source_url),
+                },
+            )
+            docs.append(doc)
     return docs
 
 def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
     # strategy="fast" usa pdfminer; se serve OCR puoi passare "hi_res"/"ocr_only"
-    elements = partition_pdf(filename=str(file_path), strategy="fast", include_page_breaks=True)
+    elements = partition_pdf(filename=str(file_path), strategy="fast", include_page_breaks=True, languages=["ita", "eng"])
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
     for el in elements:
