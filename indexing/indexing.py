@@ -26,7 +26,7 @@ for p in (RAW_HTML, RAW_PDF): p.mkdir(parents=True, exist_ok=True)
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
 EMBED_MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
-COLLECTION = os.getenv("COLLECTION", "academic_docs")
+COLLECTION = os.getenv("COLLECTION", "ing_info_mag_docs")
 
 def slugify(s: str) -> str:
     s = re.sub(r"[^\w\-.]+", "_", s.strip())
