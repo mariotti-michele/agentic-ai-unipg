@@ -89,7 +89,22 @@ async def scrape_page(url: str, same_domain_only: bool = True, max_links: int = 
 
 async def download_pdfs(urls: list[str]) -> list[Path]:
     saved = []
-    async with httpx.AsyncClient(follow_redirects=True, timeout=90.0) as client:
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        ),
+        "Accept": "application/pdf",
+        "Accept-Language": "it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Referer": "https://www.unipg.it/",   # per sicurezza
+    }
+
+    async with httpx.AsyncClient(
+        follow_redirects=True,
+        timeout=90.0,
+        headers=headers
+    ) as client:
         for u in urls:
             try:
                 name_guess = slugify(Path(urlparse(u).path).name or "document") or "document"
@@ -97,14 +112,17 @@ async def download_pdfs(urls: list[str]) -> list[Path]:
                     name_guess += ".pdf"
                 out = RAW_PDF / name_guess
                 if out.exists():
-                    saved.append(out); continue
+                    saved.append(out)
+                    continue
                 r = await client.get(u)
                 r.raise_for_status()
                 out.write_bytes(r.content)
                 saved.append(out)
+                print(f"[OK] Scaricato PDF: {u}")
             except Exception as e:
                 print(f"[WARN] PDF skip {u}: {e}")
     return saved
+
 
 def to_documents_from_html(file_path: Path, source_url: str, page_title: str) -> list[Document]:
     # Unstructured: scompone in elementi tipizzati (Title, NarrativeText, ListItem, Table, ...)
