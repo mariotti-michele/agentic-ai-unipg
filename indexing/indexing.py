@@ -134,7 +134,7 @@ async def download_pdfs(urls: list[str]) -> list[Path]:
 
 
 def to_documents_from_html(file_path: Path, source_url: str, page_title: str) -> list[Document]:
-    # Unstructured: scompone in elementi tipizzati (Title, NarrativeText, ListItem, Table, ...)
+    # Unstructured: scompone in elementi tipizzati (Title, NarrativeText, ListItem, Table, ...).
     elements = partition_html(filename=str(file_path), include_page_breaks=False, languages=["ita", "eng"])
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
