@@ -273,7 +273,15 @@ def chunk_documents(docs: list[Document]) -> list[Document]:
         chunk_size=1200,
         chunk_overlap=150,
     )
-    return splitter.split_documents(docs)
+    chunks = splitter.split_documents(docs)
+
+    # aggiungi ID deterministico
+    for i, c in enumerate(chunks):
+        base_id = sha(c.metadata["source_url"])
+        content_id = sha(c.page_content)
+        c.metadata["chunk_id"] = f"{base_id}_{i}_{content_id[:8]}"
+    return chunks
+
 
 def build_vectorstore():
     embeddings = OllamaEmbeddings(model=EMBED_MODEL, base_url=OLLAMA_BASE_URL)
@@ -310,8 +318,8 @@ async def main(seed_url: str, follow_internal_html: bool = False):
     
     # Upsert su Qdrant
     vs = build_vectorstore()
-    ids = vs.add_documents(chunks)
-    print(f"[OK] Upsert completato. Esempio ID: {ids[:3]}")
+    ids = [c.metadata["chunk_id"] for c in chunks]
+    vs.add_documents(chunks, ids=ids)   # overwrite se già presenti
 
 if __name__ == "__main__":
     import argparse
