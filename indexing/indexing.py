@@ -106,6 +106,7 @@ async def categorize_links(links: list[str]) -> tuple[list[str], list[str]]:
 async def scrape_page(url: str, same_domain_only: bool = False):
     """
     Rende la pagina, salva l'HTML e raccoglie i link (in particolare PDF).
+    Restituisce anche i link che dovrebbero essere esclusi dal crawling futuro.
     """
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
@@ -120,43 +121,62 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         html_path = RAW_HTML / fname
         html_path.write_text(html, encoding="utf-8")
         
-        # raccogli link assoluti
-        links = await page.eval_on_selector_all(
+        # raccogli link validi (esclusi header e footer) per il contenuto
+        valid_links = await page.eval_on_selector_all(
             "a[href]",
+            """
+            els => els
+                .filter(e => !e.closest('header') && !e.closest('footer'))
+                .map(e => e.href)
+            """
+        )
+        
+        # raccogli anche i link di header e footer per escluderli dal crawling futuro
+        excluded_links = await page.eval_on_selector_all(
+            "header a[href], footer a[href]",
             "els => els.map(e => e.href)"
         )
         
         await browser.close()
         
-        # pulizia & filtro
-        origin = urlparse(url).netloc
-        seen = set()
-        abs_links = []
-        
-        for l in links:
-            if l:  # controlla subito che non sia None o stringa vuota
-                try:
-                    u = urlparse(l)
-                    # se non c'è schema (http/https), completa l'URL
-                    if not u.scheme:
-                        l = urljoin(url, l)
+        def process_links(links):
+            """Helper per processare e pulire una lista di link"""
+            origin = urlparse(url).netloc
+            seen = set()
+            abs_links = []
+            
+            for l in links:
+                if l:  # controlla subito che non sia None o stringa vuota
+                    try:
                         u = urlparse(l)
-                    
-                    # aggiungi solo se:
-                    # - o non filtriamo per dominio
-                    # - oppure il dominio coincide con quello di origine
-                    if (not same_domain_only) or (u.netloc and u.netloc == origin):
-                        if l not in seen:
-                            seen.add(l)
-                            abs_links.append(l)
-                except Exception as e:
-                    print(f"[WARN] Link scartato {l}: {e}")
+                        # se non c'è schema (http/https), completa l'URL
+                        if not u.scheme:
+                            l = urljoin(url, l)
+                            u = urlparse(l)
+                        
+                        # aggiungi solo se:
+                        # - o non filtriamo per dominio
+                        # - oppure il dominio coincide con quello di origine
+                        if (not same_domain_only) or (u.netloc and u.netloc == origin):
+                            if l not in seen:
+                                seen.add(l)
+                                abs_links.append(l)
+                    except Exception as e:
+                        print(f"[WARN] Link scartato {l}: {e}")
+            
+            return abs_links
         
-        # Categorizza i link controllando anche il Content-Type
-        print(f"[INFO] Controllo Content-Type per {len(abs_links)} link...")
-        pdf_links, html_links = await categorize_links(abs_links)
+        # processa i link validi
+        valid_abs_links = process_links(valid_links)
         
-        return title, html_path, pdf_links, html_links
+        # processa i link esclusi (per tenerli traccia)
+        #excluded_abs_links = set(process_links(excluded_links))
+        
+        # Categorizza solo i link validi
+        print(f"[INFO] Controllo Content-Type per {len(valid_abs_links)} link validi...")
+        pdf_links, html_links = await categorize_links(valid_abs_links)
+        
+        return title, html_path, pdf_links, html_links, excluded_links
 
 async def download_pdfs(urls: list[str]) -> list[Path]:
     saved = []
@@ -292,26 +312,48 @@ def build_vectorstore():
         embedding=embeddings,
     )
 
-async def main(seed_url: str, follow_internal_html: bool = False):
-    print(f"[INFO] Crawling: {seed_url}")
-    title, html_path, pdf_links, html_links = await scrape_page(seed_url)
-    print(f"[INFO] Found PDFs: {len(pdf_links)} | HTML links: {len(html_links)}")
-    
-    if pdf_links:
-        print("[INFO] PDF links found:")
-        for pdf_link in pdf_links:
-            print(f"  - {pdf_link}")
-    
-    pdf_files = await download_pdfs(pdf_links)
-    
-    # Normalizzazione in Document
-    html_docs = to_documents_from_html(html_path, source_url=seed_url, page_title=title)
-    pdf_docs = []
-    for f in pdf_files:
-        pdf_docs.extend(to_documents_from_pdf(f, source_url=seed_url))
-    
-    all_docs = html_docs + pdf_docs
-    
+async def crawl(seed_url: str, max_depth: int = 2):
+    visited = set()
+    excluded_from_crawling = set()  # Traccia i link da escludere
+    to_visit = [(seed_url, 0)]
+    all_docs = []
+
+    while to_visit:
+        url, depth = to_visit.pop(0)
+        if url in visited:
+            continue
+        visited.add(url)
+
+        print(f"[INFO] Crawling ({depth}/{max_depth}): {url}")
+        try:
+            title, html_path, pdf_links, html_links, excluded_links = await scrape_page(url, same_domain_only=True)
+            # Aggiungi i link esclusi al set globale
+            excluded_from_crawling.update(excluded_links)
+        except Exception as e:
+            print(f"[WARN] Skip {url}: {e}")
+            continue
+
+        pdf_files = await download_pdfs(pdf_links)
+        html_docs = to_documents_from_html(html_path, source_url=url, page_title=title)
+        pdf_docs = []
+        for f in pdf_files:
+            pdf_docs.extend(to_documents_from_pdf(f, source_url=url))
+        all_docs.extend(html_docs + pdf_docs)
+
+        if depth < max_depth:
+            for link in html_links:
+                # Esclude i link già visitati E quelli che provengono da header/footer
+                if link not in visited and link not in excluded_from_crawling:
+                    to_visit.append((link, depth + 1))
+                elif link in excluded_from_crawling:
+                    print(f"[INFO] Link escluso dal crawling (header/footer): {link}")
+
+    return all_docs
+
+
+async def main(seed_url: str, follow_internal_html: bool = False, max_depth: int = 2):
+    all_docs = await crawl(seed_url, max_depth)
+
     # Chunking
     chunks = chunk_documents(all_docs)
     print(f"[INFO] Chunks: {len(chunks)}")
@@ -320,10 +362,12 @@ async def main(seed_url: str, follow_internal_html: bool = False):
     vs = build_vectorstore()
     ids = [c.metadata["chunk_id"] for c in chunks]
     vs.add_documents(chunks, ids=ids)   # overwrite se già presenti
+    print(f"[OK] Upsert completato")
 
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", required=True, help="URL della pagina accademica di partenza")
+    ap.add_argument("--depth", type=int, default=2, help="Profondità massima del crawling")
     args = ap.parse_args()
-    asyncio.run(main(args.url))
+    asyncio.run(main(args.url, max_depth=args.depth))
