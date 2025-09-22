@@ -106,3 +106,4 @@ if __name__ == "__main__":
 # python query_qdrant.py --mode semantic --query "regolamento universitario" --limit 3 --show-full
 
 
+# python query_qdrant.py --mode keyword --query "statuto" --show-full --limit 0
