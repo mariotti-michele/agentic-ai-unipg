@@ -107,7 +107,6 @@ async def categorize_links(links: list[str]) -> tuple[list[str], list[str]]:
 async def scrape_page(url: str, same_domain_only: bool = False):
     """
     Rende la pagina, salva l'HTML e raccoglie i link (in particolare PDF).
-    Restituisce anche i link che dovrebbero essere esclusi dal crawling futuro.
     """
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
@@ -121,22 +120,20 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         fname = slugify(urlparse(url).path or "index") + ".html"
         html_path = RAW_HTML / fname
         html_path.write_text(html, encoding="utf-8")
-        
-        # raccogli link validi (esclusi header e footer) per il contenuto
-        valid_links = await page.eval_on_selector_all(
-            "a[href]",
+
+        # raccogli link validi SOLO dentro <main>
+        valid_links_debug = await page.eval_on_selector_all(
+            "main a[href]",
             """
-            els => els
-                .filter(e => !e.closest('header') && !e.closest('footer'))
-                .map(e => e.href)
+            els => els.map(e => ({href: e.href, html: e.outerHTML.substring(0,200)}))
             """
         )
-        
-        # raccogli anche i link di header e footer per escluderli dal crawling futuro
-        excluded_links = await page.eval_on_selector_all(
-            "header a[href], footer a[href]",
-            "els => els.map(e => e.href)"
-        )
+        valid_links = [x["href"] for x in valid_links_debug]
+
+        print(f"[DEBUG] Valid links ({len(valid_links)}):")
+        for l in valid_links_debug:
+            print(f"   [VALID] {l['href']} -- from: {l['html']}")
+
         
         await browser.close()
         
@@ -169,15 +166,12 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         
         # processa i link validi
         valid_abs_links = process_links(valid_links)
-        
-        # processa i link esclusi (per tenerli traccia)
-        #excluded_abs_links = set(process_links(excluded_links))
-        
+                
         # Categorizza solo i link validi
         print(f"[INFO] Controllo Content-Type per {len(valid_abs_links)} link validi...")
         pdf_links, html_links = await categorize_links(valid_abs_links)
         
-        return title, html_path, pdf_links, html_links, excluded_links
+        return title, html_path, pdf_links, html_links
 
 async def download_pdfs(urls: list[str]) -> list[Path]:
     saved = []
@@ -238,11 +232,27 @@ async def download_pdfs(urls: list[str]) -> list[Path]:
     
     return saved
 
+from bs4 import BeautifulSoup
+
 def to_documents_from_html(file_path: Path, source_url: str, page_title: str) -> list[Document]:
-    elements = partition_html(filename=str(file_path), include_page_breaks=False, languages=["ita", "eng"])
+    raw_html = file_path.read_text(encoding="utf-8")
+    soup = BeautifulSoup(raw_html, "html.parser")
+
+    # prendi solo il contenuto dentro <main>
+    main_el = soup.find("main")
+    if not main_el:
+        print(f"[WARN] Nessun <main> trovato in {source_url}, salto")
+        return []
+
+    # ricrea un file temporaneo solo con il contenuto del main
+    main_html = str(main_el)
+    tmp_path = file_path.with_suffix(".main.html")
+    tmp_path.write_text(main_html, encoding="utf-8")
+
+    elements = partition_html(filename=str(tmp_path), include_page_breaks=False, languages=["ita", "eng"])
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
-    
+
     for el in elements:
         text = str(el).strip()
         if text:
@@ -262,6 +272,7 @@ def to_documents_from_html(file_path: Path, source_url: str, page_title: str) ->
             )
             docs.append(doc)
     return docs
+
 
 def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
     elements = partition_pdf(filename=str(file_path), strategy="fast", include_page_breaks=True, languages=["ita", "eng"])
@@ -313,9 +324,9 @@ def build_vectorstore():
         embedding=embeddings,
     )
 
+
 async def crawl(seed_url: str, max_depth: int = 2):
     visited = set()
-    excluded_from_crawling = set()  # Traccia i link da escludere
     to_visit = [(seed_url, 0)]
     all_docs = []
 
@@ -325,11 +336,17 @@ async def crawl(seed_url: str, max_depth: int = 2):
             continue
         visited.add(url)
 
-        print(f"[INFO] Crawling ({depth}/{max_depth}): {url}")
+        print(f"\n[INFO] Crawling ({depth}/{max_depth}): {url}")
         try:
-            title, html_path, pdf_links, html_links, excluded_links = await scrape_page(url, same_domain_only=True)
-            # Aggiungi i link esclusi al set globale
-            excluded_from_crawling.update(excluded_links)
+            title, html_path, pdf_links, html_links = await scrape_page(url)
+            print(f"[DEBUG] Link trovati nel <main> della pagina: {url}")
+            print(f"  - PDF: {len(pdf_links)}")
+            for l in pdf_links:
+                print(f"    [PDF] {l}")
+            print(f"  - HTML: {len(html_links)}")
+            for l in html_links:
+                print(f"    [HTML] {l}")
+
         except Exception as e:
             print(f"[WARN] Skip {url}: {e}")
             continue
@@ -343,11 +360,9 @@ async def crawl(seed_url: str, max_depth: int = 2):
 
         if depth < max_depth:
             for link in html_links:
-                # Esclude i link già visitati E quelli che provengono da header/footer
-                if link not in visited and link not in excluded_from_crawling:
+                if link not in visited:
+                    print(f"[DEBUG] -> Da visitare (depth {depth+1}): {link}")
                     to_visit.append((link, depth + 1))
-                elif link in excluded_from_crawling:
-                    print(f"[INFO] Link escluso dal crawling (header/footer): {link}")
 
     return all_docs
 
