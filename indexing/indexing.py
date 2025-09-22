@@ -1,4 +1,5 @@
 import os, re, json, asyncio, hashlib
+import uuid
 from pathlib import Path
 from urllib.parse import urlparse, urljoin
 from datetime import datetime, timezone
@@ -360,7 +361,8 @@ async def main(seed_url: str, follow_internal_html: bool = False, max_depth: int
     
     # Upsert su Qdrant
     vs = build_vectorstore()
-    ids = [c.metadata["chunk_id"] for c in chunks]
+    #ids = [c.metadata["chunk_id"] for c in chunks]
+    ids = [str(uuid.uuid5(uuid.NAMESPACE_DNS, c.metadata["chunk_id"])) for c in chunks]
     vs.add_documents(chunks, ids=ids)   # overwrite se già presenti
     print(f"[OK] Upsert completato")
 
