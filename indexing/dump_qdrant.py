@@ -26,7 +26,6 @@ def dump_all_chunks():
             count += 1
             print("="*80)
             print(f"ID: {p.id}")
-            print("Section:", p.payload.get("section", "N/A"))
             print("Chunk:", p.payload.get("page_content", ""))
             print("Metadati:", {k: v for k, v in p.payload.items() if k != "page_content"})
 
