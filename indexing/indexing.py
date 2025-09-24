@@ -1,7 +1,7 @@
 import os, re, json, asyncio, hashlib
 import uuid
-import pdfplumber
 import pandas as pd
+import camelot
 from pathlib import Path
 from urllib.parse import urlparse, urljoin
 from datetime import datetime, timezone
@@ -46,26 +46,25 @@ async def check_if_pdf_url(url: str, client: httpx.AsyncClient) -> bool:
         # Prima controlla se l'URL finisce con .pdf (caso ovvio)
         if url.lower().endswith('.pdf'):
             return True
-            
+        
         # Altrimenti fai una richiesta HEAD per controllare il Content-Type
         response = await client.head(url, timeout=10.0)
         content_type = response.headers.get('content-type', '').lower()
-        
+
         # Controlla se il Content-Type indica un PDF
         if 'application/pdf' in content_type:
             return True
-            
+        
         # Alcuni server potrebbero non supportare HEAD, prova GET con range limitato
-        if response.status_code == 405:  # Method Not Allowed
+        if response.status_code == 405: # Method Not Allowed
             response = await client.get(url, headers={'Range': 'bytes=0-1023'}, timeout=10.0)
             content_type = response.headers.get('content-type', '').lower()
             if 'application/pdf' in content_type:
                 return True
-                
+    
     except Exception as e:
         print(f"[WARN] Errore nel controllo PDF per {url}: {e}")
         return False
-        
     return False
 
 async def categorize_links(links: list[str]) -> tuple[list[str], list[str]]:
@@ -81,29 +80,28 @@ async def categorize_links(links: list[str]) -> tuple[list[str], list[str]]:
         "Accept": "*/*",
         "Accept-Language": "it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7",
     }
-    
-    pdf_links = []
-    html_links = []
-    
+
+    pdf_links, html_links = [], []
+
     async with httpx.AsyncClient(
         follow_redirects=True,
         timeout=30.0,
         headers=headers
     ) as client:
         
-        # Processa i link in batch per efficienza
-        semaphore = asyncio.Semaphore(10)  # Limita le richieste concorrenti
-        
+         # Processa i link in batch per efficienza
+        semaphore = asyncio.Semaphore(10) # Limita le richieste concorrenti
+
         async def check_link(link):
             async with semaphore:
                 if await check_if_pdf_url(link, client):
                     pdf_links.append(link)
                 elif link.startswith("http") and not link.lower().endswith(('.jpg', '.png', '.gif', '.jpeg')):
                     html_links.append(link)
-        
+            
         tasks = [check_link(link) for link in links]
         await asyncio.gather(*tasks, return_exceptions=True)
-    
+
     return pdf_links, html_links
 
 async def scrape_page(url: str, same_domain_only: bool = False):
@@ -114,10 +112,10 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
         await page.goto(url, wait_until="domcontentloaded", timeout=90000)
-        
+
         title = await page.title()
         html = await page.content()
-        
+
         # salva HTML raw
         fname = slugify(urlparse(url).path or "index") + ".html"
         html_path = RAW_HTML / fname
@@ -136,15 +134,13 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         for l in valid_links_debug:
             print(f"   [VALID] {l['href']} -- from: {l['html']}")
 
-        
         await browser.close()
-        
+
         def process_links(links):
             """Helper per processare e pulire una lista di link"""
             origin = urlparse(url).netloc
-            seen = set()
-            abs_links = []
-            
+            seen, abs_links = set(), []
+
             for l in links:
                 if l:  # controlla subito che non sia None o stringa vuota
                     try:
@@ -153,7 +149,7 @@ async def scrape_page(url: str, same_domain_only: bool = False):
                         if not u.scheme:
                             l = urljoin(url, l)
                             u = urlparse(l)
-                        
+
                         # aggiungi solo se:
                         # - o non filtriamo per dominio
                         # - oppure il dominio coincide con quello di origine
@@ -163,21 +159,21 @@ async def scrape_page(url: str, same_domain_only: bool = False):
                                 abs_links.append(l)
                     except Exception as e:
                         print(f"[WARN] Link scartato {l}: {e}")
-            
+
             return abs_links
-        
+
         # processa i link validi
         valid_abs_links = process_links(valid_links)
-                
+
         # Categorizza solo i link validi
         print(f"[INFO] Controllo Content-Type per {len(valid_abs_links)} link validi...")
         pdf_links, html_links = await categorize_links(valid_abs_links)
-        
+
         return title, html_path, pdf_links, html_links
 
 async def download_pdfs(urls: list[str]) -> list[Path]:
     saved = []
-    
+
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -188,7 +184,7 @@ async def download_pdfs(urls: list[str]) -> list[Path]:
         "Accept-Language": "it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7",
         "Referer": "https://www.unipg.it/",
     }
-    
+
     async with httpx.AsyncClient(
         follow_redirects=True,
         timeout=90.0,
@@ -205,29 +201,29 @@ async def download_pdfs(urls: list[str]) -> list[Path]:
 
                 if not name_guess.lower().endswith(".pdf"):
                     name_guess += ".pdf"
-                
+
                 out = RAW_PDF / name_guess
-                
+
                 if out.exists():
                     saved.append(out)
                     continue
-                
+
                 r = await client.get(u)
                 r.raise_for_status()
-                
+
                 # Verifica che il contenuto sia effettivamente un PDF
                 content_type = r.headers.get('content-type', '').lower()
                 if 'application/pdf' not in content_type and not r.content.startswith(b'%PDF'):
                     print(f"[WARN] Il contenuto di {u} non sembra essere un PDF")
                     continue
-                
+
                 out.write_bytes(r.content)
                 saved.append(out)
                 print(f"[OK] Scaricato PDF: {u} -> {out.name}")
-                
+
             except Exception as e:
                 print(f"[WARN] PDF skip {u}: {e}")
-    
+
     return saved
 
 from bs4 import BeautifulSoup
@@ -241,7 +237,7 @@ def to_documents_from_html(file_path: Path, source_url: str, page_title: str) ->
     if not main_el:
         print(f"[WARN] Nessun <main> trovato in {source_url}, salto")
         return []
-
+    
     # ricrea un file temporaneo solo con il contenuto del main
     main_html = str(main_el)
     tmp_path = file_path.with_suffix(".main.html")
@@ -275,74 +271,34 @@ def to_documents_from_html(file_path: Path, source_url: str, page_title: str) ->
         docs.append(doc)
     return docs
 
-def clean_pdf_table(table):
-    """
-    Pulisce e normalizza una tabella grezza estratta da pdfplumber
-    """
-    # Rimuove righe completamente vuote
-    table = [row for row in table if any(cell for cell in row)]
-
-    if not table:
-        return pd.DataFrame()
-
-    # Usa la PRIMA riga non vuota come header
-    headers = [str(h).strip() if h else "" for h in table[0]]
-
-    # Se ci sono header multi-riga, uniscili con quelli successivi
-    if "" in headers or "null" in headers:
-        # prova a prendere le prime 2 righe come intestazioni e unirle
-        headers = [
-            ((str(table[0][i]) or "") + " " + (str(table[1][i]) or "")).strip()
-            for i in range(len(table[0]))
-        ]
-        data = table[2:]
-    else:
-        data = table[1:]
-
-    # Crea DataFrame
-    df = pd.DataFrame(data, columns=headers)
-
-    # Rimuove colonne vuote
-    df = df.loc[:, df.columns.notna()]
-    df = df.dropna(how="all", axis=1)
-
-    # Normalizza i nomi delle colonne
-    df.columns = [c.replace("\n", " ").strip() for c in df.columns]
-
-    return df
-
-def extract_tables_pdfplumber(file_path: Path, source_url: str) -> list[dict]:
-    """
-    Estrae tabelle da un PDF e le restituisce come lista di record JSON
-    (ogni riga = dict con intestazioni).
-    """
+def extract_tables_camelot(file_path: Path, source_url: str) -> list[dict]:
     records = []
-    with pdfplumber.open(file_path) as pdf:
-        for page_num, page in enumerate(pdf.pages, start=1):
-            tables = page.extract_tables()
-            for t_idx, table in enumerate(tables):
-                df = clean_pdf_table(table)
-                if df.empty:
-                    continue
-                for _, row in df.iterrows():
-                    records.append({
-                        "row": row.to_dict(),
-                        "page_number": page_num,
-                        "file_name": file_path.name,
-                        "table_index": t_idx
-                    })
+    try:
+        tables = camelot.read_pdf(str(file_path), pages="all", flavor="lattice")
+        if not tables or len(tables) == 0:
+            tables = camelot.read_pdf(str(file_path), pages="all", flavor="stream")
+        for t_idx, table in enumerate(tables):
+            df = table.df
+            for i in range(len(df)):
+                row = df.iloc[i].to_dict()
+                records.append({
+                    "row": row,
+                    "page_number": table.page,
+                    "file_name": file_path.name,
+                    "table_index": t_idx
+                })
+    except Exception as e:
+        print(f"[WARN] Camelot fallito su {file_path}: {e}")
     return records
 
-
-
 def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
-    # Estraggo testo con unstructured
+     # Estraggo testo con unstructured
     elements = partition_pdf(filename=str(file_path), strategy="hi_res",
                              include_page_breaks=True, infer_table_structure=True,
                              languages=["ita", "eng"])
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
-
+    
     for el in elements:
         text = getattr(el, "text", None) or str(el).strip()
         if not text:
@@ -366,8 +322,7 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
         )
         docs.append(doc)
 
-    # Estraggo tabelle strutturate con pdfplumber
-    tables = extract_tables_pdfplumber(file_path, source_url)
+    tables = extract_tables_camelot(file_path, source_url)
     for t in tables:
         docs.append(Document(
             page_content=json.dumps(t["row"], ensure_ascii=False),
@@ -385,7 +340,6 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
 
     return docs
 
-
 def chunk_documents(docs: list[Document]) -> list[Document]:
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1200,
@@ -400,7 +354,6 @@ def chunk_documents(docs: list[Document]) -> list[Document]:
         c.metadata["chunk_id"] = f"{base_id}_{i}_{content_id[:8]}"
     return chunks
 
-
 def build_vectorstore():
     embeddings = OllamaEmbeddings(model=EMBED_MODEL, base_url=OLLAMA_BASE_URL)
     client = QdrantClient(url=QDRANT_URL)
@@ -410,12 +363,11 @@ def build_vectorstore():
         embedding=embeddings,
     )
 
-
 async def crawl(seed_url: str, max_depth: int = 2):
     visited = set()
     to_visit = [(seed_url, 0)]
     all_docs = []
-
+    
     while to_visit:
         url, depth = to_visit.pop(0)
         if url in visited:
@@ -452,19 +404,17 @@ async def crawl(seed_url: str, max_depth: int = 2):
 
     return all_docs
 
-
 async def main(seed_url: str, follow_internal_html: bool = False, max_depth: int = 2):
     all_docs = await crawl(seed_url, max_depth)
 
     # Chunking
     chunks = chunk_documents(all_docs)
     print(f"[INFO] Chunks: {len(chunks)}")
-    
+
     # Upsert su Qdrant
     vs = build_vectorstore()
-    #ids = [c.metadata["chunk_id"] for c in chunks]
     ids = [str(uuid.uuid5(uuid.NAMESPACE_DNS, c.metadata["chunk_id"])) for c in chunks]
-    vs.add_documents(chunks, ids=ids)   # overwrite se già presenti
+    vs.add_documents(chunks, ids=ids) # overwrite se già presenti
     print(f"[OK] Upsert completato")
 
 if __name__ == "__main__":
