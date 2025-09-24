@@ -1,0 +1,5 @@
+requests
+langchain
+langchain-qdrant
+langchain-ollama
+qdrant-client
