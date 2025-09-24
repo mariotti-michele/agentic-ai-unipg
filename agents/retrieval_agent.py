@@ -35,6 +35,31 @@ embeddings = OllamaEmbeddings(
     base_url=OLLAMA_BASE_URL
 )
 
+# --- Check dimensione embedding vs Qdrant ---
+# 1. Dimensione embedding reale
+test_vec = embeddings.embed_query("test")
+embed_size = len(test_vec)
+print(f"[INFO] Dimensione embedding Ollama: {embed_size}")
+
+# 2. Leggi info collezione Qdrant
+qdrant_client = QdrantClient(url=QDRANT_URL)
+try:
+    info = qdrant_client.get_collection(COLLECTION_NAME)
+
+    vectors = info.config.params.vectors
+    if hasattr(vectors, "size"):  # caso singolo VectorParams
+        qdrant_size = vectors.size
+    else:  # caso multi-vector (dict-like)
+        qdrant_size = vectors["default"].size
+
+    print(f"[INFO] Dimensione collezione Qdrant: {qdrant_size}")
+
+    if embed_size != qdrant_size:
+        print(f"[ERRORE] Dimensione embedding ({embed_size}) ≠ dimensione collezione ({qdrant_size})")
+
+except Exception as e:
+    print(f"[WARN] Impossibile leggere info collezione: {e}")
+
 try:
     # Metodo 1: Approccio semplificato
     vectorstore = QdrantVectorStore.from_existing_collection(
