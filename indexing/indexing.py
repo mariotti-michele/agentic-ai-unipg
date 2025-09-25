@@ -347,12 +347,21 @@ def chunk_documents(docs: list[Document]) -> list[Document]:
     )
     chunks = splitter.split_documents(docs)
 
-    # aggiungi ID deterministico
+    clean_chunks = []
     for i, c in enumerate(chunks):
+        text = c.page_content.strip()
+        # Filtro: scarta chunk troppo brevi o vuoti
+        if not text or len(text) < 20:
+            print(f"[SKIP] Chunk scartato (vuoto o troppo breve): {repr(text[:50])}")
+            continue
+
         base_id = sha(c.metadata["source_url"])
         content_id = sha(c.page_content)
         c.metadata["chunk_id"] = f"{base_id}_{i}_{content_id[:8]}"
-    return chunks
+        clean_chunks.append(c)
+
+    print(f"[INFO] Chunk validi dopo filtro: {len(clean_chunks)} / {len(chunks)}")
+    return clean_chunks
 
 def build_vectorstore():
     embeddings = OllamaEmbeddings(model=EMBED_MODEL, base_url=OLLAMA_BASE_URL)
@@ -407,15 +416,19 @@ async def crawl(seed_url: str, max_depth: int = 2):
 async def main(seed_url: str, follow_internal_html: bool = False, max_depth: int = 2):
     all_docs = await crawl(seed_url, max_depth)
 
-    # Chunking
+    # Chunking con filtro
     chunks = chunk_documents(all_docs)
-    print(f"[INFO] Chunks: {len(chunks)}")
+    print(f"[INFO] Chunks finali da inserire: {len(chunks)}")
+
+    if not chunks:
+        print("[WARN] Nessun chunk valido trovato, niente da upsertare.")
+        return
 
     # Upsert su Qdrant
     vs = build_vectorstore()
     ids = [str(uuid.uuid5(uuid.NAMESPACE_DNS, c.metadata["chunk_id"])) for c in chunks]
-    vs.add_documents(chunks, ids=ids) # overwrite se già presenti
-    print(f"[OK] Upsert completato")
+    vs.add_documents(chunks, ids=ids)
+    print(f"[OK] Upsert completato: {len(chunks)} punti inseriti")
 
 if __name__ == "__main__":
     import argparse
