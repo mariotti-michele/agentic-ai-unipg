@@ -60,21 +60,11 @@ llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
 
 # ---------------- Retriever + QA ----------------
 print("Creando retriever...")
-retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
-
-print("Inizializzando RetrievalQA...")
-qa = RetrievalQA.from_chain_type(
-    llm=llm,
-    retriever=retriever,
-    chain_type="stuff",
-    chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
-    return_source_documents=True
-)
 
 # ---------------- Funzioni ----------------
 def answer_query(query: str):
     try:
-        print(f"Processando query: {query}")
+        print(f"Processando query...")
         # Calcola embedding e ricerca con MMR
         vec = embeddings.embed_query(query)
         docs = vectorstore.similarity_search_by_vector(vec, k=8)  # recupero extra
@@ -92,15 +82,11 @@ def answer_query(query: str):
         if not unique_docs:
             return "Non presente nei documenti"
 
-        context = "\n\n".join(
-            [f"[Fonte {i+1}] {doc.page_content}" for i, doc in enumerate(docs)]
-        )
-
         # Costruisci il contesto con fonte e URL
-        #context = "\n\n".join(
-        #    [f"[Fonte {i+1}] ({doc.metadata.get('source_url', 'N/A')})\n{doc.page_content}"
-        #     for i, doc in enumerate(unique_docs)]
-        #)
+        context = "\n\n".join(
+            [f"[Fonte {i+1}] ({doc.metadata.get('source_url', 'N/A')})\n{doc.page_content}"
+             for i, doc in enumerate(unique_docs)]
+        )
 
         # Prompt con sintesi richiesta
         prompt = f"""{QA_CHAIN_PROMPT.format(context=context, question=query)}
@@ -113,9 +99,12 @@ Fornisci:
         answer = llm.invoke(prompt)
 
         # Risposta finale con elenco fonti
-        response = f"Risposta:\n{answer}\n\nFonti consultate:"
-        for i, doc in enumerate(unique_docs, 1):
-            response += f"\n{i}. {doc.metadata.get('source_url', 'N/A')}"
+        response = f"Risposta: {answer}\n"
+        if docs:
+            response += f"\nFonti consultate ({len(docs)} documenti):"
+            for i, doc in enumerate(docs[:3], 1):
+                preview = doc.page_content[:200] + "..." if len(doc.page_content) > 200 else doc.page_content
+                response += f"\n{i}. {preview}"
         return response
 
     except Exception as e:
@@ -127,10 +116,9 @@ def test_connection():
     try:
         vec = embeddings.embed_query("test")
         docs = vectorstore.max_marginal_relevance_search_by_vector(vec, k=3, fetch_k=10, lambda_mult=0.5)
-        print(f"Test connessione riuscito. Trovati {len(docs)} documenti (MMR).")
+        print(f"Test connessione riuscito.")
         for i, doc in enumerate(docs, 1):
             preview = doc.page_content[:120].replace("\n", " ")
-            print(f"  {i}. {preview}...")
         return True
     except Exception as e:
         print(f"Test connessione fallito: {e}")
