@@ -35,3 +35,21 @@ services:
     depends_on:
       - ollama
       - qdrant
+
+  indexing:
+    build: ./indexing
+    container_name: indexing
+    volumes:
+      - ./indexing:/app
+      - ./data:/app/data
+      - ./qdrant_storage:/qdrant/storage
+    working_dir: /app
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - QDRANT_URL=http://qdrant:6333
+      - EMBED_MODEL=nomic-embed-text
+      - COLLECTION=ing_info_mag_docs
+    depends_on:
+      - ollama
+      - qdrant
+    command: tail -f /dev/null  # mantiene il container attivo per sviluppo
