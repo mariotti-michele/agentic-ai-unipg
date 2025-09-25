@@ -1,5 +1,7 @@
-requests
-langchain
-langchain-qdrant
-langchain-ollama
-qdrant-client
+langchain==0.3.27
+langchain-qdrant==0.2.1
+langchain-ollama==0.3.8
+qdrant-client==1.15.1
+
+requests==2.32.5
+python-dotenv==1.1.1
