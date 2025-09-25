@@ -73,47 +73,22 @@ qa = RetrievalQA.from_chain_type(
 def answer_query(query: str):
     try:
         print(f"Processando query: {query}")
-        # Calcola embedding e ricerca con MMR
         vec = embeddings.embed_query(query)
-        docs = vectorstore.similarity_search_by_vector(vec, k=8)  # recupero extra
-        # Deduplica + prendi solo i primi 5 documenti
-        seen = set()
-        unique_docs = []
-        for d in docs:
-            text = d.page_content.strip()
-            if text not in seen:
-                seen.add(text)
-                unique_docs.append(d)
-            if len(unique_docs) == 5:
-                break
-
-        if not unique_docs:
-            return "Non presente nei documenti"
+        docs = vectorstore.similarity_search_by_vector(vec, k=5)
 
         context = "\n\n".join(
             [f"[Fonte {i+1}] {doc.page_content}" for i, doc in enumerate(docs)]
         )
 
-        # Costruisci il contesto con fonte e URL
-        #context = "\n\n".join(
-        #    [f"[Fonte {i+1}] ({doc.metadata.get('source_url', 'N/A')})\n{doc.page_content}"
-        #     for i, doc in enumerate(unique_docs)]
-        #)
-
-        # Prompt con sintesi richiesta
-        prompt = f"""{QA_CHAIN_PROMPT.format(context=context, question=query)}
-
-Fornisci:
-1. Una sintesi breve (massimo 3 frasi).
-2. L'estratto più rilevante dal contesto.
-"""
-
+        prompt = QA_CHAIN_PROMPT.format(context=context, question=query)
         answer = llm.invoke(prompt)
 
-        # Risposta finale con elenco fonti
-        response = f"Risposta:\n{answer}\n\nFonti consultate:"
-        for i, doc in enumerate(unique_docs, 1):
-            response += f"\n{i}. {doc.metadata.get('source_url', 'N/A')}"
+        response = f"Risposta: {answer}\n"
+        if docs:
+            response += f"\nFonti consultate ({len(docs)} documenti):"
+            for i, doc in enumerate(docs[:3], 1):
+                preview = doc.page_content[:200] + "..." if len(doc.page_content) > 200 else doc.page_content
+                response += f"\n{i}. {preview}"
         return response
 
     except Exception as e:
@@ -121,14 +96,11 @@ Fornisci:
 
 
 def test_connection():
-    """Test connessione al vector store con retrieval MMR"""
+    """Test connessione al vector store con query esplicita"""
     try:
         vec = embeddings.embed_query("test")
-        docs = vectorstore.max_marginal_relevance_search_by_vector(vec, k=3, fetch_k=10, lambda_mult=0.5)
-        print(f"Test connessione riuscito. Trovati {len(docs)} documenti (MMR).")
-        for i, doc in enumerate(docs, 1):
-            preview = doc.page_content[:120].replace("\n", " ")
-            print(f"  {i}. {preview}...")
+        docs = vectorstore.similarity_search_by_vector(vec, k=1)
+        print(f"Test connessione riuscito. Trovati {len(docs)} documenti.")
         return True
     except Exception as e:
         print(f"Test connessione fallito: {e}")
