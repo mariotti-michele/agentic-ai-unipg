@@ -7,10 +7,10 @@ from langchain_ollama import OllamaEmbeddings
 
 load_dotenv()
 
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+QDRANT_URL = "http://localhost:6333"
 COLLECTION = os.getenv("COLLECTION", "ing_info_mag_docs")
 EMBED_MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_BASE_URL = "http://localhost:11434"
 
 client = QdrantClient(url=QDRANT_URL)
 
