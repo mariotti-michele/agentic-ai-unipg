@@ -86,27 +86,26 @@ def answer_query(query: str):
              for i, doc in enumerate(unique_docs)]
         )
 
-        # Prompt con sintesi richiesta
+        # Prompt senza sezioni multiple
         prompt = f"""{QA_CHAIN_PROMPT.format(context=context, question=query)}
 
-Fornisci:
-1. Una sintesi breve (massimo 3 frasi).
-2. L'estratto più rilevante dal contesto.
+Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
 """
 
         answer = llm.invoke(prompt)
 
         # Risposta finale con elenco fonti
         response = f"Risposta: {answer}\n"
-        if docs:
-            response += f"\nFonti consultate ({len(docs)} documenti):"
-            for i, doc in enumerate(docs[:3], 1):
+        if unique_docs:
+            response += f"\nFonti consultate ({len(unique_docs)} documenti):"
+            for i, doc in enumerate(unique_docs, 1):
                 preview = doc.page_content[:200] + "..." if len(doc.page_content) > 200 else doc.page_content
                 response += f"\n{i}. {preview}"
         return response
 
     except Exception as e:
         return f"Errore durante la query: {e}"
+
 
 
 def test_connection():
