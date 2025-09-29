@@ -59,14 +59,14 @@ llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
 # ---------------- Retriever + QA ----------------
 print("Creando retriever...")
 
-# ---------------- Funzioni ----------------
+# ---------------- Functions ----------------
 def answer_query(query: str):
     try:
         print(f"Processando query...")
-        # Calcola embedding e ricerca con MMR
+
         vec = embeddings.embed_query(query)
-        docs = vectorstore.similarity_search_by_vector(vec, k=8)  # recupero extra
-        # Deduplica + prendi solo i primi 5 documenti
+        docs = vectorstore.similarity_search_by_vector(vec, k=8)
+        
         seen = set()
         unique_docs = []
         for d in docs:
@@ -80,13 +80,12 @@ def answer_query(query: str):
         if not unique_docs:
             return "Non presente nei documenti"
 
-        # Costruisci il contesto con fonte e URL
+        
         context = "\n\n".join(
             [f"[Fonte {i+1}] ({doc.metadata.get('source_url', 'N/A')})\n{doc.page_content}"
              for i, doc in enumerate(unique_docs)]
         )
-
-        # Prompt senza sezioni multiple
+      
         prompt = f"""{QA_CHAIN_PROMPT.format(context=context, question=query)}
 
 Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
@@ -94,7 +93,6 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
 
         answer = llm.invoke(prompt)
 
-        # Risposta finale con elenco fonti
         response = f"Risposta: {answer}\n"
         if unique_docs:
             response += f"\nFonti consultate ({len(unique_docs)} documenti):"
@@ -105,7 +103,6 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
 
     except Exception as e:
         return f"Errore durante la query: {e}"
-
 
 
 def test_connection():
