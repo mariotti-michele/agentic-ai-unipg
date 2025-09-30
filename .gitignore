@@ -1,3 +1,4 @@
 ollama_data/
 data/
 qdrant_storage/
+indexing/__pycache__/

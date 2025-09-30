@@ -1,3 +1,4 @@
+# Schede pagina regolamenti didattici
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=PRE
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=INS --depth 1
@@ -5,19 +6,43 @@ https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offe
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=PRO
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=INF
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=ART
+
+# Orari 
 https://ing.unipg.it/files/didattica/lezioni/25-26/lm32-inginforobo_orario.pdf
+
+# Calendario esami 
 https://ing.unipg.it/files/didattica/calendario/2025-26/lm32-inginforobo_cal_esami.pdf
+
+# Calendario generale
 https://ing.unipg.it/didattica/studiare-nei-nostri-corsi/calendario-generale-attivita-didattiche
+
+# Tirocini
 https://ing.unipg.it/didattica/studiare-nei-nostri-corsi/tirocini?view=article&id=385&catid=13
 https://ing.unipg.it/files/didattica/tirocini/informazione/faq_tirocinio-area_inf.pdf
+
+# Tutorato 
 https://ing.unipg.it/didattica/studiare-nei-nostri-corsi/tutorato
+
+# Erasmus 
 https://ing.unipg.it/didattica/studiare-nei-nostri-corsi/mobilita-internazionale --depth 1
+
+# Tesi e laurea 
 https://ing.unipg.it/files/didattica/tesi/lineeguidavotodilaurea-lm-29-32.pdf
 https://ing.unipg.it/files/didattica/tesi/faq_tesi-area_inf.pdf
 https://www.unipg.it/files/pagine/110/foglio-tesi-ingegneria-2019.pdf
 https://www.unipg.it/didattica/procedure-amministrative/procedure/laureandi --no-pdf
+
+# Calendario lauree
 https://ing.unipg.it/files/didattica/calendario/2025-26/l0816_lm29_lm32-ing_informazione_cal_lauree.pdf
+
+# Strutture e servizi 
 https://ing.unipg.it/didattica/strutture-e-servizi
+
+# Laboratori didattici 
 https://ing.unipg.it/didattica/studiare-nei-nostri-corsi/vademecum-studenti?view=article&id=706&catid=13
+
+# Appelli straordinari 
 https://ing.unipg.it/didattica/studiare-nei-nostri-corsi/vademecum-studenti?view=article&id=699&catid=13
+
+# Iscrizione 
 https://www.unipg.it/didattica/procedure-amministrative/procedure/immatricolazioni --no-pdf

@@ -66,16 +66,16 @@ async def main(seed_url: str, max_depth: int = 0, is_download_pdf_active: bool =
     vs.add_documents(chunks, ids=ids)
     print(f"[OK] Upsert completato: {len(chunks)} punti inseriti")
 
-    if __name__ == "__main__":
-        import argparse
-        ap = argparse.ArgumentParser()
-        ap.add_argument("--url", required=True, help="URL della pagina di partenza")
-        ap.add_argument("--depth", type=int, default=2, help="Profondità massima del crawling")
-        ap.add_argument(
-            "--pdf",
-            action=argparse.BooleanOptionalAction,
-            default=True,
-            help="Scarica i PDF (usa --no-pdf per disabilitare)",
-        )
-        args = ap.parse_args()
-        asyncio.run(main(args.url, max_depth=args.depth, is_download_pdf_active=args.pdf))
+if __name__ == "__main__":
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--url", required=True, help="URL della pagina di partenza")
+    ap.add_argument("--depth", type=int, default=0, help="Profondità massima del crawling")
+    ap.add_argument(
+        "--pdf",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Scarica i PDF (usa --no-pdf per disabilitare)",
+    )
+    args = ap.parse_args()
+    asyncio.run(main(args.url, max_depth=args.depth, is_download_pdf_active=args.pdf))
