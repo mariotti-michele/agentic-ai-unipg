@@ -51,8 +51,8 @@ def build_vectorstore():
     )
 
 
-async def main(seed_url: str, follow_internal_html: bool = False, max_depth: int = 2):
-    all_docs = await crawl(seed_url, max_depth)
+async def main(seed_url: str, max_depth: int = 0, is_download_pdf_active: bool = True):
+    all_docs = await crawl(seed_url, max_depth, is_download_pdf_active)
 
     chunks = chunk_documents(all_docs)
     print(f"[INFO] Chunks finali da inserire: {len(chunks)}")
@@ -66,11 +66,16 @@ async def main(seed_url: str, follow_internal_html: bool = False, max_depth: int
     vs.add_documents(chunks, ids=ids)
     print(f"[OK] Upsert completato: {len(chunks)} punti inseriti")
 
-
-if __name__ == "__main__":
-    import argparse
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--url", required=True, help="URL della pagina di partenza")
-    ap.add_argument("--depth", type=int, default=2, help="Profondità massima del crawling")
-    args = ap.parse_args()
-    asyncio.run(main(args.url, max_depth=args.depth))
+    if __name__ == "__main__":
+        import argparse
+        ap = argparse.ArgumentParser()
+        ap.add_argument("--url", required=True, help="URL della pagina di partenza")
+        ap.add_argument("--depth", type=int, default=2, help="Profondità massima del crawling")
+        ap.add_argument(
+            "--pdf",
+            action=argparse.BooleanOptionalAction,
+            default=True,
+            help="Scarica i PDF (usa --no-pdf per disabilitare)",
+        )
+        args = ap.parse_args()
+        asyncio.run(main(args.url, max_depth=args.depth, is_download_pdf_active=args.pdf))

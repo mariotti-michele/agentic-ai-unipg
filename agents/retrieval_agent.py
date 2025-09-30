@@ -2,7 +2,6 @@ import os
 from qdrant_client import QdrantClient
 from langchain_qdrant import QdrantVectorStore
 from langchain_ollama import OllamaLLM, OllamaEmbeddings
-from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 # ---------------- Config ----------------
