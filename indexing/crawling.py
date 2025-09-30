@@ -12,7 +12,7 @@ from parsing import (
 )
 
 
-async def crawl(seed_url: str, max_depth: int = 2):
+async def crawl(seed_url: str, max_depth, is_download_pdf_active):
     visited = set()
     to_visit = [(seed_url, 0)]
     all_docs = []
@@ -40,12 +40,18 @@ async def crawl(seed_url: str, max_depth: int = 2):
             print(f"[WARN] Skip {url}: {e}")
             continue
 
-        pdf_files = await download_pdfs(pdf_links)
         html_docs = to_documents_from_html(html_file_path, source_url=url, page_title=title)
-        pdf_docs = []
-        for f in pdf_files:
-            pdf_docs.extend(to_documents_from_pdf(f, source_url=url))
-        all_docs.extend(html_docs + pdf_docs)
+        all_docs.extend(html_docs)
+
+        if is_download_pdf_active:
+            pdf_files = await download_pdfs(pdf_links)
+            pdf_docs = []
+            for f in pdf_files:
+                pdf_docs.extend(to_documents_from_pdf(f, source_url=url))
+            all_docs.extend(pdf_docs)
+        else:
+            if pdf_links:
+                print(f"[INFO] Download PDF disabilitato (--pdf=false). Skippati {len(pdf_links)} link PDF.")
 
         if depth < max_depth:
             for link in html_links:
