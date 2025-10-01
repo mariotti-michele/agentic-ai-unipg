@@ -5,7 +5,9 @@ FILE="indexing/links.txt"
 
 while IFS= read -r line; do
     # Salta righe vuote o commenti
-    [[ -z "$line" || "$line" =~ ^# ]] && continue
+    if [[ -z "$line" || "$line" =~ ^# ]]; then
+        continue
+    fi
 
     # La prima parola della riga è l'URL
     url=$(echo "$line" | awk '{print $1}')
@@ -23,3 +25,4 @@ while IFS= read -r line; do
 done < "$FILE"
 
 echo ">>> Processo completato."
+
