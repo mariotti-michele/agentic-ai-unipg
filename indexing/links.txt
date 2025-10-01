@@ -13,6 +13,9 @@ https://ing.unipg.it/files/didattica/lezioni/25-26/lm32-inginforobo_orario.pdf
 # Calendario esami 
 https://ing.unipg.it/files/didattica/calendario/2025-26/lm32-inginforobo_cal_esami.pdf
 
+# Calendario lauree
+https://ing.unipg.it/files/didattica/calendario/2025-26/l0816_lm29_lm32-ing_informazione_cal_lauree.pdf
+
 # Calendario generale
 https://ing.unipg.it/didattica/studiare-nei-nostri-corsi/calendario-generale-attivita-didattiche
 
@@ -31,9 +34,6 @@ https://ing.unipg.it/files/didattica/tesi/lineeguidavotodilaurea-lm-29-32.pdf
 https://ing.unipg.it/files/didattica/tesi/faq_tesi-area_inf.pdf
 https://www.unipg.it/files/pagine/110/foglio-tesi-ingegneria-2019.pdf
 https://www.unipg.it/didattica/procedure-amministrative/procedure/laureandi --no-pdf
-
-# Calendario lauree
-https://ing.unipg.it/files/didattica/calendario/2025-26/l0816_lm29_lm32-ing_informazione_cal_lauree.pdf
 
 # Strutture e servizi 
 https://ing.unipg.it/didattica/strutture-e-servizi

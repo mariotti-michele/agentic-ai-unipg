@@ -16,6 +16,10 @@ for p in (RAW_HTML, RAW_PDF):
 
 
 async def scrape_page(url: str, same_domain_only: bool = False):
+    if url.lower().endswith(".pdf"):
+        pdfs = await download_pdfs([url])
+        return None, pdfs[0] if pdfs else None, []
+
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         browser_page = await browser.new_page()
