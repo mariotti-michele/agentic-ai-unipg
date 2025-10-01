@@ -37,9 +37,6 @@ embeddings = OllamaEmbeddings(
     base_url=OLLAMA_BASE_URL
 )
 
-vec = embeddings.embed_query("test")
-print(f"[DEBUG] Dimensione embedding Ollama: {len(vec)}")
-
 # ---------------- Qdrant ----------------
 print("Connettendo a Qdrant...")
 qdrant_client = QdrantClient(url=QDRANT_URL)
@@ -92,7 +89,11 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
 
         answer = llm.invoke(prompt)
 
+        main_source = unique_docs[0].metadata.get("source_url", "N/A")
+
         response = f"Risposta: {answer}\n"
+        response += f"\nPer ulteriori informazioni consulta il seguente link: {main_source}\n"
+
         if unique_docs:
             response += f"\nFonti consultate ({len(unique_docs)} documenti):"
             for i, doc in enumerate(unique_docs, 1):
