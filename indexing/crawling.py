@@ -25,7 +25,7 @@ async def crawl(seed_url: str, max_depth, is_download_pdf_active):
 
         print(f"\n[INFO] Crawling ({depth}/{max_depth}): {url}")
         try:
-            if(max_depth == 0 & is_download_pdf_active & url.lower().endswith('.pdf')):
+            if(max_depth == 0 and is_download_pdf_active and url.lower().endswith('.pdf')):
                 print(f"[INFO] Downloading seed PDF directly: {url}")
                 pdf_files = await download_pdfs([url])
                 for f in pdf_files:
