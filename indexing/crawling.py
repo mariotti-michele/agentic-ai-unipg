@@ -35,13 +35,13 @@ async def crawl(seed_url: str, max_depth, is_download_pdf_active):
             title, html_file_path, links = await scrape_page(url)
             print(f"[INFO] Controllo Content-Type per {len(links)} link validi...")
             pdf_links, html_links = await categorize_links(links)
-            print(f"[DEBUG] Link trovati nel <main> della pagina: {url}")
-            print(f"  - PDF: {len(pdf_links)}")
-            for l in pdf_links:
-                print(f"    [PDF] {l}")
-            print(f"  - HTML: {len(html_links)}")
-            for l in html_links:
-                print(f"    [HTML] {l}")
+            # print(f"[DEBUG] Link trovati nel <main> della pagina: {url}")
+            # print(f"  - PDF: {len(pdf_links)}")
+            # for l in pdf_links:
+            #     print(f"    [PDF] {l}")
+            # print(f"  - HTML: {len(html_links)}")
+            # for l in html_links:
+            #     print(f"    [HTML] {l}")
 
         except Exception as e:
             print(f"[WARN] Skip {url}: {e}")
@@ -63,7 +63,7 @@ async def crawl(seed_url: str, max_depth, is_download_pdf_active):
         if depth < max_depth:
             for link in html_links:
                 if link not in visited:
-                    print(f"[DEBUG] -> Da visitare (depth {depth+1}): {link}")
+                    # print(f"[DEBUG] -> Da visitare (depth {depth+1}): {link}")
                     to_visit.append((link, depth + 1))
 
     return all_docs
