@@ -1,11 +1,11 @@
 # Schede pagina regolamenti didattici
-https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=
-https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=PRE
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=INS --depth 1
-https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=ATT
-https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=PRO
-https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=INF
-https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=ART
+# https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=
+# https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=PRE
+# https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=ATT
+# https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=PRO
+# https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=INF
+# https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=ART
 
 # Orari 
 https://ing.unipg.it/files/didattica/lezioni/25-26/lm32-inginforobo_orario.pdf

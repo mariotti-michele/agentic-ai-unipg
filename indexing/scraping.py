@@ -29,16 +29,16 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         file_path.write_text(html, encoding="utf-8")
 
         valid_links_debug = await browser_page.eval_on_selector_all(
-            "main a[href]",
+            "main a[href]:not(:has(img))",
             """
             els => els.map(e => ({href: e.href, html: e.outerHTML.substring(0,200)}))
             """
         )
         valid_links = [x["href"] for x in valid_links_debug]
 
-        print(f"[DEBUG] Valid links ({len(valid_links)}):")
-        for l in valid_links_debug:
-            print(f"   [VALID] {l['href']} -- from: {l['html']}")
+        # print(f"[DEBUG] Valid links ({len(valid_links)}):")
+        # for l in valid_links_debug:
+        #     print(f"   [VALID] {l['href']} -- from: {l['html']}")
 
         valid_abs_links = normalize_links(valid_links, url, same_domain_only)
 
