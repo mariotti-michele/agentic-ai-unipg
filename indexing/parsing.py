@@ -12,6 +12,7 @@ from scraping import sha
 
 import logging
 logging.getLogger("pdfminer").setLevel(logging.ERROR)
+logging.getLogger("unstructured").setLevel(logging.ERROR)
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="camelot")
@@ -35,6 +36,24 @@ def to_documents_from_html(file_path: Path, source_url: str, page_title: str) ->
     elements = partition_html(filename=str(tmp_path), include_page_breaks=False, languages=["ita", "eng"])
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
+
+    if not elements:
+        print(f"[WARN] partition_html non ha trovato elementi in {source_url}, uso fallback BeautifulSoup")
+        text_fallback = main_el.get_text(separator="\n", strip=True)
+        if text_fallback:
+            docs.append(Document(
+                page_content=text_fallback,
+                metadata={
+                    "source_url": source_url,
+                    "doc_type": "html",
+                    "page_title": page_title,
+                    "element_type": "FallbackText",
+                    "lang": "ita",
+                    "crawl_ts": crawl_ts,
+                    "doc_id": sha(source_url),
+                },
+            ))
+        return docs
 
     for el in elements:
         text = getattr(el, "text", None) or str(el).strip()
