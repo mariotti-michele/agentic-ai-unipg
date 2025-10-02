@@ -16,6 +16,16 @@ for p in (RAW_HTML, RAW_PDF):
 
 
 async def scrape_page(url: str, same_domain_only: bool = False):
+    try:
+        async with httpx.AsyncClient(follow_redirects=True, timeout=20.0) as client:
+            resp = await client.head(url)
+            content_type = resp.headers.get("content-type", "").lower()
+            if "application/pdf" in content_type or url.lower().endswith(".pdf"):
+                print(f"[INFO] Rilevato PDF (no Playwright): {url}")
+                return [url]
+    except Exception as e:
+        print(f"[WARN] Errore nel controllo Content-Type per {url}: {e}")
+    
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         browser_page = await browser.new_page()
@@ -49,19 +59,39 @@ def normalize_links(links, url, same_domain_only):
     origin = urlparse(url).netloc
     seen, abs_links = set(), []
 
+    exclude_prefixes = ("mailto:", "tel:", "javascript:")
+    exclude_domains = [
+        "facebook.com", "twitter.com", "whatsapp.com",
+        "linkedin.com", "telegram.me", "plus.google.com"
+    ]
+
     for l in links:
-        if l:
-            try:
+        if not l or l.strip() in ("#", "/"):
+            continue
+        try:
+            if l.startswith(exclude_prefixes):
+                continue
+
+            u = urlparse(l)
+
+            if any(dom in u.netloc for dom in exclude_domains):
+                continue
+
+            if not u.scheme:
+                l = urljoin(url, l)
                 u = urlparse(l)
-                if not u.scheme:
-                    l = urljoin(url, l)
-                    u = urlparse(l)
-                if (not same_domain_only) or (u.netloc and u.netloc == origin):
-                    if l not in seen:
-                        seen.add(l)
-                        abs_links.append(l)
-            except Exception as e:
-                print(f"[WARN] Link scartato {l}: {e}")
+
+            if u.scheme not in ("http", "https") or not u.netloc:
+                continue
+
+            if (not same_domain_only) or (u.netloc == origin):
+                if l not in seen:
+                    seen.add(l)
+                    abs_links.append(l)
+
+        except Exception as e:
+            print(f"[WARN] Link scartato {l}: {e}")
+
     return abs_links
     
 

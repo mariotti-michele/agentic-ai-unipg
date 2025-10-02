@@ -4,6 +4,9 @@ CONTAINER="indexing"
 FILE="indexing/links.txt"
 
 while IFS= read -r line; do
+    # Rimuovi spazi iniziali/finali
+    line=$(echo "$line" | xargs)
+
     # Salta righe vuote o commenti
     if [[ -z "$line" || "$line" =~ ^# ]]; then
         continue
@@ -25,4 +28,3 @@ while IFS= read -r line; do
 done < "$FILE"
 
 echo ">>> Processo completato."
-

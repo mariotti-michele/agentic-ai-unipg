@@ -36,10 +36,8 @@ def chunk_documents(docs: list[Document]) -> list[Document]:
         content_id = sha(c.page_content)
         c.metadata["chunk_id"] = f"{base_id}_{i}_{content_id[:8]}"
         clean_chunks.append(c)
-
-    print(f"[INFO] Chunk validi dopo filtro: {len(clean_chunks)} / {len(chunks)}")
+        
     return clean_chunks
-
 
 def build_vectorstore():
     embeddings = OllamaEmbeddings(model=EMBED_MODEL, base_url=OLLAMA_BASE_URL)
