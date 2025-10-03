@@ -133,7 +133,7 @@ async def download_pdfs(urls: list[str]) -> list[Path]:
 
                 file_path.write_bytes(r.content)
                 saved.append(file_path)
-                print(f"[OK] Scaricato PDF: {u} -> {file_path.name}")
+                print(f"[OK] Scaricato PDF: {u} -> {file_path.resolve()}")
 
             except Exception as e:
                 print(f"[WARN] PDF skip {u}: {e}")
