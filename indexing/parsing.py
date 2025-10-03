@@ -92,8 +92,8 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
             infer_table_structure=True,
             languages=["ita", "eng"]
         )
-        if elements: 
-            print(f"[INFO] Estratti elementi da {file_path.name} con strategy hi_res")
+        # if elements: 
+        #     print(f"[INFO] Estratti elementi da {file_path.name} con strategy hi_res")
     except Exception as e:
         print(f"[WARN] partition_pdf fallito con strategy hi_res su {file_path}: {e}")
 
@@ -122,7 +122,7 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
 
     tables = extract_tables_camelot(file_path)
     for t in tables:
-        print(f"[INFO] Estratta tabella da pagina {t['page_number']} di {file_path.name} con Camelot")
+        # print(f"[INFO] Estratta tabella da pagina {t['page_number']} di {file_path.name} con Camelot")
         docs.append(Document(
             page_content=json.dumps(t["row"], ensure_ascii=False),
             metadata={

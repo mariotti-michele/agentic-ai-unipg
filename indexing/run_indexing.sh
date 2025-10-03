@@ -3,6 +3,13 @@
 CONTAINER="indexing"
 FILE="indexing/links.txt"
 
+echo ">>> Resetto la collezione ing_info_mag_docs"
+curl -s -X DELETE "http://localhost:6333/collections/ing_info_mag_docs"
+curl -s -X PUT "http://localhost:6333/collections/ing_info_mag_docs" \
+    -H 'Content-Type: application/json' \
+    -d '{ "vectors": { "size": 768, "distance": "Cosine" } }'
+echo ">>> Operazione completata."
+
 while IFS= read -r line; do
     # Rimuovi spazi iniziali/finali
     line=$(echo "$line" | xargs)
