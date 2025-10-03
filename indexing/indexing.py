@@ -28,6 +28,7 @@ def chunk_documents(docs: list[Document]) -> list[Document]:
     clean_chunks = []
     for i, c in enumerate(chunks):
         text = c.page_content.strip()
+        # print(f"[DEBUG] Chunk text: {text}")
         #if not text or len(text) < 20:
         #    print(f"[SKIP] Chunk scartato (vuoto o troppo breve): {repr(text[:50])}")
         #    continue

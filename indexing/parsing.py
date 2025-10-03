@@ -83,38 +83,19 @@ def to_documents_from_html(file_path: Path, source_url: str, page_title: str) ->
 def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
-
-    strategies = ["hi_res", "auto", "ocr_only"]
     elements = []
-    for strat in strategies:
-        try:
-            elements = partition_pdf(
-                filename=str(file_path),
-                strategy=strat,
-                include_page_breaks=True,
-                infer_table_structure=True,
-                languages=["ita", "eng"]
-            )
-            if elements: 
-                print(f"[INFO] Estratti elementi da {file_path.name} con strategy={strat}")
-                break
-        except Exception as e:
-            print(f"[WARN] partition_pdf fallito con strategy={strat} su {file_path}: {e}")
-
-    if not elements:
-        print(f"[WARN] Nessun contenuto estratto da {file_path}, provo fallback OCR manuale...")
-        try:
-            from parsing import parse_pdf_with_ocr
-            ocr_text = parse_pdf_with_ocr(str(file_path), lang="ita+eng")
-            if ocr_text.strip():
-                elements = [type("FakeElement", (), {"text": ocr_text, "category": "OCRText", "metadata": {}})()]
-                print(f"[INFO] Estratto testo via fallback OCR da {file_path.name}")
-            else:
-                print(f"[WARN] OCR manuale non ha estratto testo da {file_path.name}")
-                return []
-        except Exception as e:
-            print(f"[ERROR] OCR manuale fallito su {file_path}: {e}")
-            return []
+    try:
+        elements = partition_pdf(
+            filename=str(file_path),
+            strategy="hi_res",
+            include_page_breaks=True,
+            infer_table_structure=True,
+            languages=["ita", "eng"]
+        )
+        if elements: 
+            print(f"[INFO] Estratti elementi da {file_path.name} con strategy hi_res")
+    except Exception as e:
+        print(f"[WARN] partition_pdf fallito con strategy hi_res su {file_path}: {e}")
 
     for el in elements:
         text = getattr(el, "text", None) or str(el).strip()
@@ -141,6 +122,7 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
 
     tables = extract_tables_camelot(file_path)
     for t in tables:
+        print(f"[INFO] Estratta tabella da pagina {t['page_number']} di {file_path.name} con Camelot")
         docs.append(Document(
             page_content=json.dumps(t["row"], ensure_ascii=False),
             metadata={
@@ -172,41 +154,7 @@ def extract_tables_camelot(file_path: Path) -> list[dict]:
                     "file_name": file_path.name,
                     "table_index": t_idx
                 })
+                # print(f"[DEBUG] riga tabella: {row}")
     except Exception as e:
         print(f"[WARN] Camelot fallito su {file_path}: {e}")
     return records
-
-def parse_pdf_with_ocr(pdf_path: str, lang: str = "ita+eng") -> str:
-    """
-    Esegue OCR su un PDF immagine (es. orari, calendari) usando pdftoppm + tesseract.
-    
-    Args:
-        pdf_path (str): percorso al file PDF
-        lang (str): lingua OCR ("ita", "eng", "ita+eng", ...)
-
-    Returns:
-        str: testo estratto
-    """
-    pdf_path = Path(pdf_path)
-    if not pdf_path.exists():
-        raise FileNotFoundError(f"File non trovato: {pdf_path}")
-
-    with tempfile.TemporaryDirectory() as tmpdir:
-        tmpdir = Path(tmpdir)
-
-        subprocess.run(
-            ["pdftoppm", "-png", str(pdf_path), str(tmpdir / "page")],
-            check=True
-        )
-
-        text_chunks = []
-        for img_file in sorted(tmpdir.glob("page-*.png")):
-            output_txt = tmpdir / "out"
-            subprocess.run(
-                ["tesseract", str(img_file), str(output_txt), "-l", lang],
-                check=True
-            )
-            with open(str(output_txt) + ".txt", "r", encoding="utf-8") as f:
-                text_chunks.append(f.read())
-
-        return "\n".join(text_chunks)
