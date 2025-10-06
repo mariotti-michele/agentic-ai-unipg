@@ -1,0 +1,80 @@
+[
+  {
+    "question": "A chi sono riservati principalmente gli appelli straordinari?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Gli appelli straordinari devono essere principalmente RISERVATI ai Laureandi e comunque solo a studenti che siano a NON PIU' di 1 ESAME dal completamento del proprio piano di studi.",
+    "ground_truth": "Sono riservati ai laureandi o agli studenti che hanno al massimo un esame rimanente nel piano di studi."
+  },
+  {
+    "question": "Chi decide se istituire o meno un appello straordinario?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Gli appelli straordinari sono istituiti a DISCREZIONE del docente, al quale gli studenti interessati dovranno eventualmente rivolgersi per richiederne l’apertura.",
+    "ground_truth": "La decisione spetta al docente, che può stabilire se istituire o meno un appello straordinario."
+  },
+  {
+    "question": "A chi deve comunicare il docente l'istituzione di un appello straordinario?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Il docente, nel caso istituisca appelli straordinari, ne dovrà comunque dare comunicazione al Presidente, che ne informerà il CIL, e alla Segreteria Didattica.",
+    "ground_truth": "Deve comunicarlo al Presidente del CIL e alla Segreteria Didattica."
+  },
+  {
+    "question": "Cosa accade se il Presidente del CIL non risponde entro una settimana alla proposta di un appello straordinario?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "In assenza di reazione del Presidente del CIL entro una settimana dalla comunicazione, varrà il criterio del silenzio assenso.",
+    "ground_truth": "Se non risponde entro una settimana, si applica il silenzio assenso e l'appello è approvato."
+  },
+  {
+    "question": "Quali fattori può considerare il docente nel valutare una richiesta di appello straordinario?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Il docente potrà considerare autonomamente criteri quali l’utilità dell’appello, la motivata urgenza o criticità sottostante la richiesta, il numero di studenti potenzialmente interessati, la distanza temporale dagli appelli ufficiali.",
+    "ground_truth": "Può valutare utilità, urgenza o criticità della richiesta, numero di studenti interessati e distanza dagli appelli ufficiali."
+  },
+  {
+    "question": "Chi si occupa di pubblicizzare gli appelli straordinari approvati?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "La Segreteria Didattica si farà carico di pubblicizzarlo attraverso i canali istituzionali di comunicazione con gli studenti.",
+    "ground_truth": "È la Segreteria Didattica a pubblicizzare gli appelli straordinari tramite i canali ufficiali."
+  },
+  {
+    "question": "Il Consiglio Intercorso di Laurea può impedire l’istituzione di un appello straordinario?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Il Presidente del CIL avrà facoltà di proporre date diverse per l’appello, piuttosto che impedirne l’istituzione.",
+    "ground_truth": "No, il Presidente del CIL può solo proporre date alternative, non impedirne l’istituzione."
+  },
+  {
+    "question": "Chi informa il Consiglio Intercorso di Laurea (CIL) quando un docente istituisce un appello straordinario?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Il docente ne dà comunicazione al Presidente, che ne informerà il CIL.",
+    "ground_truth": "Il Presidente del CIL informa il Consiglio una volta ricevuta la comunicazione dal docente."
+  },
+  {
+    "question": "Esiste un limite massimo di appelli straordinari che un docente può istituire?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Nel testo non è indicato alcun limite numerico di appelli straordinari.",
+    "ground_truth": "No, non viene specificato alcun limite massimo nel documento."
+  },
+  {
+    "question": "Il documento specifica procedure per la prenotazione online degli appelli straordinari?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Il testo non menziona alcuna procedura di prenotazione online.",
+    "ground_truth": "No, non viene menzionata alcuna procedura di prenotazione online per gli appelli straordinari."
+  },
+  {
+    "question": "Qual è il tema principale del documento?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "L’istituzione di eventuali appelli straordinari, ulteriori rispetto a quelli approvati dal Consiglio Intercorso di Laurea.",
+    "ground_truth": "Il documento tratta i criteri e le modalità per l’istituzione di appelli straordinari nell’Area Informazione."
+  },
+  {
+    "question": "Chi stabilisce i criteri generali per gli appelli straordinari?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "L’istituzione di eventuali appelli straordinari è regolamentata dai seguenti criteri.",
+    "ground_truth": "I criteri sono stabiliti nel documento stesso, che definisce le regole per l’istituzione degli appelli straordinari."
+  },
+  {
+    "question": "Nel documento si parla di orari delle lezioni?",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html",
+    "reference_context": "Il testo tratta esclusivamente degli appelli straordinari.",
+    "ground_truth": "No, il documento non tratta gli orari delle lezioni."
+  }
+]

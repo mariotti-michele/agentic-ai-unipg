@@ -1,0 +1,110 @@
+[
+  {
+    "question": "Quando inizia e quando termina l'anno accademico 2025/2026?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Calendario generale delle attività didattiche dell’Università degli Studi di Perugia per l’A.A. 2025/2026. Inizio: 15 settembre 2025 – termine 30 settembre 2026.",
+    "ground_truth": "L'anno accademico 2025/2026 inizia il 15 settembre 2025 e termina il 30 settembre 2026."
+  },
+  {
+    "question": "Quali sono le principali festività nazionali indicate nel calendario?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Festività: tutte le domeniche; 1 novembre (Tutti i Santi); 8 dicembre (Immacolata Concezione); 25 dicembre (Natale); 26 dicembre (Santo Stefano); 1 gennaio (Capodanno); 6 gennaio (Epifania); 25 aprile (Liberazione); 1 maggio (Festa del Lavoro); 2 giugno (Festa della Repubblica); 15 agosto (Assunzione).",
+    "ground_truth": "Le principali festività sono: 1 novembre, 8 dicembre, 25 e 26 dicembre, 1 e 6 gennaio, 25 aprile, 1 maggio, 2 giugno e 15 agosto, oltre a tutte le domeniche."
+  },
+  {
+    "question": "Quali sono i giorni festivi specifici per la sede di Perugia?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Le festività del Patrono della sede: Perugia 29 gennaio; Foligno 24 gennaio; Terni 14 febbraio; Narni 3 maggio; Assisi 11 agosto.",
+    "ground_truth": "Per la sede di Perugia il giorno festivo del Patrono è il 29 gennaio."
+  },
+  {
+    "question": "Quando ricorre la festività del Patrono di Narni?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Le festività del Patrono della sede: Narni 3 maggio.",
+    "ground_truth": "La festività del Patrono di Narni ricorre il 3 maggio."
+  },
+  {
+    "question": "In quale data cade la Santa Pasqua nel 2026?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Il giorno 5 aprile 2026 (Santa Pasqua).",
+    "ground_truth": "La Santa Pasqua cade il 5 aprile 2026."
+  },
+  {
+    "question": "Qual è il periodo previsto per le vacanze natalizie?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Vacanze Natalizie: di norma il periodo dal 23 dicembre al 6 gennaio.",
+    "ground_truth": "Il periodo delle vacanze natalizie va, di norma, dal 23 dicembre al 6 gennaio."
+  },
+  {
+    "question": "Quando iniziano e terminano le vacanze pasquali?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Vacanze Pasquali: di norma dal giovedì precedente la Pasqua (5 aprile 2026) al martedì successivo.",
+    "ground_truth": "Le vacanze pasquali iniziano il giovedì precedente la Pasqua (5 aprile 2026) e terminano il martedì successivo."
+  },
+  {
+    "question": "Quale festività è dedicata all’Immacolata Concezione?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Festività: il giorno 8 dicembre (Immacolata Concezione).",
+    "ground_truth": "La festività dell’Immacolata Concezione è l’8 dicembre."
+  },
+  {
+    "question": "In che giorno cade la Festa del Lavoro secondo il calendario generale?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Festività: il giorno 1 maggio (Festa del Lavoro).",
+    "ground_truth": "La Festa del Lavoro cade il 1° maggio."
+  },
+  {
+    "question": "Durante quali periodi le attività didattiche sono sospese per le vacanze?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Vacanze Natalizie: 23 dicembre - 6 gennaio. Vacanze Pasquali: dal giovedì precedente la Pasqua (5 aprile 2026) al martedì successivo.",
+    "ground_truth": "Le attività didattiche sono sospese dal 23 dicembre al 6 gennaio e dal giovedì precedente la Pasqua al martedì successivo."
+  },
+  {
+    "question": "Ci sono giorni di chiusura previsti nel mese di agosto?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Festività: il giorno 15 agosto (Assunzione della Beata Vergine); il giorno 11 agosto (Patrono di Assisi).",
+    "ground_truth": "Sì, il calendario prevede festività l’11 agosto (Assisi) e il 15 agosto (Assunzione)."
+  },
+  {
+    "question": "Qual è la durata complessiva dell’anno accademico in mesi?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Inizio: 15 settembre 2025 – termine 30 settembre 2026.",
+    "ground_truth": "L’anno accademico dura 12 mesi e mezzo circa."
+  },
+  {
+    "question": "Il documento specifica le date degli appelli d’esame?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Il documento riporta solo il periodo generale di attività didattiche e le festività; non menziona le sessioni d’esame.",
+    "ground_truth": "No, il documento non contiene le date degli appelli d’esame."
+  },
+  {
+    "question": "Le lezioni iniziano a ottobre 2025?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Inizio: 15 settembre 2025 – termine 30 settembre 2026.",
+    "ground_truth": "No, le lezioni iniziano a settembre 2025, non a ottobre."
+  },
+  {
+    "question": "Esiste una festività locale indicata per la sede di Foligno?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Festività del Patrono della sede: Foligno 24 gennaio.",
+    "ground_truth": "Sì, la festività locale di Foligno è il 24 gennaio."
+  },
+  {
+    "question": "Quando ricorre la festa del Patrono di Terni?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Festività del Patrono della sede: Terni 14 febbraio.",
+    "ground_truth": "La festa del Patrono di Terni ricorre il 14 febbraio."
+  },
+  {
+    "question": "Il documento menziona la festività del 2 giugno?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Festività: il giorno 2 giugno (festa della Repubblica).",
+    "ground_truth": "Sì, è indicata come Festa della Repubblica il 2 giugno."
+  },
+  {
+    "question": "Qual è la principale fonte di riferimento del documento?",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html",
+    "reference_context": "Calendario generale delle attività didattiche pubblicato sul sito del Dipartimento di Ingegneria dell’Università degli Studi di Perugia.",
+    "ground_truth": "Il documento proviene dal sito ufficiale del Dipartimento di Ingegneria dell’Università degli Studi di Perugia."
+  }
+]

@@ -1,0 +1,176 @@
+[
+  {
+    "question": "Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?",
+    "reference_context": "45 giorni prima della seduta di laurea: compilazione della domanda di laurea… 20 giorni prima della seduta di laurea: presentazione dell’elaborato presso la Segreteria Studenti.",
+    "ground_truth": "Lo studente deve compilare la domanda di laurea 45 giorni prima e presentare l’elaborato 20 giorni prima della seduta.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Dove si compila la domanda di laurea online?",
+    "reference_context": "Entrando nel SOL con le proprie credenziali dal menù scegliere il link ‘Laurea’ e cliccare su ‘Conseguimento titolo’.",
+    "ground_truth": "La domanda di laurea si compila accedendo al portale SOL, sezione 'Laurea' → 'Conseguimento titolo'.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Quanto costa la stampa della pergamena se richiesta durante la domanda di laurea?",
+    "reference_context": "Il contributo di 132 euro comprensivo anche del bollo previsto per la domanda di esame di laurea.",
+    "ground_truth": "132 euro.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Chi può essere relatore di una tesi di laurea magistrale?",
+    "reference_context": "Il ruolo di supervisore… può essere svolto da un docente del corso di laurea o dei corsi di laurea magistrale LM32 o LM29 presso il Dipartimento di Ingegneria.",
+    "ground_truth": "Un docente del corso di laurea o dei corsi LM-32 o LM-29 del Dipartimento di Ingegneria.",
+    "document": "_files_didattica_tesi_faq_tesi-area_inf.pdf"
+  },
+  {
+    "question": "In base alle linee guida, quanti punti può ottenere una tesi di ricerca per la presentazione e discussione?",
+    "reference_context": "Fino a 4 punti per la presentazione e discussione della tesi.",
+    "ground_truth": "Fino a 4 punti.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Quali allegati sono obbligatori nella domanda di laurea online?",
+    "reference_context": "Foglio titolo tesi firmato, fotocopia libretto o autocertificazione, ricevuta questionario AlmaLaurea, eventuali altri.",
+    "ground_truth": "Foglio titolo tesi, libretto o autocertificazione, ricevuta AlmaLaurea e altri eventuali documenti.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Cosa deve fare lo studente se non vuole la pergamena subito?",
+    "reference_context": "Chi intende laurearsi senza richiedere contestualmente la stampa della pergamena… troverà un contributo di 16 euro per il bollo virtuale.",
+    "ground_truth": "Deve pagare 16 euro per il bollo virtuale e potrà richiedere la pergamena successivamente pagando 116 euro.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Quali sono i criteri di valutazione per una tesi compilativa?",
+    "reference_context": "Fino a 1 punto per il contenuto… Fino a 3 punti per la presentazione e discussione.",
+    "ground_truth": "1 punto per il contenuto e 3 punti per la presentazione e discussione.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Cosa succede se la tesi è di eccezionale valore?",
+    "reference_context": "Un ulteriore punto… potrà essere assegnato dalla Commissione in presenza di un controrelatore nominato 15 giorni prima.",
+    "ground_truth": "La Commissione può assegnare fino a un punto aggiuntivo se c’è un controrelatore per tesi di eccezionale valore.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Quando può essere assegnata la lode nella laurea magistrale?",
+    "reference_context": "La lode può essere attribuita con voto unanime della commissione se la somma è non inferiore a 111 o se è 110 con almeno 2 lodi negli esami di profitto.",
+    "ground_truth": "La lode è attribuita all’unanimità se la somma è almeno 111 o se è 110 con almeno due lodi negli esami.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Quali corsi di laurea richiedono il pagamento della tassa regionale e della tassa erariale per l’abilitazione?",
+    "reference_context": "Per i corsi abilitanti in Chimica e tecnologia farmaceutiche, Farmacia, Medicina e chirurgia, Medicina veterinaria, Odontoiatria e protesi dentaria, Psicologia clinica.",
+    "ground_truth": "Chimica e tecnologia farmaceutiche, Farmacia, Medicina e chirurgia, Medicina veterinaria, Odontoiatria e protesi dentaria, Psicologia clinica e della salute.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Come si calcola il voto di laurea magistrale?",
+    "reference_context": "Il voto di laurea si ottiene dalla somma, arrotondata all’unità, della media curriculare e del punteggio assegnato alla tesi.",
+    "ground_truth": "È la somma tra la media curriculare e il punteggio attribuito alla tesi, arrotondata all’unità.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Entro quanti giorni il controrelatore deve essere nominato?",
+    "reference_context": "…controrelatore nominato dal Presidente del Consiglio Intercorso almeno 15 giorni prima della discussione della tesi.",
+    "ground_truth": "Almeno 15 giorni prima della discussione della tesi.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "È necessario consegnare il CD con la copia della tesi?",
+    "reference_context": "Non sarà quindi più necessario recarsi allo sportello della segreteria studenti per consegnare il cd-rom con la copia della tesi.",
+    "ground_truth": "No, non è più necessario consegnare il CD con la tesi.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Dove vengono inviate le comunicazioni personali sul caricamento della tesi?",
+    "reference_context": "Tutte le comunicazioni personali sugli esiti della procedura verranno notificate all'indirizzo mail istituzionale dello studente sul dominio @studenti.unipg.it.",
+    "ground_truth": "All’indirizzo email istituzionale dello studente (@studenti.unipg.it).",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Chi può essere controrelatore di una tesi di laurea?",
+    "reference_context": "Il controrelatore deve essere individuato tra i docenti esperti sull’argomento della tesi, eventualmente anche esterno al CdS.",
+    "ground_truth": "Un docente esperto dell’argomento, anche esterno al corso di studi.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "È obbligatoria la dichiarazione antiplagio per tutti gli studenti?",
+    "reference_context": "Dichiarazione antiplagio obbligatoria per gli studenti dei CDS di Scienze Politiche e per quelli di Psicologia Clinica e della Salute dal 2022.",
+    "ground_truth": "No, solo per gli studenti di Scienze Politiche e Psicologia Clinica e della Salute.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Dove si può trovare assistenza se la procedura di caricamento tesi non funziona?",
+    "reference_context": "Potrà contattare la propria segreteria studenti per assistenza e chiarimenti.",
+    "ground_truth": "Può contattare la segreteria studenti del proprio corso di laurea.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "La media curriculare è espressa in trentesimi?",
+    "reference_context": "La media curriculare è la media in centodecimi, arrotondata al centesimo di punto.",
+    "ground_truth": "No, è espressa in centodecimi, non in trentesimi.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Qual è l’importo massimo del contributo per la Prova Pratica Valutativa (PPV)?",
+    "reference_context": "L'importo massimo è di € 180,00.",
+    "ground_truth": "180 euro.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Cosa succede se uno studente non è in regola con le tasse universitarie?",
+    "reference_context": "Lo studente può presentare la domanda di laurea solo se è in regola con la contribuzione universitaria.",
+    "ground_truth": "Non può presentare la domanda di laurea.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Chi si occupa di verificare l’originalità degli elaborati di tesi?",
+    "reference_context": "L’Università si avvale del software Compilatio.net per la verifica dell’originalità degli elaborati.",
+    "ground_truth": "Il sistema Compilatio.net utilizzato dai docenti dell’Ateneo.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "È possibile presentare la domanda di laurea se non si è iscritti all’anno accademico corrente?",
+    "reference_context": "Lo studente può presentare la domanda di laurea solo se è iscritto per l’anno accademico in cui intende laurearsi.",
+    "ground_truth": "No, deve essere iscritto all’anno accademico corrente.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Quanti punti può proporre il relatore per il contenuto di una tesi sperimentale?",
+    "reference_context": "Fino a 3 punti per il contenuto della tesi, proposti dal relatore.",
+    "ground_truth": "Fino a 3 punti.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Il servizio Job Placement si occupa di tirocinio o di inserimento nel mondo del lavoro?",
+    "reference_context": "Il Servizio Job Placement svolge attività di facilitazione di ingresso nel mondo del lavoro.",
+    "ground_truth": "Di inserimento nel mondo del lavoro.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "È previsto un controrelatore per ogni tesi magistrale?",
+    "reference_context": "Il controrelatore è previsto solo per tesi di eccezionale valore.",
+    "ground_truth": "No, solo per tesi di eccezionale valore.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Chi deve approvare l’elaborato caricato online?",
+    "reference_context": "In tempo utile affinché il relatore possa approvarlo.",
+    "ground_truth": "Il relatore.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "È necessario allegare il questionario AlmaLaurea alla domanda di laurea?",
+    "reference_context": "Si raccomanda di inserire la ricevuta del questionario AlmaLaurea.",
+    "ground_truth": "Sì, è obbligatorio allegare la ricevuta del questionario AlmaLaurea.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Posso richiedere la pergamena dopo la laurea senza costi?",
+    "reference_context": "La stampa della pergamena può essere richiesta successivamente… l'importo da versare è pari a 116 euro.",
+    "ground_truth": "No, il costo è di 116 euro se richiesta successivamente.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  }
+]

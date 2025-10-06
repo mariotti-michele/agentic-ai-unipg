@@ -1,0 +1,464 @@
+[
+  {
+    "question": "Da quale anno accademico è valido il regolamento sui tirocini approvato il 14 febbraio 2023?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Il nuovo regolamento è valido a partire dal 14/02/2023 per tutti gli iscritti al I e II anno del CdS in Ingegneria Informatica ed Elettronica e al I anno del CdS in Ingegneria Informatica e Robotica / Ingegneria Elettronica per l'Internet-of-Things.",
+    "ground_truth": "Il regolamento approvato il 14 febbraio 2023 è valido da quella stessa data per tutti gli iscritti ai corsi indicati."
+  },
+  {
+    "question": "Qual è il numero massimo di CFU di tirocinio che uno studente può ottenere nella stessa azienda?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Sono consentiti al massimo 9 CFU (225 ore) di tirocinio in una stessa azienda, ente o laboratorio.",
+    "ground_truth": "Un massimo di 9 CFU di tirocinio per la stessa azienda o ente."
+  },
+  {
+    "question": "A quante ore di attività corrisponde un CFU di tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "A 1 CFU corrispondono 25 ore di attività di tirocinio.",
+    "ground_truth": "1 CFU equivale a 25 ore di tirocinio."
+  },
+  {
+    "question": "Quante ore massime può lavorare uno studente al giorno durante il tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Si suggerisce di considerare come limite 8 ore/giorno per un massimo di 5 giorni lavorativi/settimana.",
+    "ground_truth": "Massimo 8 ore al giorno e 5 giorni alla settimana."
+  },
+  {
+    "question": "Qual è il numero massimo di tirocinanti che un'azienda con 10 dipendenti può ospitare contemporaneamente?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Aziende con un numero di dipendenti a tempo indeterminato compreso tra sei e diciannove, non più di due tirocinanti contemporaneamente.",
+    "ground_truth": "Due tirocinanti contemporaneamente."
+  },
+  {
+    "question": "Un docente universitario può essere tutor di quanti tirocinanti interni?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Per i tirocini interni, un docente può essere tutor al massimo di 3 tirocinanti contemporaneamente.",
+    "ground_truth": "Massimo 3 tirocinanti contemporaneamente."
+  },
+  {
+    "question": "Uno studente può fare il tirocinio presso un'azienda di cui è socio o proprietario?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "No, l’attività non viene riconosciuta se lo studente o un familiare fino al quarto grado è socio/proprietario.",
+    "ground_truth": "No, non è riconosciuta in quel caso."
+  },
+  {
+    "question": "L’attività lavorativa passata può essere riconosciuta come tirocinio curriculare?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Può essere riconosciuta se è congruente con gli obiettivi formativi, certificata e conclusa entro 3 anni dalla domanda.",
+    "ground_truth": "Sì, se congruente con il percorso formativo e documentata."
+  },
+  {
+    "question": "Quanto tempo prima bisogna consegnare i moduli di tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Si raccomanda di far pervenire i documenti almeno un mese prima della data prevista per l’inizio del tirocinio.",
+    "ground_truth": "Almeno un mese prima dell’inizio previsto."
+  },
+  {
+    "question": "Cosa accade se l’azienda non è ancora convenzionata con il Dipartimento?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Si raccomanda un intervallo più ampio per la consegna se l’azienda non è ancora convenzionata.",
+    "ground_truth": "I tempi devono essere più lunghi per permettere la stipula della convenzione."
+  },
+  {
+    "question": "Come si svolge la verbalizzazione del tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Lo studente invia il questionario e il registro firme, il tutor aziendale invia il suo questionario, il tutor universitario chiede l’apertura dell’appello e lo studente presenta il lavoro.",
+    "ground_truth": "Prevede l’invio dei documenti, l’apertura di un appello e la presentazione orale."
+  },
+  {
+    "question": "Chi deve firmare il registro delle ore di tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Il registro viene firmato dal tutor aziendale al termine del tirocinio.",
+    "ground_truth": "Il tutor aziendale."
+  },
+  {
+    "question": "Qual è la valutazione finale del tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "L’attività è soggetta a valutazione da parte di una commissione di docenti e dà luogo a un voto in trentesimi.",
+    "ground_truth": "Viene attribuito un voto in trentesimi da una commissione di docenti."
+  },
+  {
+    "question": "Il tirocinio e la tesi sono formalmente collegati?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Le attività di tirocinio possono essere propedeutiche alla tesi ma non ne fanno parte formalmente.",
+    "ground_truth": "No, sono attività distinte anche se possono essere correlate."
+  },
+  {
+    "question": "Chi può svolgere il ruolo di tutor aziendale in un tirocinio interno?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Nel tirocinio interno il tutor aziendale può essere un membro del Corso di Studio, un assegnista, un dottorando o un borsista.",
+    "ground_truth": "Un docente, assegnista, dottorando o borsista del Dipartimento."
+  },
+  {
+    "question": "Dove si trova il modulo per la domanda di tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "È disponibile nella pagina di modulistica del sito del Dipartimento di Ingegneria.",
+    "ground_truth": "Sul sito del Dipartimento di Ingegneria, sezione modulistica tirocini."
+  },
+  {
+    "question": "Un tirocinio all’estero può valere più di 9 CFU?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "È possibile richiedere più di 9 CFU per tirocini all’estero, ma quelli eccedenti non concorrono al totale per la laurea.",
+    "ground_truth": "Sì, ma i CFU oltre 9 sono extracurricolari."
+  },
+  {
+    "question": "Chi approva la domanda di tirocinio presentata da uno studente?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "La domanda viene valutata dalla Commissione Piani di Studio e approvata dal Consiglio Intercorso di Laurea.",
+    "ground_truth": "La Commissione Piani di Studio e il Consiglio Intercorso di Laurea."
+  },
+  {
+    "question": "Il tirocinio può essere svolto in remoto?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "In caso di emergenze sanitarie o cause di forza maggiore parte del tirocinio può essere svolta in remoto.",
+    "ground_truth": "Sì, se concordato con i tutor e in casi particolari."
+  },
+  {
+    "question": "A chi spetta inviare il questionario di valutazione aziendale?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Il tutor aziendale invia il proprio questionario di valutazione al tutor universitario e alla segreteria didattica.",
+    "ground_truth": "Al tutor aziendale."
+  },
+  {
+    "question": "Il regolamento specifica un numero minimo di CFU per il tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Il regolamento menziona solo il numero massimo (9 CFU), non un minimo.",
+    "ground_truth": "No, non è indicato un minimo."
+  },
+  {
+    "question": "Quanti tirocinanti può seguire un tutor interno?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Per i tirocini interni, un tutor di struttura non può seguire più di tre tirocinanti contemporaneamente.",
+    "ground_truth": "Massimo tre tirocinanti contemporaneamente."
+  },
+  {
+    "question": "È previsto un rimborso spese obbligatorio per i tirocini aziendali?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Il regolamento non prevede l’obbligo di rimborso spese.",
+    "ground_truth": "No, non è obbligatorio."
+  },
+  {
+    "question": "Chi compone la commissione di valutazione finale del tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "La valutazione è effettuata da una commissione di docenti, tipicamente presieduta dal tutor universitario.",
+    "ground_truth": "Una commissione di docenti presieduta dal tutor universitario."
+  },
+  {
+    "question": "Cosa deve includere il progetto di tirocinio nella domanda?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Il progetto deve illustrare sinteticamente oggetto e obiettivi dell’attività da svolgere.",
+    "ground_truth": "Deve descrivere brevemente oggetto e obiettivi del tirocinio."
+  },
+  {
+    "question": "Il regolamento parla di borse Erasmus per tirocini?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Lo svolgimento di tirocini all’estero può essere supportato da borse Erasmus o altri programmi.",
+    "ground_truth": "Sì, menziona la possibilità di borse Erasmus."
+  },
+  {
+    "question": "La verbalizzazione del tirocinio richiede la presenza dello studente?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Lo studente presenta brevemente l’attività svolta al tutor e alla commissione durante l’appello.",
+    "ground_truth": "Sì, lo studente deve presentare il lavoro svolto."
+  },
+  {
+    "question": "È possibile svolgere il tirocinio presso un laboratorio interno del Dipartimento?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "In alternativa al tirocinio aziendale lo studente può svolgere un tirocinio interno presso una struttura del Dipartimento.",
+    "ground_truth": "Sì, presso un laboratorio o struttura interna."
+  },
+  {
+    "question": "Il regolamento specifica la durata minima di un tirocinio esterno?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Non è indicata alcuna durata minima per i tirocini esterni.",
+    "ground_truth": "No, non è specificata una durata minima."
+  },
+  {
+    "question": "Il tirocinio può essere valutato senza presentazione orale?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "In sede di valutazione il tirocinante illustra il lavoro svolto in un colloquio orale.",
+    "ground_truth": "No, la presentazione orale è prevista."
+  },
+  {
+    "question": "Qual è la finalità generale del tirocinio secondo il regolamento?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Permettere allo studente di acquisire esperienza in un reale ambito lavorativo e applicare le nozioni teoriche apprese.",
+    "ground_truth": "Fornire esperienza pratica applicando le conoscenze teoriche."
+  },
+  {
+    "question": "Il regolamento menziona tirocini extracurriculari?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "I CFU eccedenti nei tirocini esteri possono essere certificati come attività extracurriculare.",
+    "ground_truth": "Sì, per i CFU aggiuntivi dei tirocini esteri."
+  },
+  {
+    "question": "La segreteria didattica richiede documenti per la verbalizzazione?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "I documenti richiesti (questionari e registro firme) vanno inviati anche alla segreteria didattica all’indirizzo mariastella.migliosi@unipg.it.",
+    "ground_truth": "Sì, occorre inviare i documenti richiesti alla segreteria."
+  },
+  {
+    "question": "Chi valuta la congruità del tirocinio riconosciuto da attività lavorativa?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "La Commissione piani di studio valuta la congruità con gli obiettivi formativi.",
+    "ground_truth": "La Commissione piani di studio."
+  },
+  {
+    "question": "Quale azienda della brochure si occupa di comunicazione grafica e sviluppo web a Foligno?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Alligator.it S.r.l., con sede a Foligno, si occupa di comunicazione grafica e realizzazione di siti web.",
+    "ground_truth": "Alligator.it S.r.l."
+  },
+  {
+    "question": "Quale azienda offre tirocini in progetti di AI Transformation e utilizzo di Azure AI Studio?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Apsia Italia S.r.l. propone progetti di AI Transformation (Azure AI Studio, Copilot Studio, ERP con AI).",
+    "ground_truth": "Apsia Italia S.r.l."
+  },
+  {
+    "question": "Quale azienda della brochure lavora nel settore dell’automazione industriale e ha sede a Passignano sul Trasimeno?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Mate S.r.l., con sede a Passignano sul Trasimeno, opera nel settore dell’automazione industriale.",
+    "ground_truth": "Mate S.r.l."
+  },
+  {
+    "question": "Chi è il docente referente per Blue System secondo la brochure tirocini?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Il docente referente per Blue System è il Prof. Walter Didimo.",
+    "ground_truth": "Prof. Walter Didimo."
+  },
+  {
+    "question": "Quale azienda ha sede a Perugia e offre tirocini su intelligenza artificiale, cloud e blockchain?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Eustema S.p.A. propone tirocini in AI, Cloud Computing e Blockchain.",
+    "ground_truth": "Eustema S.p.A."
+  },
+  {
+    "question": "Quale azienda propone tirocini interamente da remoto focalizzati su LLM e sistemi RAG?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Red Lynx Robotics S.r.l. prevede tirocini da remoto su LLM e RAG.",
+    "ground_truth": "Red Lynx Robotics S.r.l."
+  },
+  {
+    "question": "Quale azienda della brochure offre progetti nel settore della sostenibilità energetica e fotovoltaico?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "SolarEdge e-Mobility S.r.l. propone progetti legati alla sostenibilità e mobilità elettrica.",
+    "ground_truth": "SolarEdge e-Mobility S.r.l."
+  },
+  {
+    "question": "Quale azienda è associata a tirocini nel campo della cybersecurity?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Cybertech S.r.l. offre tirocini su cybersecurity e sicurezza delle informazioni.",
+    "ground_truth": "Cybertech S.r.l."
+  },
+  {
+    "question": "Quale azienda ha sede a Marsciano e offre tirocini in sviluppo software industriale?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Work Mec S.r.l., con sede a Marsciano, offre tirocini in sviluppo software per l’automazione industriale.",
+    "ground_truth": "Work Mec S.r.l."
+  },
+  {
+    "question": "Qual è la missione dichiarata dell’azienda TeamDev nella brochure tirocini?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "La missione di TeamDev è promuovere l’umanesimo digitale e sviluppare soluzioni software che valorizzino il ruolo umano nei processi.",
+    "ground_truth": "Promuovere l’umanesimo digitale e lo sviluppo di soluzioni software orientate al valore umano."
+  },
+  {
+    "question": "Quale azienda fornisce tirocini su Data Science e Machine Learning a Perugia?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Smartpeg S.r.l. propone tirocini su Data Science e Machine Learning.",
+    "ground_truth": "Smartpeg S.r.l."
+  },
+  {
+    "question": "Qual è la data di scadenza della convenzione con Red Lynx Robotics S.r.l.?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "RED LYNX ROBOTICS SRL PERUGIA 27/09/2023 26/09/2028",
+    "ground_truth": "26 settembre 2028."
+  },
+  {
+    "question": "Quando scade la convenzione di tirocinio con Eustema S.p.A.?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "EUSTEMA SPA ROMA 11/10/2022 10/11/2027",
+    "ground_truth": "10 novembre 2027."
+  },
+  {
+    "question": "La convenzione con Ferrari S.p.A. è ancora valida nel 2025?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "FERRARI SPA MODENA 10/09/2025 09/09/2030",
+    "ground_truth": "Sì, valida fino al 9 settembre 2030."
+  },
+  {
+    "question": "Qual è la data di scadenza della convenzione con ENEA?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "ENEA ROMA 05/11/2021 04/11/2026",
+    "ground_truth": "4 novembre 2026."
+  },
+  {
+    "question": "Quale azienda tra le convenzionate ha sede a Bastia Umbra e si occupa di impianti?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "BIARELLA IMPIANTI SRL BASTIA UMBRA 28/09/2020 27/09/2025",
+    "ground_truth": "Biarella Impianti S.r.l."
+  },
+  {
+    "question": "Qual è la durata tipica di una convenzione di tirocinio?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "Le convenzioni hanno durata quinquennale a partire dalla data di stipula.",
+    "ground_truth": "Cinque anni dalla data di stipula."
+  },
+  {
+    "question": "La pagina HTML dei tirocini contiene l’elenco delle convenzioni aggiornate?",
+    "document": "didattica_studiare-nei-nostri-corsi_tirocini_f660711e95ad.main.html",
+    "reference_context": "La pagina HTML fornisce informazioni generali e link ai documenti PDF, ma non l’elenco aggiornato.",
+    "ground_truth": "No, contiene solo informazioni e link di riferimento."
+  },
+  {
+    "question": "La pagina HTML indica dove scaricare i moduli di domanda di tirocinio?",
+    "document": "didattica_studiare-nei-nostri-corsi_tirocini_f660711e95ad.main.html",
+    "reference_context": "La pagina HTML contiene il link alla sezione di modulistica del Dipartimento.",
+    "ground_truth": "Sì, rimanda alla modulistica ufficiale sul sito del Dipartimento."
+  },
+  {
+    "question": "Posso trovare nella pagina HTML il nome della referente Mariastella Migliosi?",
+    "document": "didattica_studiare-nei-nostri-corsi_tirocini_f660711e95ad.main.html",
+    "reference_context": "La pagina HTML non riporta nomi o contatti specifici di referenti.",
+    "ground_truth": "No, non menziona la referente."
+  },
+  {
+    "question": "Qual è l’indirizzo email a cui inviare il registro firme del tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "I documenti vanno inviati a mariastella.migliosi@unipg.it.",
+    "ground_truth": "mariastella.migliosi@unipg.it"
+  },
+  {
+    "question": "La brochure elenca aziende estere convenzionate?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Tutte le aziende elencate hanno sede in Italia.",
+    "ground_truth": "No, tutte le aziende sono italiane."
+  },
+  {
+    "question": "Quale azienda offre un rimborso spese ai tirocinanti?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Apsia, Blue System, Smartpeg e Red Lynx Robotics indicano esplicitamente un rimborso spese.",
+    "ground_truth": "Apsia, Blue System, Smartpeg e Red Lynx Robotics."
+  },
+  {
+    "question": "Qual è la scadenza della convenzione con Umbra Group S.p.A.?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "UMBRA GROUP SPA 29/03/2022 28/03/2027",
+    "ground_truth": "28 marzo 2027."
+  },
+  {
+    "question": "Quale azienda convenzionata ha sede a Modena e scadenza nel 2025?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "HIGH PERFORMANCE ENGINEERING SRL MODENA 17/12/2020 16/12/2025",
+    "ground_truth": "High Performance Engineering S.r.l."
+  },
+  {
+    "question": "La brochure include enti pubblici come possibili sedi di tirocinio?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "La brochure elenca solo aziende private.",
+    "ground_truth": "No, solo aziende private."
+  },
+  {
+    "question": "Il documento HTML descrive le procedure per la valutazione finale del tirocinio?",
+    "document": "didattica_studiare-nei-nostri-corsi_tirocini_f660711e95ad.main.html",
+    "reference_context": "Non contiene dettagli sulla valutazione finale, ma solo link ai documenti regolamentari.",
+    "ground_truth": "No, rimanda al regolamento per i dettagli."
+  },
+  {
+    "question": "Quale documento definisce i principi generali del tirocinio?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "L’Art. 1 del regolamento descrive principi e finalità del tirocinio.",
+    "ground_truth": "Il regolamento sui tirocini del 25 ottobre 2024."
+  },
+  {
+    "question": "È possibile trovare nella brochure la durata in ore dei tirocini?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "La brochure non indica la durata in ore dei tirocini.",
+    "ground_truth": "No, non riporta la durata."
+  },
+  {
+    "question": "Il documento delle convenzioni specifica il numero di CFU associati ai tirocini?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "Contiene solo date e nomi delle aziende, non CFU.",
+    "ground_truth": "No, non contiene informazioni sui CFU."
+  },
+  {
+    "question": "Il regolamento dei tirocini cita esempi di aziende convenzionate?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Non riporta nomi di aziende specifiche.",
+    "ground_truth": "No, non menziona aziende specifiche."
+  },
+  {
+    "question": "Qual è la scadenza della convenzione con Sistematica S.p.A.?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "SISTEMATICA SPA 09/08/2022 08/08/2027",
+    "ground_truth": "8 agosto 2027."
+  },
+  {
+    "question": "L’elenco convenzioni include la data di aggiornamento?",
+    "document": "_files_didattica_tirocini_elenco_convenzioni_con_scadenza.pdf",
+    "reference_context": "AGGIORNATO AL 15/09/2025",
+    "ground_truth": "Sì, aggiornato al 15 settembre 2025."
+  },
+  {
+    "question": "Il regolamento prevede una durata massima giornaliera obbligatoria?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Non specifica limiti giornalieri di orario.",
+    "ground_truth": "No, non definisce limiti giornalieri."
+  },
+  {
+    "question": "Nella brochure è presente l’azienda Ferrari?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "La brochure non menziona Ferrari S.p.A.",
+    "ground_truth": "No, non è elencata."
+  },
+  {
+    "question": "La pagina HTML riporta esempi di tirocini svolti in passato?",
+    "document": "didattica_studiare-nei-nostri-corsi_tirocini_f660711e95ad.main.html",
+    "reference_context": "Non sono presenti esempi di tirocini passati.",
+    "ground_truth": "No, non riporta esempi."
+  },
+  {
+    "question": "Esiste un documento che elenca i contatti dei tutor universitari?",
+    "document": "_files_didattica_tirocini_informazione_faq_tirocinio-area_inf.pdf",
+    "reference_context": "Le FAQ non contengono elenchi di contatti dei tutor.",
+    "ground_truth": "No, non è incluso."
+  },
+  {
+    "question": "È previsto un modulo separato per la richiesta di tirocinio all’estero?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Non si fa menzione di moduli specifici per tirocini esteri.",
+    "ground_truth": "No, non è previsto un modulo separato."
+  },
+  {
+    "question": "Il regolamento stabilisce un compenso minimo per i tirocini?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Non è previsto alcun compenso minimo obbligatorio.",
+    "ground_truth": "No, nessun compenso minimo previsto."
+  },
+  {
+    "question": "La brochure contiene informazioni sui tirocini Erasmus?",
+    "document": "_files_didattica_tirocini_2025_09_11_brochure_aziende_v06.pdf",
+    "reference_context": "Non menziona progetti Erasmus o tirocini all’estero.",
+    "ground_truth": "No, tratta solo tirocini nazionali."
+  },
+  {
+    "question": "La pagina HTML fornisce la scadenza per la presentazione delle domande di tirocinio?",
+    "document": "didattica_studiare-nei-nostri-corsi_tirocini_f660711e95ad.main.html",
+    "reference_context": "Non sono indicate scadenze specifiche.",
+    "ground_truth": "No, non riporta scadenze."
+  },
+  {
+    "question": "Il regolamento prevede la possibilità di tirocini in modalità part-time?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Non si parla di modalità part-time, ma di flessibilità oraria concordata con i tutor.",
+    "ground_truth": "Non formalmente, ma la durata è flessibile."
+  },
+  {
+    "question": "È possibile reperire dal regolamento l'elenco aggiornato delle aziende?",
+    "document": "_files_didattica_tirocini_informazione_regolamento-tirocini-25-10-2024.pdf",
+    "reference_context": "Il regolamento non contiene elenchi di aziende.",
+    "ground_truth": "No, non contiene elenchi."
+  }
+]
