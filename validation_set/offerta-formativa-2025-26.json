@@ -1,0 +1,188 @@
+[
+  {
+    "question": "Qual è il nome dell'insegnamento descritto nel documento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Insegnamento DATA INTENSIVE APPLICATIONS AND BIG DATA",
+    "answer": "L'insegnamento si chiama DATA INTENSIVE APPLICATIONS AND BIG DATA."
+  },
+  {
+    "question": "A quale corso di laurea appartiene questo insegnamento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Nome del corso di laurea: Ingegneria informatica e robotica",
+    "answer": "Appartiene al corso di laurea magistrale in Ingegneria informatica e robotica."
+  },
+  {
+    "question": "Chi è il docente responsabile del corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Docente responsabile: Fabrizio Montecchiani",
+    "answer": "Il docente responsabile è Fabrizio Montecchiani."
+  },
+  {
+    "question": "Quanti crediti formativi universitari (CFU) attribuisce il corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "CFU: 6",
+    "answer": "Il corso attribuisce 6 CFU."
+  },
+  {
+    "question": "In quale semestre viene erogato l’insegnamento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Periodo: Secondo Semestre",
+    "answer": "È previsto per il secondo semestre."
+  },
+  {
+    "question": "In che lingua viene tenuto il corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Lingua insegnamento: Italiano.",
+    "answer": "Il corso è tenuto in lingua italiana."
+  },
+  {
+    "question": "Quali sono i principali argomenti trattati durante il corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Contenuti: Introduzione ai Big Data; modelli e tecnologie di programmazione per computazioni distribuite; database distribuiti e NoSQL; database vettoriali e applicazioni RAG.",
+    "answer": "Gli argomenti principali comprendono Big Data, modelli e tecnologie per computazioni distribuite, database distribuiti e NoSQL, e database vettoriali con applicazioni RAG."
+  },
+  {
+    "question": "Quali prerequisiti sono richiesti per poter seguire il corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Prerequisiti: conoscenze su progettazione e analisi di algoritmi, programmazione imperativa e a oggetti (Java e Python), basi di dati relazionali.",
+    "answer": "Sono richieste conoscenze di algoritmi, programmazione imperativa e a oggetti in Java e Python, e basi di dati relazionali."
+  },
+  {
+    "question": "Come si svolge la didattica del corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Metodi didattici: lezioni frontali per circa il 60% del tempo e esercitazioni guidate in laboratorio per circa il 40%.",
+    "answer": "Il corso prevede lezioni frontali (60%) e esercitazioni pratiche in laboratorio (40%)."
+  },
+  {
+    "question": "Quali sono le modalità di verifica dell’apprendimento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Modalità di verifica: prova orale (30 minuti, 15/30) e progetto con codice e documentazione (15/30).",
+    "answer": "La valutazione si basa su una prova orale di 30 minuti (15/30) e un progetto pratico con codice e documentazione (15/30)."
+  },
+  {
+    "question": "Qual è l’obiettivo formativo principale dell’insegnamento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Obiettivi formativi: fornire nozioni teoriche e pratiche sulla progettazione e sviluppo di applicazioni data intensive.",
+    "answer": "L’obiettivo è fornire competenze teoriche e pratiche per la progettazione e lo sviluppo di applicazioni data intensive."
+  },
+  {
+    "question": "Quante ore di lezione sono previste in totale?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Ore: 48 Ore - Fabrizio Montecchiani",
+    "answer": "Sono previste 48 ore di lezione."
+  },
+  {
+    "question": "Il corso è obbligatorio o opzionale?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Tipo insegnamento: Opzionale (Optional)",
+    "answer": "Il corso è opzionale."
+  },
+  {
+    "question": "Qual è il codice identificativo dell’insegnamento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Codice insegnamento: A005846",
+    "answer": "Il codice dell’insegnamento è A005846."
+  },
+  {
+    "question": "In quale anno di corso è previsto questo insegnamento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Anno: 2",
+    "answer": "È previsto al secondo anno del corso di laurea magistrale."
+  },
+  {
+    "question": "Il corso sarà attivato nell’anno accademico 2025/26?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Erogato: Sarà erogato nel 2026/27",
+    "answer": "No, sarà erogato nell’anno accademico 2026/27."
+  },
+  {
+    "question": "Quali sono i testi di riferimento consigliati dal docente?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Testi di riferimento: M. Kleppmann, Designing Data-Intensive Applications; White, Hadoop: The Definitive Guide; Fowler & Sadalage, NoSQL Distilled; Özsu & Valduriez, Principles of Distributed Database Systems.",
+    "answer": "I testi consigliati sono: Kleppmann (Designing Data-Intensive Applications), White (Hadoop: The Definitive Guide), Fowler e Sadalage (NoSQL Distilled), Özsu e Valduriez (Principles of Distributed Database Systems)."
+  },
+  {
+    "question": "Il corso prevede la realizzazione di un progetto pratico?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Modalità di verifica: progetto con codice software e documentazione.",
+    "answer": "Sì, è previsto un progetto pratico con codice e documentazione."
+  },
+  {
+    "question": "Il corso tratta anche il tema dei database vettoriali?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Contenuti: ... database vettoriali e applicazioni RAG.",
+    "answer": "Sì, tratta i database vettoriali e le loro applicazioni RAG."
+  },
+  {
+    "question": "Qual è il settore scientifico-disciplinare del corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Settore: ING-INF/05",
+    "answer": "Il settore scientifico-disciplinare è ING-INF/05."
+  },
+  {
+    "question": "Ci sono informazioni aggiuntive rilevanti riportate dal docente?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Altre informazioni: Nessuna.",
+    "answer": "No, non sono riportate ulteriori informazioni."
+  },
+  {
+    "question": "Il corso include un modulo sulle tecnologie NoSQL?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Programma esteso: Parte II – Database distribuiti e tecnologie NoSQL.",
+    "answer": "Sì, include una sezione dedicata alle tecnologie NoSQL."
+  },
+  {
+    "question": "Quante parti principali compongono il programma esteso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Programma esteso: Parte I e Parte II.",
+    "answer": "Il programma è suddiviso in due parti principali."
+  },
+  {
+    "question": "Il corso contribuisce a uno specifico obiettivo dell’Agenda 2030?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Obiettivi Agenda 2030 per lo sviluppo sostenibile: vuoto.",
+    "answer": "Non sono specificati obiettivi dell’Agenda 2030."
+  },
+  {
+    "question": "Il corso richiede conoscenze di C++?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Prerequisiti: Java e Python, non C++.",
+    "answer": "No, non sono richieste conoscenze di C++."
+  },
+  {
+    "question": "Il corso viene svolto interamente online?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Metodi didattici: lezioni frontali in aula e laboratorio.",
+    "answer": "No, le lezioni si svolgono in presenza, non online."
+  },
+  {
+    "question": "Sono previste esercitazioni pratiche con Hadoop e Spark?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Programma esteso: Il modello MapReduce, Hadoop, Apache Spark.",
+    "answer": "Sì, sono previste esercitazioni su Hadoop e Apache Spark."
+  },
+  {
+    "question": "A chi è rivolto principalmente il corso?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Corso di laurea magistrale in Ingegneria informatica e robotica.",
+    "answer": "È rivolto agli studenti del corso di laurea magistrale in Ingegneria informatica e robotica."
+  },
+  {
+    "question": "Il corso affronta il teorema CAP?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Programma esteso: b. Il teorema CAP e oltre.",
+    "answer": "Sì, affronta anche il teorema CAP e le sue implicazioni."
+  },
+  {
+    "question": "Chi è l’unico docente elencato nel documento?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Docenti: Fabrizio Montecchiani",
+    "answer": "L’unico docente elencato è Fabrizio Montecchiani."
+  },
+  {
+    "question": "Il corso ha una durata complessiva di 30 ore?",
+    "document": "offerta-formativa-2025-26.html",
+    "context": "Ore totali: 48.",
+    "answer": "No, ha una durata complessiva di 48 ore."
+  }
+]
