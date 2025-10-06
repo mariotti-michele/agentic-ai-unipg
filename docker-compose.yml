@@ -41,7 +41,6 @@ services:
     container_name: indexing
     volumes:
       - ./indexing:/app
-      - ./data:/app/data
       - ./qdrant_storage:/qdrant/storage
     working_dir: /app
     environment:
