@@ -34,7 +34,7 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         title = await browser_page.title()
         html = await browser_page.content()
 
-        file_name = slugify(urlparse(url).path or "index") + ".html"
+        file_name = assign_html_file_name(url)
         file_path = RAW_HTML / file_name
         file_path.write_text(html, encoding="utf-8")
 
@@ -46,14 +46,16 @@ async def scrape_page(url: str, same_domain_only: bool = False):
         )
         valid_links = [x["href"] for x in valid_links_debug]
 
-        # print(f"[DEBUG] Valid links ({len(valid_links)}):")
-        # for l in valid_links_debug:
-        #     print(f"   [VALID] {l['href']} -- from: {l['html']}")
-
         valid_abs_links = normalize_links(valid_links, url, same_domain_only)
 
         return title, file_path, valid_abs_links
     
+
+def assign_html_file_name(full_url: str) -> str:
+    parsed = urlparse(full_url)
+    path_slug = slugify(parsed.path or "index").strip("_") or "index"
+    return f"{path_slug}_{sha(full_url)[:12]}.html"
+
 
 def normalize_links(links, url, same_domain_only):
     origin = urlparse(url).netloc

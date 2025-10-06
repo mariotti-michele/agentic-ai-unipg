@@ -1,0 +1,152 @@
+[
+  {
+    "question": "Quale titolo di studio viene rilasciato al termine del corso?",
+    "reference_context": "Il corso di studio rilascia il titolo di 'Dottore magistrale in Ingegneria Informatica e Robotica'.",
+    "ground_truth": "Dottore magistrale in Ingegneria Informatica e Robotica.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Chi è il presidente del Consiglio di Intercorso di Ingegneria dell’Informazione?",
+    "reference_context": "Il corso è coordinato dal Consiglio di Intercorso di Ingegneria dell’Informazione (struttura didattica), presieduto protempore dal Prof. Walter Didimo.",
+    "ground_truth": "Il presidente pro tempore è il Prof. Walter Didimo.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "In quale sede è attivo il corso di laurea magistrale?",
+    "reference_context": "Il corso è attivo presso la sede di Perugia.",
+    "ground_truth": "Presso la sede di Perugia.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Qual è l’obiettivo principale del corso di laurea magistrale in Ingegneria Informatica e Robotica?",
+    "reference_context": "Il Corso mira a formare ingegneri nel campo dell’informatica e dell’automazione, fornendo le competenze per contribuire all’innovazione e aggiornarsi sulle nuove tecnologie.",
+    "ground_truth": "Formare ingegneri esperti in informatica e automazione, capaci di contribuire all’innovazione e aggiornarsi sulle tecnologie emergenti.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Quali sono i due curricula previsti dal corso?",
+    "reference_context": "Il Corso di laurea magistrale si articola in due curricula: Data Science and Data Engineering e Robotics.",
+    "ground_truth": "Data Science and Data Engineering; Robotics.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Quanti CFU totali sono previsti per il conseguimento del titolo?",
+    "reference_context": "Le attività didattiche si sviluppano in due anni con un carico didattico di 120 CFU sostanzialmente equidistribuito nei due anni.",
+    "ground_truth": "120 crediti formativi universitari (CFU).",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Cosa deve possedere uno studente per accedere al corso di laurea magistrale?",
+    "reference_context": "L'accesso richiede il possesso di una laurea triennale o titolo estero equipollente e il soddisfacimento di specifici requisiti curriculari e di preparazione personale.",
+    "ground_truth": "Una laurea di primo livello o titolo estero idoneo e il possesso dei requisiti curriculari e di preparazione personale richiesti.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Quanti CFU devono essere conseguiti nei settori scientifico-disciplinari indicati per accedere al corso?",
+    "reference_context": "I requisiti curriculari per l'accesso consistono nell'aver conseguito almeno 85 CFU nei settori scientifico-disciplinari elencati.",
+    "ground_truth": "Almeno 85 CFU nei settori scientifico-disciplinari indicati.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Qual è la soglia minima di media ponderata richiesta per l’accesso diretto?",
+    "reference_context": "I requisiti di preparazione personale prevedono una votazione media pesata di almeno 21/30, conseguita in almeno 50 CFU.",
+    "ground_truth": "Una media ponderata di almeno 21/30 su almeno 50 CFU nei settori previsti.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Lo studente che non soddisfa i requisiti può comunque essere ammesso?",
+    "reference_context": "Lo studente che non ha i requisiti curriculari può essere ammesso previo recupero dei crediti formativi attraverso uno specifico percorso didattico concordato.",
+    "ground_truth": "Sì, può essere ammesso dopo aver recuperato i CFU mancanti tramite un percorso didattico concordato.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Quando deve essere presentata la pratica di trasferimento da altro Ateneo?",
+    "reference_context": "La presentazione della pratica di passaggio e/o trasferimento deve avvenire, di norma, entro il mese di ottobre.",
+    "ground_truth": "Entro il mese di ottobre.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Qual è il livello minimo di conoscenza della lingua inglese richiesto?",
+    "reference_context": "Prima del conseguimento del titolo di studio lo studente deve acquisire un’attestazione della conoscenza della lingua inglese (3 CFU) di livello almeno B2 rilasciata dal CLA.",
+    "ground_truth": "Livello B2 di lingua inglese, attestato dal Centro Linguistico di Ateneo (CLA).",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "La prova finale può essere svolta in gruppo?",
+    "reference_context": "La struttura didattica può ammettere tesi prodotte collettivamente da più studenti, purché corredate da una relazione che attesti il contributo dei singoli.",
+    "ground_truth": "Sì, purché sia documentato il contributo individuale di ciascun studente.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Chi può essere relatore di tesi?",
+    "reference_context": "Possono essere relatori i professori e ricercatori di ruolo o a tempo determinato, nonché docenti a contratto con nomina valida durante la tesi.",
+    "ground_truth": "Professori e ricercatori (di ruolo o a tempo determinato) e docenti a contratto con nomina attiva.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Qual è la composizione della commissione per la prova finale?",
+    "reference_context": "La commissione per la valutazione finale è composta da sette membri ed è presieduta, di norma, dal Presidente del corso di studio.",
+    "ground_truth": "Sette membri, presieduti dal Presidente del corso di studio.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Gli studenti part-time hanno attività didattiche dedicate?",
+    "reference_context": "Per gli studenti part-time potranno essere predisposte attività didattiche ad hoc, in funzione delle risorse disponibili.",
+    "ground_truth": "Sì, possono avere attività didattiche personalizzate e assistenza tutoriale.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Sono previste propedeuticità obbligatorie tra gli insegnamenti?",
+    "reference_context": "Non sono previste propedeuticità obbligatorie.",
+    "ground_truth": "No, non ci sono propedeuticità obbligatorie.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Chi approva le eventuali modifiche al regolamento didattico?",
+    "reference_context": "Il Regolamento è approvato dal Consiglio di intercorso e dal Dipartimento di Ingegneria entro maggio.",
+    "ground_truth": "Dal Consiglio di Intercorso di Ingegneria dell’Informazione e dal Dipartimento di Ingegneria.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Chi può svolgere attività di tutorato per gli studenti?",
+    "reference_context": "Possono svolgere attività di tutorato: professori e ricercatori, soggetti previsti dalla legge 170/2003 e ulteriori soggetti previsti dal Regolamento Didattico di Ateneo.",
+    "ground_truth": "Professori, ricercatori e altre figure previste dalla normativa e dal regolamento d’Ateneo.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Il corso offre supporto agli studenti con disabilità?",
+    "reference_context": "La struttura didattica metterà a disposizione mezzi strumentali e personale di supporto su richiesta, compatibilmente con le risorse disponibili.",
+    "ground_truth": "Sì, sono previsti strumenti e personale di supporto per studenti con disabilità.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Quanti CFU valgono le attività di tirocinio aziendale?",
+    "reference_context": "Ogni studente può fare esperienza in una singola azienda per un massimo di 9 CFU; ulteriori tirocini solo presso altra azienda o laboratorio.",
+    "ground_truth": "Fino a 9 CFU per singola azienda o laboratorio.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Posso svolgere la tesi all’estero?",
+    "reference_context": "La struttura didattica può autorizzare la preparazione della tesi presso altre Università o strutture di ricerca italiane ed estere.",
+    "ground_truth": "Sì, è possibile previa autorizzazione della struttura didattica.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Qual è il sito web ufficiale del corso?",
+    "reference_context": "Sito web: https://orienta.ing.unipg.it/IngInformazione/lm32/",
+    "ground_truth": "https://orienta.ing.unipg.it/IngInformazione/lm32/",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Il corso prevede esami in lingua inglese?",
+    "reference_context": "Tutti gli insegnamenti sono svolti in modalità convenzionale, alcuni erogati in lingua italiana e alcuni in lingua inglese.",
+    "ground_truth": "Sì, alcuni insegnamenti sono erogati in lingua inglese.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  },
+  {
+    "question": "Quanti anni dura il corso triennale in Ingegneria Informatica?",
+    "reference_context": "Non pertinente — il documento descrive il corso magistrale LM-32, non triennale.",
+    "ground_truth": "Non presente nella conoscenza: il sistema riguarda il corso magistrale, non triennale.",
+    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
+  }
+]
