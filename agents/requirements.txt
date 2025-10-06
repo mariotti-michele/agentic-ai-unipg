@@ -4,3 +4,8 @@ langchain-ollama==0.3.8
 qdrant-client==1.15.1
 requests==2.32.5
 python-dotenv==1.0.1
+ragas==0.1.14
+datasets
+evaluate
+langsmith
+sentence-transformers
