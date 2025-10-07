@@ -1,0 +1,194 @@
+[
+  {
+    "question": "In che modo la discrezionalità del docente nell’istituzione degli appelli straordinari interagisce con il calendario ufficiale degli appelli di esame e delle sedute di laurea approvate dal Consiglio Intercorso?",
+    "reference_context": "Gli appelli straordinari sono istituiti a discrezione del docente e riservati ai laureandi o a chi ha un solo esame mancante. Il calendario esami riporta appelli ordinari pianificati dal CIL, mentre il calendario lauree è approvato dallo stesso Consiglio. L’appello straordinario può quindi essere collocato in date aggiuntive rispetto a quelle ufficiali, purché coerenti con le sessioni di laurea.",
+    "ground_truth": "La discrezionalità del docente consente di creare appelli extra rispetto al calendario ufficiale, purché non interferiscano con le sessioni approvate dal Consiglio Intercorso. Gli appelli straordinari servono a permettere ai laureandi di completare gli esami prima delle sessioni di laurea ufficiali.",
+    "document": "appelli-straordinari.json + calendario-esami.json + calendario-lauree.json"
+  },
+  {
+    "question": "Analizzando insieme il regolamento del corso di laurea e l’orario delle lezioni, è possibile determinare se lo studente ha abbastanza tempo per preparare la tesi tra la fine del semestre e la prima sessione di laurea prevista?",
+    "reference_context": "L’offerta formativa stabilisce che la prova finale consiste nella redazione di una monografia o tesi. L’orario delle lezioni per il secondo anno termina a metà giugno 2026. Il calendario delle lauree prevede la prima sessione di laurea a luglio 2026, circa un mese dopo la fine delle lezioni.",
+    "ground_truth": "Sì, lo studente ha circa quattro settimane tra la conclusione delle lezioni e la prima sessione di laurea di luglio 2026 per completare e discutere la tesi.",
+    "document": "offerta-formativa.json + orari.json + calendario-lauree.json"
+  },
+  {
+    "question": "Sulla base dell’offerta formativa e del calendario degli esami, quali corsi del curriculum Data Science and Data Engineering hanno prove concentrate nel primo semestre e come ciò influenza la distribuzione dei carichi di studio rispetto ai corsi del curriculum Robotics?",
+    "reference_context": "Nel curriculum Data Science and Data Engineering, corsi come Machine Learning and Data Analysis e Data Security and Blockchain sono collocati nel primo semestre. Nel calendario esami, questi corsi presentano appelli principali a dicembre, gennaio e febbraio, mentre il curriculum Robotics concentra più corsi nel secondo semestre.",
+    "ground_truth": "Il curriculum Data Science and Data Engineering ha la maggior parte degli esami nel primo semestre, con appelli tra dicembre e febbraio. Il curriculum Robotics invece concentra gli esami nel secondo semestre, comportando un carico di studio più intenso nella seconda parte dell’anno.",
+    "document": "offerta-formativa.json + calendario-esami.json"
+  },
+  {
+    "question": "Considerando le date delle lezioni e la struttura del corso, in quale periodo uno studente internazionale potrebbe pianificare il rientro nel proprio Paese senza perdere sessioni d’esame o di laurea?",
+    "reference_context": "Le lezioni terminano a metà giugno e gli appelli di esame proseguono fino a settembre 2026. Le sessioni di laurea previste sono a luglio 2026, ottobre 2026 e aprile 2027.",
+    "ground_truth": "Uno studente internazionale potrebbe pianificare il rientro tra settembre 2026 e gennaio 2027, dopo aver sostenuto gli ultimi appelli estivi o autunnali e prima della sessione straordinaria di aprile 2027.",
+    "document": "orari.json + calendario-esami.json + calendario-lauree.json"
+  },
+  {
+    "question": "Combinando le informazioni sui CFU dell’offerta formativa e la durata dei semestri, è possibile stimare il numero medio di ore di didattica frontale settimanali per uno studente iscritto al primo anno?",
+    "reference_context": "Ogni CFU corrisponde a 25 ore di impegno, di cui 8 di didattica frontale. I corsi del primo anno sommano circa 60 CFU distribuiti in due semestri (30 per semestre, pari a 240 ore di didattica frontale per semestre, in circa 12 settimane).",
+    "ground_truth": "Lo studente del primo anno ha in media 20 ore di lezione frontale a settimana (240 ore totali su 12 settimane per semestre).",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "In che modo il ruolo del Consiglio Intercorso, come definito nei documenti relativi a corsi e lauree, garantisce coerenza tra pianificazione didattica, esami e sedute di laurea?",
+    "reference_context": "Il Consiglio Intercorso in Ingegneria dell’Informazione presiede e coordina il corso di studio (offerta formativa), approva i calendari di laurea e supervisiona la pianificazione degli esami. Tutti e tre i documenti lo menzionano come organo decisionale centrale.",
+    "ground_truth": "Il Consiglio Intercorso assicura la coerenza complessiva tra didattica, esami e lauree poiché definisce i programmi dei corsi, approva le sessioni di esame e stabilisce il calendario delle lauree.",
+    "document": "offerta-formativa.json + calendario-lauree.json + calendario-esami.json"
+  },
+  {
+    "question": "Quali differenze temporali si riscontrano tra l’ultimo appello disponibile per gli studenti fuori corso e la prima sessione di laurea utile, e quali vincoli normativi sugli appelli straordinari si applicano in questo caso?",
+    "reference_context": "L’ultimo appello ordinario si tiene a settembre 2026. La prima sessione di laurea successiva è quella autunnale (ottobre 2026). Gli appelli straordinari sono riservati ai laureandi e possono essere istituiti a discrezione del docente prima delle sessioni ufficiali.",
+    "ground_truth": "Tra l’ultimo appello di settembre 2026 e la sessione di laurea di ottobre 2026 intercorre circa un mese. In questo intervallo, gli studenti fuori corso possono richiedere appelli straordinari, a discrezione dei docenti, purché siano laureandi o con un solo esame mancante.",
+    "document": "calendario-esami.json + calendario-lauree.json + appelli-straordinari.json"
+  },
+  {
+    "question": "È possibile dedurre dai documenti se gli studenti possono frequentare contemporaneamente corsi del primo e secondo anno senza sovrapposizioni di orario o conflitti con le date d’esame?",
+    "reference_context": "Gli orari del primo e secondo anno mostrano che le lezioni si tengono in fasce orarie diverse (mattina per il primo anno, pomeriggio per il secondo). Gli appelli di esame sono distribuiti tra dicembre e settembre e non si sovrappongono tra anni accademici. L’offerta formativa distingue chiaramente i due percorsi annuali.",
+    "ground_truth": "Sì, è possibile seguire corsi del primo e del secondo anno nello stesso semestre senza conflitti di orario o di appelli, poiché le lezioni e gli esami sono pianificati in fasce temporali e periodi distinti.",
+    "document": "orari.json + calendario-esami.json + offerta-formativa.json"
+  },
+  {
+    "question": "È indicato in qualche documento un corso opzionale di Biotecnologie Robotiche per l’a.a. 2025/26?",
+    "reference_context": "Nessuno dei documenti menziona o programma un corso denominato Biotecnologie Robotiche.",
+    "ground_truth": "No, nessun documento cita un corso di Biotecnologie Robotiche per l’a.a. 2025/26.",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "Secondo i documenti ufficiali, gli studenti possono sostenere un appello straordinario a dicembre prima della pausa natalizia?",
+    "reference_context": "Gli appelli straordinari non riportano date prefissate e vengono istituiti a discrezione del docente, ma nel calendario ufficiale gli appelli ordinari di dicembre sono già previsti. Non esistono riferimenti a sessioni straordinarie a dicembre.",
+    "ground_truth": "No, nessun documento indica la possibilità di appelli straordinari a dicembre, solo sessioni ordinarie.",
+    "document": "appelli-straordinari.json + calendario-esami.json"
+  },
+  {
+    "question": "È previsto che gli studenti possano seguire un corso aggiuntivo di lingua tedesca nel secondo semestre del primo anno?",
+    "reference_context": "L’offerta formativa menziona corsi solo in inglese e italiano. L’orario non riporta lezioni di lingua tedesca.",
+    "ground_truth": "No, non è previsto alcun corso di lingua tedesca nel secondo semestre o in altri periodi dell’anno accademico.",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "Quale documento specifica la sede delle sedute di laurea e la procedura di assegnazione delle aule per gli esami?",
+    "reference_context": "Né il calendario lauree né il calendario esami indicano la sede fisica delle sedute di laurea o la procedura di assegnazione aule.",
+    "ground_truth": "Nessuno dei due documenti fornisce tali informazioni.",
+    "document": "calendario-lauree.json + calendario-esami.json"
+  },
+  {
+    "question": "Esiste un riferimento ufficiale alla possibilità di esami online o in modalità mista per gli studenti Erasmus?",
+    "reference_context": "I documenti esaminati descrivono solo modalità convenzionali in presenza. Non viene mai menzionata la possibilità di esami online o misti.",
+    "ground_truth": "No, non vi è alcun riferimento a modalità online o miste per gli esami degli studenti Erasmus.",
+    "document": "offerta-formativa.json + calendario-esami.json + appelli-straordinari.json"
+  },
+  {
+    "question": "Quando si svolgono gli appelli di esame per il corso di Data Intensive Applications and Big Data e in quale periodo si tengono le lezioni relative?",
+    "reference_context": "Nel calendario esami il corso 'Data Intensive Applications and Big Data' ha appelli fissati il 17 dicembre 2025, 14 gennaio 2026, 5 febbraio 2026, 26 maggio 2026, 11 giugno 2026, 1 e 15 luglio 2026 e 2 settembre 2026. Secondo l’orario delle lezioni, il corso si svolge nel secondo semestre, tipicamente da marzo a giugno.",
+    "ground_truth": "Le lezioni del corso si tengono nel secondo semestre (marzo–giugno), mentre gli appelli di esame sono previsti il 17 dicembre 2025, 14 gennaio 2026, 5 febbraio 2026, 26 maggio 2026, 11 giugno 2026, 1 luglio 2026, 15 luglio 2026 e 2 settembre 2026.",
+    "document": "calendario-esami.json + orari.json"
+  },
+  {
+    "question": "Un laureando che non riesce a laurearsi nella sessione autunnale può sostenere un appello straordinario prima della sessione straordinaria di laurea?",
+    "reference_context": "Gli appelli straordinari sono riservati ai laureandi o a chi ha al massimo un esame mancante, e vengono istituiti a discrezione del docente. Nel calendario delle lauree, la sessione straordinaria è prevista ad aprile 2027, successiva a quella autunnale del 2026.",
+    "ground_truth": "Sì, un laureando può richiedere un appello straordinario prima della sessione straordinaria di laurea, poiché questi appelli sono riservati ai laureandi e possono essere istituiti dai docenti prima di aprile 2027.",
+    "document": "appelli-straordinari.json + calendario-lauree.json"
+  },
+  {
+    "question": "Chi è il docente responsabile di Data Intensive Applications and Big Data e fa parte anche della commissione d’esame del corso?",
+    "reference_context": "Nel documento dell’offerta formativa, il docente responsabile di Data Intensive Applications and Big Data è Fabrizio Montecchiani. Nel calendario degli esami, tra i membri della commissione dello stesso corso è incluso anche Montecchiani.",
+    "ground_truth": "Il docente responsabile è Fabrizio Montecchiani, che fa parte anche della commissione d’esame del corso di Data Intensive Applications and Big Data.",
+    "document": "offerta-formativa.json + calendario-esami.json"
+  },
+  {
+    "question": "Qual è la relazione tra i corsi elencati nell’offerta formativa e quelli effettivamente programmati nell’orario delle lezioni?",
+    "reference_context": "L’offerta formativa elenca corsi come Data Security and Blockchain, Machine Learning and Data Analysis, Internet and Web Programming. L’orario conferma la programmazione di questi corsi con giorni e aule specifici.",
+    "ground_truth": "I corsi presenti nell’offerta formativa, come Data Security and Blockchain, Machine Learning and Data Analysis e Internet and Web Programming, risultano effettivamente programmati nell’orario delle lezioni.",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "Quali corsi del secondo anno del curriculum Robotics prevedono esami nel periodo estivo e in quali giorni si tengono le lezioni?",
+    "reference_context": "Nel curriculum Robotics sono inclusi corsi come Deep Learning and Robot Perception e Autonomous Robotics. L’orario mostra che le lezioni si tengono il venerdì pomeriggio, mentre il calendario esami colloca gli appelli principali nei mesi di giugno e luglio.",
+    "ground_truth": "I corsi Deep Learning and Robot Perception e Autonomous Robotics del curriculum Robotics hanno lezioni il venerdì pomeriggio e prevedono esami estivi tra giugno e luglio 2026.",
+    "document": "offerta-formativa.json + calendario-esami.json + orari.json"
+  },
+  {
+    "question": "Quando si tiene la prova di verifica della preparazione personale e quando iniziano le lezioni del primo semestre?",
+    "reference_context": "La prova di verifica si tiene prima dell’inizio delle attività didattiche, in una data definita dal corso di studio. Secondo l’orario, il primo semestre va dal 15 settembre 2025 al 12 dicembre 2025.",
+    "ground_truth": "La prova di verifica si svolge prima del 15 settembre 2025, data di inizio delle lezioni del primo semestre.",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "Qual è la correlazione tra i CFU indicati nei corsi dell’offerta formativa e la durata delle lezioni prevista nell’orario?",
+    "reference_context": "Ogni CFU corrisponde a 25 ore di impegno, di cui 8 di didattica frontale. L’orario mostra lezioni distribuite su più giorni per corsi da 6 o 9 CFU, coerenti con la quantità di ore previste.",
+    "ground_truth": "I corsi da 6 o 9 CFU hanno lezioni settimanali proporzionate alle ore previste (8 ore di didattica frontale per CFU), in coerenza con quanto riportato nell’offerta formativa.",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "Quali date degli appelli straordinari coincidono con i periodi di laurea previsti nel calendario ufficiale?",
+    "reference_context": "Gli appelli straordinari possono essere istituiti a discrezione del docente e spesso coincidono con periodi prossimi alle sessioni di laurea. Nel calendario delle lauree, le sessioni sono fissate a luglio 2026, ottobre 2026, febbraio 2027 e aprile 2027. Alcuni appelli straordinari di aprile 2026 possono quindi precedere la prima sessione estiva di laurea.",
+    "ground_truth": "Gli appelli straordinari di aprile 2026 precedono la sessione estiva di laurea di luglio 2026, risultando temporalmente vicini e utili ai laureandi.",
+    "document": "appelli-straordinari.json + calendario-lauree.json + calendario-esami.json"
+  },
+  {
+    "question": "Quanti CFU totali si ottengono sommando i corsi comuni ai curricula e quali di essi hanno appelli a giugno?",
+    "reference_context": "I corsi comuni ai curricula sono Machine Learning and Data Analysis (9 CFU), Information and Estimation Theory (9 CFU), Data Intensive Applications and Big Data (6 CFU) e Lingua Inglese B2 (3 CFU), per un totale di 27 CFU. Il calendario esami mostra appelli di giugno per Data Intensive Applications and Big Data e Machine Learning and Data Analysis.",
+    "ground_truth": "I corsi comuni totalizzano 27 CFU. Tra questi, Data Intensive Applications and Big Data e Machine Learning and Data Analysis hanno appelli a giugno.",
+    "document": "offerta-formativa.json + calendario-esami.json"
+  },
+  {
+    "question": "Chi presiede il Consiglio che approva il calendario delle lauree e coordina anche i corsi della LM32?",
+    "reference_context": "Il calendario delle lauree è approvato dal Consiglio Intercorso in Ingegneria dell’Informazione. L’offerta formativa specifica che lo stesso Consiglio è presieduto dal Prof. Walter Didimo.",
+    "ground_truth": "Il Consiglio Intercorso in Ingegneria dell’Informazione, presieduto dal Prof. Walter Didimo, approva il calendario delle lauree e coordina i corsi della LM32.",
+    "document": "calendario-lauree.json + offerta-formativa.json"
+  },
+  {
+    "question": "È indicato in qualche documento un corso opzionale di Biotecnologie Robotiche per l’a.a. 2025/26?",
+    "reference_context": "Nessuno dei documenti menziona o programma un corso denominato Biotecnologie Robotiche.",
+    "ground_truth": "No, nessun documento cita un corso di Biotecnologie Robotiche per l’a.a. 2025/26.",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "Secondo i documenti ufficiali, gli studenti possono sostenere un appello straordinario a dicembre prima della pausa natalizia?",
+    "reference_context": "Gli appelli straordinari non riportano date prefissate e vengono istituiti a discrezione del docente, ma nel calendario ufficiale gli appelli ordinari di dicembre sono già previsti. Non esistono riferimenti a sessioni straordinarie a dicembre.",
+    "ground_truth": "No, nessun documento indica la possibilità di appelli straordinari a dicembre, solo sessioni ordinarie.",
+    "document": "appelli-straordinari.json + calendario-esami.json"
+  },
+  {
+    "question": "È previsto che gli studenti possano seguire un corso aggiuntivo di lingua tedesca nel secondo semestre del primo anno?",
+    "reference_context": "L’offerta formativa menziona corsi solo in inglese e italiano. L’orario non riporta lezioni di lingua tedesca.",
+    "ground_truth": "No, non è previsto alcun corso di lingua tedesca nel secondo semestre o in altri periodi dell’anno accademico.",
+    "document": "offerta-formativa.json + orari.json"
+  },
+  {
+    "question": "Quale documento specifica la sede delle sedute di laurea e la procedura di assegnazione delle aule per gli esami?",
+    "reference_context": "Né il calendario lauree né il calendario esami indicano la sede fisica delle sedute di laurea o la procedura di assegnazione aule.",
+    "ground_truth": "Nessuno dei due documenti fornisce tali informazioni.",
+    "document": "calendario-lauree.json + calendario-esami.json"
+  },
+  {
+    "question": "Esiste un riferimento ufficiale alla possibilità di esami online o in modalità mista per gli studenti Erasmus?",
+    "reference_context": "I documenti esaminati descrivono solo modalità convenzionali in presenza. Non viene mai menzionata la possibilità di esami online o misti.",
+    "ground_truth": "No, non vi è alcun riferimento a modalità online o miste per gli esami degli studenti Erasmus.",
+    "document": "offerta-formativa.json + calendario-esami.json + appelli-straordinari.json"
+  },
+  {
+    "question": "Quali insegnamenti terminano prima della prima sessione estiva di laurea e quali coincidono temporalmente con gli appelli di giugno?",
+    "reference_context": "L’orario delle lezioni mostra che il secondo semestre termina a metà giugno 2026. Il calendario esami prevede appelli di giugno per Data Intensive Applications and Big Data e Machine Learning and Data Analysis. La prima sessione di laurea si tiene a luglio 2026.",
+    "ground_truth": "Gli insegnamenti che terminano prima della sessione di laurea di luglio e coincidono con appelli di giugno sono Data Intensive Applications and Big Data e Machine Learning and Data Analysis.",
+    "document": "orari.json + calendario-esami.json + calendario-lauree.json"
+  },
+  {
+    "question": "Quali corsi prevedono lezioni distribuite in modo da consentire la preparazione per la sessione di esami di febbraio senza sovrapporsi agli appelli del primo semestre?",
+    "reference_context": "Le lezioni del primo semestre terminano il 12 dicembre 2025. Gli appelli invernali si tengono a gennaio e febbraio 2026. I corsi del primo semestre includono Machine Learning and Data Analysis e Data Security and Blockchain.",
+    "ground_truth": "I corsi del primo semestre, come Machine Learning and Data Analysis e Data Security and Blockchain, terminano prima della sessione d’esami di febbraio, consentendo la preparazione completa senza sovrapposizioni.",
+    "document": "orari.json + calendario-esami.json + offerta-formativa.json"
+  },
+  {
+    "question": "Quali insegnamenti del curriculum Robotics coincidono con il periodo immediatamente precedente alla sessione straordinaria di laurea e in quale giorno settimanale si tengono prevalentemente le lezioni?",
+    "reference_context": "Il curriculum Robotics include corsi del secondo anno come Deep Learning and Robot Perception e Autonomous Robotics. Le lezioni si tengono il venerdì pomeriggio e gli appelli principali si collocano tra giugno e settembre, prima della sessione straordinaria di aprile 2027.",
+    "ground_truth": "Gli insegnamenti Deep Learning and Robot Perception e Autonomous Robotics si tengono il venerdì pomeriggio e i loro esami precedono la sessione straordinaria di laurea di aprile 2027.",
+    "document": "offerta-formativa.json + orari.json + calendario-lauree.json"
+  },
+  {
+    "question": "In quali casi il docente può istituire un appello straordinario in prossimità della chiusura dell’anno accademico, e come si coordina con la Segreteria Didattica?",
+    "reference_context": "Gli appelli straordinari possono essere istituiti a discrezione del docente per laureandi o studenti con un solo esame mancante. Il docente deve comunicarne l’attivazione al Presidente del CIL e alla Segreteria Didattica, che si occuperà di pubblicarlo sui canali istituzionali.",
+    "ground_truth": "Il docente può istituire appelli straordinari vicino alla chiusura dell’anno per i laureandi, previa comunicazione al Presidente del CIL e alla Segreteria Didattica, che ne cura la pubblicazione.",
+    "document": "appelli-straordinari.json + calendario-lauree.json"
+  }
+]

@@ -1,116 +1,116 @@
 [
   {
     "question": "Chi ha approvato il calendario delle lauree per l'anno accademico 2025-2026?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "CONSIGLIO INTERCORSO IN INGEGNERIA DELL’INFORMAZIONE",
-    "ground_truth": "Il calendario è stato approvato dal Consiglio Intercorso in Ingegneria dell’Informazione."
+    "ground_truth": "Il calendario è stato approvato dal Consiglio Intercorso in Ingegneria dell’Informazione.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Per quale anno accademico si riferisce il calendario delle lauree?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Calendario delle lauree per l’anno accademico 2025-2026.",
-    "ground_truth": "Il calendario riguarda l’anno accademico 2025-2026."
+    "ground_truth": "Il calendario riguarda l’anno accademico 2025-2026.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Quali corsi di laurea sono inclusi nel calendario delle sedute di laurea?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "L0816, LM29, LM32 – Ingegneria dell’Informazione.",
-    "ground_truth": "Il calendario include i corsi di laurea L0816, LM29 e LM32 in Ingegneria dell’Informazione."
+    "ground_truth": "Il calendario include i corsi di laurea L0816, LM29 e LM32 in Ingegneria dell’Informazione.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Quando si svolge la prima sessione di laurea dell'anno accademico 2025-2026?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Sessione estiva: luglio 2026.",
-    "ground_truth": "La prima sessione di laurea si svolge a luglio 2026."
+    "ground_truth": "La prima sessione di laurea si svolge a luglio 2026.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Qual è l'ultima sessione di laurea prevista nel calendario?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Sessione straordinaria: aprile 2027.",
-    "ground_truth": "L’ultima sessione di laurea prevista è quella straordinaria di aprile 2027."
+    "ground_truth": "L’ultima sessione di laurea prevista è quella straordinaria di aprile 2027.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Quante sessioni di laurea sono previste complessivamente nel calendario 2025-2026?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Sono indicate le sessioni estiva, autunnale, invernale e straordinaria.",
-    "ground_truth": "Il calendario prevede quattro sessioni di laurea: estiva, autunnale, invernale e straordinaria."
+    "ground_truth": "Il calendario prevede quattro sessioni di laurea: estiva, autunnale, invernale e straordinaria.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Entro quale mese si conclude l’anno accademico 2025-2026 ai fini delle lauree?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Sessione straordinaria di aprile 2027 come chiusura dell’a.a. 2025-2026.",
-    "ground_truth": "L’anno accademico 2025-2026 si conclude ad aprile 2027 ai fini delle lauree."
+    "ground_truth": "L’anno accademico 2025-2026 si conclude ad aprile 2027 ai fini delle lauree.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Se non riesco a laurearmi nella sessione autunnale, posso ancora partecipare alla sessione straordinaria?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "La sessione straordinaria è aperta anche agli studenti dell’a.a. 2025-2026 che non si sono laureati nelle sessioni precedenti.",
-    "ground_truth": "Sì, gli studenti che non si laureano nella sessione autunnale possono accedere a quella straordinaria."
+    "ground_truth": "Sì, gli studenti che non si laureano nella sessione autunnale possono accedere a quella straordinaria.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Il calendario prevede sessioni intermedie tra quella estiva e quella autunnale?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Non sono previste sessioni intermedie tra estiva e autunnale.",
-    "ground_truth": "No, non sono previste sessioni intermedie tra quella estiva e quella autunnale."
+    "ground_truth": "No, non sono previste sessioni intermedie tra quella estiva e quella autunnale.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Posso discutere la tesi a febbraio 2026?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Le sessioni previste iniziano da luglio 2026.",
-    "ground_truth": "No, non è prevista alcuna sessione di laurea a febbraio 2026."
+    "ground_truth": "No, non è prevista alcuna sessione di laurea a febbraio 2026.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Le date delle lauree sono identiche per i corsi triennali e magistrali?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Le sessioni si applicano congiuntamente ai corsi L0816, LM29 e LM32.",
-    "ground_truth": "Sì, le sessioni di laurea sono comuni a tutti i corsi indicati."
+    "ground_truth": "Sì, le sessioni di laurea sono comuni a tutti i corsi indicati.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Il documento specifica le scadenze per la presentazione della domanda di laurea?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Il documento riporta le sessioni e le scadenze.",
-    "ground_truth": "Sì, sono riportate le scadenze per la presentazione della domanda di laurea."
+    "ground_truth": "Sì, sono riportate le scadenze per la presentazione della domanda di laurea.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Chi organizza le sessioni di laurea indicate nel calendario?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Le sessioni sono organizzate dal Consiglio Intercorso in Ingegneria dell’Informazione.",
-    "ground_truth": "Le sessioni sono organizzate dal Consiglio Intercorso in Ingegneria dell’Informazione."
+    "ground_truth": "Le sessioni sono organizzate dal Consiglio Intercorso in Ingegneria dell’Informazione.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "È indicato l’orario preciso di inizio delle sedute di laurea?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Il documento riporta solo i mesi e non gli orari dettagliati.",
-    "ground_truth": "No, non sono riportati orari specifici delle sedute."
+    "ground_truth": "No, non sono riportati orari specifici delle sedute.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Quante sessioni di laurea si tengono prima di dicembre 2026?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Due sessioni estive.",
-    "ground_truth": "Due: la sessione estiva di luglio e quella estiva di ottobre 2026."
+    "ground_truth": "Due: la sessione estiva di luglio e quella estiva di ottobre 2026.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Sono previste modifiche o aggiornamenti del calendario durante l’anno?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Il documento non menziona eventuali aggiornamenti.",
-    "ground_truth": "No, il documento non indica modifiche future al calendario."
+    "ground_truth": "No, il documento non indica modifiche future al calendario.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "È possibile dedurre dal documento la sede precisa delle lauree?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Il documento non specifica la sede fisica delle sedute di laurea.",
-    "ground_truth": "No, la sede delle lauree non è indicata nel documento."
+    "ground_truth": "No, la sede delle lauree non è indicata nel documento.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "C'è un riferimento al calendario delle lezioni all’interno del documento?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Il documento riguarda esclusivamente le sessioni di laurea.",
-    "ground_truth": "No, non è incluso alcun riferimento al calendario delle lezioni."
+    "ground_truth": "No, non è incluso alcun riferimento al calendario delle lezioni.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   },
   {
     "question": "Il documento contiene informazioni sugli appelli d’esame?",
-    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf",
     "reference_context": "Il calendario riguarda solo le lauree, non gli esami.",
-    "ground_truth": "No, non ci sono informazioni sugli appelli d’esame."
+    "ground_truth": "No, non ci sono informazioni sugli appelli d’esame.",
+    "document": "_files_didattica_calendario_2025-26_l0816_lm29_lm32-ing_informazione_cal_lauree.pdf"
   }
 ]

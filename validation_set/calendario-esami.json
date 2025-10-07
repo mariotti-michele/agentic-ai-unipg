@@ -1,50 +1,50 @@
 [
   {
     "question": "Chi fa parte della commissione di esame per il corso di Internet and Web Programming?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Internet and Web Programming — Didimo, Liotta, Binucci, Di Giacomo, Grilli, Montecchiani, Tappini",
-    "ground_truth": "La commissione è composta da Didimo, Liotta, Binucci, Di Giacomo, Grilli, Montecchiani e Tappini."
+    "ground_truth": "La commissione è composta da Didimo, Liotta, Binucci, Di Giacomo, Grilli, Montecchiani e Tappini.",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
     "question": "Chi è presente nella commissione di Data Security and Blockchain?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Data Security and Blockchain — Grilli, Montecchiani, Liotta, Didimo, Di Giacomo, Binucci, Tappini, Ortali",
-    "ground_truth": "Grilli, Montecchiani, Liotta, Didimo, Di Giacomo, Binucci, Tappini e Ortali."
+    "ground_truth": "Grilli, Montecchiani, Liotta, Didimo, Di Giacomo, Binucci, Tappini e Ortali.",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
     "question": "Quali sono i membri della commissione per il corso di Deep Learning and Robot Perception?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Deep Learning and Robot Perception — Costante, Valigi, Fravolini, Leomanni, Ferrante, Dionigi, Legittimo, Felicioni, Brilli, Crocetti",
-    "ground_truth": "Costante, Valigi, Fravolini, Leomanni, Ferrante, Dionigi, Legittimo, Felicioni, Brilli e Crocetti."
+    "ground_truth": "Costante, Valigi, Fravolini, Leomanni, Ferrante, Dionigi, Legittimo, Felicioni, Brilli e Crocetti.",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
     "question": "Quanti docenti compongono la commissione di Machine to Machine Networks?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Machine to Machine Networks — Femminella, Reali, Baruffa, Frescura, Banelli, Rugini, Perfetti",
-    "ground_truth": "Sette docenti."
+    "ground_truth": "Sette docenti.",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
     "question": "Il documento specifica le date esatte degli appelli di esame per ogni corso?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Si.",
-    "ground_truth": "Si."
+    "ground_truth": "Si.",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
     "question": "In che data è previsto l'appello di esame di Dicembre per il corso di Data Intensive Applications and Big Data?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Data Intensive Applications and Big Data — 17 Dicembre 2025",
-    "ground_truth": "17 Dicembre 2025"
+    "ground_truth": "17 Dicembre 2025",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
     "question": "In che data è previsto l'appello straordinario di esame per il corso di Data Science for Health Systems?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Data Science for Health Systems — Appello straordinario: 9 Aprile 2026",
-    "ground_truth": "9 Aprile 2026"
+    "ground_truth": "9 Aprile 2026",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
     "question": "Quali sono le date degli appelli di esame per il corso di Data Intensive Applications and Big Data?",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf",
     "reference_context": "Data Intensive Applications and Big Data — Appelli: 17 Dicembre 2025, 14 Gennaio 2026, 5 Febbraio 2026, 26 Maggio 2026, 11 Giugno 2026, 1 Luglio 2026, 15 Luglio 2026, 2 Settembre 2026",
-    "ground_truth": "17 Dicembre 2025, 14 Gennaio 2026, 5 Febbraio 2026, 26 Maggio 2026, 11 Giugno 2026, 1 Luglio 2026, 15 Luglio 2026, 2 Settembre 2026"
+    "ground_truth": "17 Dicembre 2025, 14 Gennaio 2026, 5 Febbraio 2026, 26 Maggio 2026, 11 Giugno 2026, 1 Luglio 2026, 15 Luglio 2026, 2 Settembre 2026",
+    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   }
 ]
