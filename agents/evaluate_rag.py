@@ -22,7 +22,7 @@ def run_evaluation(version: str = "v1"):
     base_dir = Path("evaluations") / version
     base_dir.mkdir(parents=True, exist_ok=True)
 
-    VALIDATION_DIR = Path("/app/../validation_set").resolve()
+    VALIDATION_DIR = Path(__file__).resolve().parent / "validation_set"
     print(f"Caricamento dataset da: {VALIDATION_DIR}")
 
     data = []
