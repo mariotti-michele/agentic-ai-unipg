@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Qual è il periodo di svolgimento delle lezioni del primo semestre per il primo anno?",
+    "reference_context": "Orario delle lezioni a.a. 2025/2026 - I anno - I semestre (15/09/2025 - 12/12/2025)",
+    "ground_truth": "Dal 15 settembre 2025 al 12 dicembre 2025.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "In quali giornate si tengono le lezioni di 'Internet and Web Programming'?",
+    "reference_context": "Internet and Web Programming - W. Didimo - 6 cfu. Giovedì ore 14:30-16:30 aula 11, Venerdì ore 14:30-16:30 aula 8.",
+    "ground_truth": "Le lezioni si tengono il giovedì e venerdì.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "Qual è la durata del semestre per il secondo anno?",
+    "reference_context": "Orario delle lezioni a.a. 2025/2026 - II anno - I semestre (15/09/2025 - 12/12/2025)",
+    "ground_truth": "Dal 15 settembre 2025 al 12 dicembre 2025.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "A che ora iniziano le lezioni di 'Machine Learning and Data Analysis' il martedì?",
+    "reference_context": "Machine Learning and Data Analysis: martedì ore 10.30-13.30, aula 11",
+    "ground_truth": "Iniziano alle 10:30.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "Qual è il giorno con più corsi previsti nel secondo anno?",
+    "reference_context": "Analizzando l’orario del II anno, venerdì presenta corsi di Models and Algorithms for Data Visualization, Signal Processing and Optimization for Big Data, Autonomous Robotics, Deep Learning and Robot Perception.",
+    "ground_truth": "Il venerdì.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "Quali corsi si tengono nella stessa fascia oraria il venerdì pomeriggio per il secondo anno?",
+    "reference_context": "Venerdì 14:30-16:30: Autonomous Robotics e Models and Algorithms for Data Visualization.",
+    "ground_truth": "Autonomous Robotics e Models and Algorithms for Data Visualization.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "È possibile sapere in quale aula si tiene il corso 'Data Security and Blockchain'?",
+    "reference_context": "Data Security and Blockchain - aula 10 e 11 in diversi orari del martedì e giovedì.",
+    "ground_truth": "Le lezioni si tengono principalmente nelle aule 10 e 11.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "Nel primo anno c'è lezione il lunedì pomeriggio?",
+    "reference_context": "No, non ci sono.",
+    "ground_truth": "No, non ci sono.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  }
+]
