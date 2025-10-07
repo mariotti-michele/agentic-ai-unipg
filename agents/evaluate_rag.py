@@ -4,7 +4,8 @@ import csv
 from datetime import datetime
 from pathlib import Path
 from datasets import Dataset
-from ragas.metrics import faithfulness, answer_relevance, context_precision
+from ragas.metrics import faithfulness, context_precision
+from ragas.metrics._answer_relevance import answer_relevancy
 from ragas import evaluate
 from langsmith import Client
 from retrieval_agent import answer_query, embeddings, vectorstore
@@ -67,7 +68,7 @@ def run_evaluation(version: str = "v1"):
     print("\nValutazione con Ragas...")
     results = evaluate(
         dataset=dataset,
-        metrics=[faithfulness, answer_relevance, context_precision],
+        metrics=[faithfulness, answer_relevancy, context_precision],
     )
 
     print("\nRISULTATI RAGAS:")
@@ -106,7 +107,7 @@ def save_results_to_csv(csv_path: Path, questions, answers, metrics):
         if not file_exists:
             writer.writerow([
                 "timestamp", "question", "answer",
-                "faithfulness", "answer_relevance", "context_precision"
+                "faithfulness", "answer_relevancy", "context_precision"
             ])
         for i, q in enumerate(questions):
             writer.writerow([
@@ -114,7 +115,7 @@ def save_results_to_csv(csv_path: Path, questions, answers, metrics):
                 q,
                 answers[i],
                 f"{metrics['faithfulness']:.3f}",
-                f"{metrics['answer_relevance']:.3f}",
+                f"{metrics['answer_relevancy']:.3f}",
                 f"{metrics['context_precision']:.3f}",
             ])
 
