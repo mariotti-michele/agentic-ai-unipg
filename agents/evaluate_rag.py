@@ -9,6 +9,7 @@ from ragas.metrics._answer_relevance import answer_relevancy
 from ragas import evaluate
 from langsmith import Client
 from retrieval_agent import answer_query, embeddings, vectorstore
+from pathlib import Path
 
 
 def run_evaluation(version: str = "v1"):
@@ -21,9 +22,23 @@ def run_evaluation(version: str = "v1"):
     base_dir = Path("evaluations") / version
     base_dir.mkdir(parents=True, exist_ok=True)
 
-    print("Caricamento dataset di validazione...")
-    with open("validation_data.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
+    VALIDATION_DIR = Path("/app/../validation_set").resolve()
+    print(f"Caricamento dataset da: {VALIDATION_DIR}")
+
+    data = []
+    for json_file in sorted(VALIDATION_DIR.glob("*.json")):
+        print(f"  → Trovato file: {json_file.name}")
+        try:
+            with open(json_file, "r", encoding="utf-8") as f:
+                content = json.load(f)
+                if isinstance(content, list):
+                    data.extend(content)
+                else:
+                    print(f"Il file {json_file.name} non contiene una lista JSON valida, ignorato.")
+        except Exception as e:
+            print(f"Errore nel file {json_file.name}: {e}")
+
+    print(f"Totale domande caricate: {len(data)}")
 
     questions = [d["question"] for d in data]
     reference_contexts = [d.get("reference_context", []) for d in data]
