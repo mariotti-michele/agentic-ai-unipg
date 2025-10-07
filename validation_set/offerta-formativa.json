@@ -264,9 +264,9 @@
     "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_c0b653d98fc3.main.html"
   },
   {
-  "question": "Quali sono le modalità di verifica dell'apprendimento previste per l'insegnamento DATA INTENSIVE APPLICATIONS AND BIG DATA?",
-  "reference_context": "I metodi di valutazione prevedono una prova orale di natura teorica e applicativa (30 minuti, 15/30 punti) per accertare le conoscenze teoriche e la capacità di programmazione, e un progetto (presentazione e discussione di un elaborato software con documentazione) anch’esso da 15/30 punti, volto a verificare le abilità pratiche acquisite.",
-  "ground_truth": "La verifica avviene tramite una prova orale teorico-applicativa e la presentazione di un progetto software con documentazione.",
-  "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_435f1273c877.main.html"
+    "question": "Quali sono le modalità di verifica dell'apprendimento previste per l'insegnamento DATA INTENSIVE APPLICATIONS AND BIG DATA?",
+    "reference_context": "I metodi di valutazione prevedono una prova orale di natura teorica e applicativa (30 minuti, 15/30 punti) per accertare le conoscenze teoriche e la capacità di programmazione, e un progetto (presentazione e discussione di un elaborato software con documentazione) anch’esso da 15/30 punti, volto a verificare le abilità pratiche acquisite.",
+    "ground_truth": "La verifica avviene tramite una prova orale teorico-applicativa e la presentazione di un progetto software con documentazione.",
+    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_435f1273c877.main.html"
   }
 ]
