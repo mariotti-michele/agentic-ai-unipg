@@ -4,7 +4,13 @@ import csv
 from datetime import datetime
 from pathlib import Path
 from datasets import Dataset
-from ragas.metrics import faithfulness, context_precision
+from ragas.metrics import (
+    faithfulness,
+    context_precision,
+    context_recall,
+    context_relevancy,
+    answer_correctness,
+)
 from ragas.metrics._answer_relevance import answer_relevancy
 from ragas import evaluate
 from langsmith import Client
@@ -13,11 +19,9 @@ from pathlib import Path
 
 
 def run_evaluation(version: str = "v1"):
-    """
-    Esegue la valutazione automatica del Retrieval Agent di UNIPG
-    leggendo un dataset con colonne: question, reference_context, ground_truth, document.
-    I risultati vengono salvati in evaluations/<version>/ragas_results.csv.
-    """
+    # Esegue la valutazione automatica del Retrieval Agent di UNIPG
+    # leggendo un dataset con colonne: question, reference_context, ground_truth, document.
+    # I risultati vengono salvati in evaluations/<version>/ragas_results.csv.
     print(f"Avvio validazione RAG - versione {version}")
     base_dir = Path("evaluations") / version
     base_dir.mkdir(parents=True, exist_ok=True)
@@ -82,9 +86,17 @@ def run_evaluation(version: str = "v1"):
 
     print("\nValutazione con Ragas...")
     results = evaluate(
-        dataset=dataset,
-        metrics=[faithfulness, answer_relevancy, context_precision],
-    )
+    dataset=dataset,
+    metrics=[
+        faithfulness,
+        answer_relevancy,
+        context_precision,
+        context_recall,
+        context_relevancy,
+        answer_correctness,
+    ],
+)
+
 
     print("\nRISULTATI RAGAS:")
     for k, v in results.items():
@@ -122,7 +134,9 @@ def save_results_to_csv(csv_path: Path, questions, answers, metrics):
         if not file_exists:
             writer.writerow([
                 "timestamp", "question", "answer",
-                "faithfulness", "answer_relevancy", "context_precision"
+                "faithfulness", "answer_relevancy",
+                "context_precision", "context_recall",
+                "context_relevancy", "answer_correctness"
             ])
         for i, q in enumerate(questions):
             writer.writerow([
@@ -132,8 +146,10 @@ def save_results_to_csv(csv_path: Path, questions, answers, metrics):
                 f"{metrics['faithfulness']:.3f}",
                 f"{metrics['answer_relevancy']:.3f}",
                 f"{metrics['context_precision']:.3f}",
+                f"{metrics['context_recall']:.3f}",
+                f"{metrics['context_relevancy']:.3f}",
+                f"{metrics['answer_correctness']:.3f}",
             ])
-
     print(f"Risultati salvati in: {csv_path}")
 
 
