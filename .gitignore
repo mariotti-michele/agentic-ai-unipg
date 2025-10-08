@@ -3,3 +3,4 @@ data/
 qdrant_storage/
 indexing/__pycache__/
 .env
+agents/__pycache__/

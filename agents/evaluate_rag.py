@@ -8,7 +8,6 @@ from ragas.metrics import (
     faithfulness,
     context_precision,
     context_recall,
-    context_relevancy,
     answer_correctness,
 )
 from ragas.metrics._answer_relevance import answer_relevancy
@@ -92,7 +91,6 @@ def run_evaluation(version: str = "v1"):
         answer_relevancy,
         context_precision,
         context_recall,
-        context_relevancy,
         answer_correctness,
     ],
 )
@@ -135,8 +133,7 @@ def save_results_to_csv(csv_path: Path, questions, answers, metrics):
             writer.writerow([
                 "timestamp", "question", "answer",
                 "faithfulness", "answer_relevancy",
-                "context_precision", "context_recall",
-                "context_relevancy", "answer_correctness"
+                "context_precision", "context_recall", "answer_correctness"
             ])
         for i, q in enumerate(questions):
             writer.writerow([
@@ -147,7 +144,6 @@ def save_results_to_csv(csv_path: Path, questions, answers, metrics):
                 f"{metrics['answer_relevancy']:.3f}",
                 f"{metrics['context_precision']:.3f}",
                 f"{metrics['context_recall']:.3f}",
-                f"{metrics['context_relevancy']:.3f}",
                 f"{metrics['answer_correctness']:.3f}",
             ])
     print(f"Risultati salvati in: {csv_path}")
