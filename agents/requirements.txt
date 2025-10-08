@@ -9,3 +9,4 @@ datasets
 evaluate
 langsmith
 sentence-transformers
+langchain-google-genai

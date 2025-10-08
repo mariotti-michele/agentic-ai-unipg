@@ -15,7 +15,10 @@ from ragas import evaluate
 from langsmith import Client
 from retrieval_agent import answer_query, embeddings, vectorstore
 from pathlib import Path
+from langchain_google_genai import ChatGoogleGenerativeAI
 
+def get_llm():
+    return ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
 def run_evaluation(version: str = "v1"):
     # Esegue la valutazione automatica del Retrieval Agent di UNIPG
@@ -84,16 +87,20 @@ def run_evaluation(version: str = "v1"):
     })
 
     print("\nValutazione con Ragas...")
+    llm = get_llm()
     results = evaluate(
-    dataset=dataset,
-    metrics=[
-        faithfulness,
-        answer_relevancy,
-        context_precision,
-        context_recall,
-        answer_correctness,
-    ],
-)
+        dataset=dataset,
+        metrics=[
+            faithfulness,
+            answer_relevancy,
+            context_precision,
+            context_recall,
+            answer_correctness,
+        ],
+        llm=llm,
+        embeddings=embeddings
+    )
+
 
 
     print("\nRISULTATI RAGAS:")

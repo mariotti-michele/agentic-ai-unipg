@@ -25,6 +25,8 @@ services:
   agents:
     build: ./agents   # cartella agents accanto al docker-compose.yml
     container_name: agents
+    env_file:
+      - .env
     volumes:
       - ./agents:/app   # monta la cartella agents dentro /app
     working_dir: /app
