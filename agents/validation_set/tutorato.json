@@ -1,32 +1,8 @@
 [
   {
-    "question": "Chi ha nominato il delegato per il tutorato?",
-    "reference_context": "Il Consiglio di Dipartimento di Ingegneria ha nominato un suo delegato per il tutorato contattabile tramite un apposito indirizzo di posta elettronica: tutorato.ing@unipg.it.",
-    "ground_truth": "Il delegato per il tutorato è stato nominato dal Consiglio di Dipartimento di Ingegneria.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
-    "question": "Come si può contattare il delegato per il tutorato?",
-    "reference_context": "Il Consiglio di Dipartimento di Ingegneria ha nominato un suo delegato per il tutorato contattabile tramite un apposito indirizzo di posta elettronica: tutorato.ing@unipg.it.",
-    "ground_truth": "Il delegato per il tutorato può essere contattato all’indirizzo email tutorato.ing@unipg.it.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
-    "question": "Chi può rivolgersi al delegato per il tutorato?",
-    "reference_context": "Il delegato per il tutorato è contattabile da studenti e docenti per informazioni o segnalazioni.",
-    "ground_truth": "Sia gli studenti sia i docenti possono rivolgersi al delegato per il tutorato.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
     "question": "Che cosa si intende per tutorato di sostegno nei corsi di primo livello?",
     "reference_context": "Tutorato di sostegno per i corsi di studio di primo livello, costituito da attività formative indirizzate a migliorare l'apprendimento di alcuni insegnamenti di base il cui superamento è ritenuto fondamentale per gli insegnamenti successivi.",
     "ground_truth": "Il tutorato di sostegno per i corsi di primo livello consiste in attività formative volte a migliorare l’apprendimento di insegnamenti di base considerati fondamentali per quelli successivi.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
-    "question": "Chi svolge l’attività di tutorato di sostegno per i corsi di primo livello?",
-    "reference_context": "Tale attività di supporto è fornita da studenti di dottorato o di laurea specialistica o magistrale in Ingegneria, Matematica o Fisica.",
-    "ground_truth": "Il tutorato di sostegno è svolto da studenti di dottorato o di laurea specialistica o magistrale in Ingegneria, Matematica o Fisica.",
     "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
   },
   {
@@ -36,7 +12,7 @@
     "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
   },
   {
-    "question": "A chi è destinato il tutorato individuale menzionato nel documento?",
+    "question": "A chi è destinato il tutorato individuale?",
     "reference_context": "Tutorato individuale per gli studenti delle lauree triennali.",
     "ground_truth": "Il tutorato individuale è destinato agli studenti delle lauree triennali.",
     "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
@@ -48,39 +24,9 @@
     "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
   },
   {
-    "question": "Il tutorato è riservato solo agli studenti di ingegneria?",
-    "reference_context": "Il tutorato di sostegno è fornito da studenti di Ingegneria, Matematica o Fisica, ma rivolto agli studenti dei corsi di studio di primo livello del Dipartimento di Ingegneria.",
-    "ground_truth": "Sì, il tutorato descritto è rivolto agli studenti dei corsi di studio del Dipartimento di Ingegneria.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
-    "question": "È disponibile un modulo online per richiedere il tutorato?",
-    "reference_context": "Il documento non menziona la presenza di moduli online per la richiesta del tutorato.",
-    "ground_truth": "Non è indicata alcuna procedura online per la richiesta del tutorato.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
-    "question": "Quali figure universitarie vengono coinvolte nella definizione delle modalità di tutorato?",
-    "reference_context": "I criteri e le modalità di assegnazione dei tutor saranno stabiliti dal Consiglio di Dipartimento sentiti i presidenti dei Corsi di Laurea interessati.",
-    "ground_truth": "Sono coinvolti il Consiglio di Dipartimento e i presidenti dei Corsi di Laurea interessati.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
     "question": "Chi fornisce il tutorato per gli insegnamenti di base nei corsi di primo livello?",
     "reference_context": "Tale attività di supporto è fornita da studenti di dottorato o di laurea specialistica o magistrale in Ingegneria, Matematica o Fisica.",
     "ground_truth": "Il tutorato è fornito da studenti di dottorato o di laurea specialistica o magistrale.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
-    "question": "È indicato il numero massimo di ore previste per le attività di tutorato?",
-    "reference_context": "Il documento non specifica la durata o il numero di ore previste per il tutorato.",
-    "ground_truth": "No, non è indicato alcun numero massimo di ore per le attività di tutorato.",
-    "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
-  },
-  {
-    "question": "Chi deve contattare il delegato del tutorato per segnalare eventuali problemi organizzativi?",
-    "reference_context": "Gli studenti e i docenti possono far riferimento al delegato per informazioni o segnalazioni.",
-    "ground_truth": "Sia gli studenti che i docenti possono contattare il delegato per segnalare problemi organizzativi.",
     "document": "didattica_studiare-nei-nostri-corsi_tutorato_ce37c9c6e182.main.html"
   },
   {

@@ -12,12 +12,6 @@
     "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
   },
   {
-    "question": "Chi presiede il Consiglio di Intercorso di Ingegneria dell’Informazione?",
-    "reference_context": "Il Consiglio di Intercorso di Ingegneria dell’Informazione è presieduto pro tempore dal Prof. Walter Didimo.",
-    "ground_truth": "Il Prof. Walter Didimo.",
-    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
-  },
-  {
     "question": "Quale titolo accademico viene rilasciato al termine del corso?",
     "reference_context": "Il corso di studio rilascia il titolo di Dottore magistrale in Ingegneria Informatica e Robotica.",
     "ground_truth": "Dottore magistrale in Ingegneria Informatica e Robotica.",
@@ -39,12 +33,6 @@
     "question": "Quali sono i due curricula del corso di Ingegneria Informatica e Robotica?",
     "reference_context": "Il corso si articola in due curricula: Data Science and Data Engineering e Robotics.",
     "ground_truth": "Data Science and Data Engineering e Robotics.",
-    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
-  },
-  {
-    "question": "Quanti CFU corrispondono a un'ora di didattica frontale?",
-    "reference_context": "Ad ogni CFU erogato corrispondono 25 ore di impegno dello studente, di cui 8 di didattica frontale.",
-    "ground_truth": "8 ore di didattica frontale per ogni CFU.",
     "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
   },
   {
@@ -78,12 +66,6 @@
     "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_fe40e9070eb4.main.html"
   },
   {
-    "question": "Qual è il nome dell’insegnamento che tratta la sicurezza dei dati e la blockchain?",
-    "reference_context": "Data Security and Blockchain – 6 CFU – Primo Semestre.",
-    "ground_truth": "Data Security and Blockchain.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_c663e15eb8a5.main.html"
-  },
-  {
     "question": "Quali corsi appartengono al primo semestre del primo anno nel curriculum Robotics?",
     "reference_context": "DIGITAL SIGNAL PROCESSING, EMBEDDED ELECTRONIC SYSTEMS, INTELLIGENT AND SECURE NETWORKS, MACHINE LEARNING AND DATA ANALYSIS.",
     "ground_truth": "Digital Signal Processing, Embedded Electronic Systems, Intelligent and Secure Networks, Machine Learning and Data Analysis.",
@@ -93,12 +75,6 @@
     "question": "Qual è la differenza tra i due curricula del corso?",
     "reference_context": "Data Science and Data Engineering si concentra su data analysis, cloud e machine learning; Robotics su sistemi embedded, controllo e robotica autonoma.",
     "ground_truth": "Data Science and Data Engineering riguarda data analysis, cloud e machine learning, mentre Robotics si focalizza su sistemi embedded, controllo e robotica autonoma.",
-    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
-  },
-  {
-    "question": "In che modo gli studenti possono svolgere esperienze internazionali?",
-    "reference_context": "Gli studenti possono accedere a programmi di internazionalizzazione, svolgendo parte del percorso all’estero presso università o centri di ricerca.",
-    "ground_truth": "Possono partecipare a programmi di internazionalizzazione e studiare o fare tesi all’estero.",
     "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
   },
   {
@@ -114,12 +90,6 @@
     "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
   },
   {
-    "question": "Quanti crediti sono assegnati alla lingua inglese B2?",
-    "reference_context": "Lingua inglese B2 – 3 CFU – Annuale.",
-    "ground_truth": "3 CFU.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_c663e15eb8a5.main.html"
-  },
-  {
     "question": "Quando è consigliato presentare la pratica di trasferimento da altro Ateneo?",
     "reference_context": "La pratica di passaggio o trasferimento deve avvenire, di norma, entro il mese di ottobre.",
     "ground_truth": "Entro ottobre.",
@@ -130,12 +100,6 @@
     "reference_context": "DATA INTENSIVE APPLICATIONS AND BIG DATA – 6 CFU – Secondo Semestre.",
     "ground_truth": "6 CFU.",
     "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_c663e15eb8a5.main.html"
-  },
-  {
-    "question": "Che ruolo hanno i laboratori specialistici nel corso di laurea?",
-    "reference_context": "Parte integrante del percorso formativo è l'utilizzo di diversi laboratori specialistici per approfondire aspetti applicativi.",
-    "ground_truth": "Servono per attività pratiche e progettuali.",
-    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
   },
   {
     "question": "Quale curriculum comprende il corso Deep Learning and Robot Perception?",
@@ -156,12 +120,6 @@
     "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
   },
   {
-    "question": "Che cosa significa CFU?",
-    "reference_context": "Ogni CFU rappresenta 25 ore di impegno dello studente.",
-    "ground_truth": "Credito Formativo Universitario (25 ore di impegno).",
-    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
-  },
-  {
     "question": "Chi può accedere al corso di laurea magistrale?",
     "reference_context": "L’accesso è consentito a chi possiede una laurea di primo livello o titolo equivalente con almeno 85 CFU nei SSD previsti.",
     "ground_truth": "Chi possiede una laurea di primo livello e 85 CFU nei SSD richiesti.",
@@ -174,18 +132,6 @@
     "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
   },
   {
-    "question": "Quanti crediti complessivi sono previsti al secondo anno nel curriculum Robotics?",
-    "reference_context": "Il totale dei CFU del secondo anno è 69.",
-    "ground_truth": "69 CFU.",
-    "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
-  },
-  {
-    "question": "È previsto l’insegnamento di Biotecnologie Robotiche?",
-    "reference_context": "Nessuno dei documenti elenca un corso con questo nome.",
-    "ground_truth": "Non presente nei documenti.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_c663e15eb8a5.main.html"
-  },
-  {
     "question": "Quanti CFU totali si ottengono sommando tutti gli insegnamenti comuni ai due curricula?",
     "reference_context": "Machine Learning and Data Analysis (9 CFU), Information and Estimation Theory (9 CFU), Data Intensive Applications and Big Data (6 CFU), Lingua Inglese B2 (3 CFU).",
     "ground_truth": "27 CFU comuni.",
@@ -196,18 +142,6 @@
     "reference_context": "La prova finale consiste nella preparazione di una monografia scritta su un argomento di interesse del corso.",
     "ground_truth": "Una tesi/monografia scritta.",
     "document": "_ws_off_scaricaarticolatocorso.php_codcorso_M0619_anno_2025_tipoDoc_REG_DID_lingua_it.pdf"
-  },
-  {
-    "question": "Il corso prevede attività formative in lingua tedesca?",
-    "reference_context": "I documenti menzionano solo corsi in inglese e italiano.",
-    "ground_truth": "No, non ci sono corsi in lingua tedesca.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_6104054394a2.main.html"
-  },
-  {
-    "question": "Quante aziende convenzionate collaborano con il Dipartimento di Ingegneria per i tirocini?",
-    "reference_context": "Attualmente risultano convenzionate con il Dipartimento di Ingegneria circa 200 aziende.",
-    "ground_truth": "Circa 200 aziende convenzionate.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_209f78eb8e7a.main.html"
   },
   {
     "question": "Chi è il docente responsabile dell'insegnamento DATA INTENSIVE APPLICATIONS AND BIG DATA?",
@@ -228,40 +162,10 @@
     "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_435f1273c877.main.html"
   },
   {
-    "question": "Quali servizi offre l’Ufficio Job Placement dell’Ateneo agli studenti di Ingegneria?",
-    "reference_context": "L'Ufficio Job Placement di Ateneo offre servizi di promozione dei laureati presso le aziende, orientamento, formazione, career day e incontri con le imprese.",
-    "ground_truth": "Promozione dei laureati, orientamento, formazione, career day e incontri con aziende.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_209f78eb8e7a.main.html"
-  },
-  {
-    "question": "Quali sono le lingue in cui viene erogato il corso di Ingegneria Informatica e Robotica?",
-    "reference_context": "Lingua: Inglese, italiano.",
-    "ground_truth": "Il corso è erogato in inglese e in italiano.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_6104054394a2.main.html"
-  },
-  {
-    "question": "Qual è la modalità di erogazione della didattica del corso di laurea magistrale?",
-    "reference_context": "Modalità di erogazione della didattica: Convenzionale.",
-    "ground_truth": "La didattica è erogata in modalità convenzionale.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_6104054394a2.main.html"
-  },
-  {
-    "question": "Quali sono i criteri per ottenere la lode nella prova finale di laurea?",
-    "reference_context": "La votazione finale di 110 e lode può essere attribuita con voto unanime della commissione qualora la somma arrotondata sia non inferiore a 111 o pari a 110 con almeno 2 lodi negli esami di profitto.",
-    "ground_truth": "La lode è attribuita all’unanimità se la somma è ≥111 oppure pari a 110 con almeno 2 lodi negli esami.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_a19d534fdcaf.main.html"
-  },
-  {
     "question": "Qual è la differenza tra tesi compilativa e tesi sperimentale secondo il regolamento?",
     "reference_context": "La tesi compilativa approfondisce concetti da fonti bibliografiche; la tesi sperimentale verifica idee o casi concreti, dimostrando autonomia progettuale.",
     "ground_truth": "La tesi compilativa è un approfondimento teorico, la tesi sperimentale prevede attività originali e progettuali.",
     "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_a19d534fdcaf.main.html"
-  },
-  {
-    "question": "Quale valore medio dei voti hanno conseguito gli studenti del primo anno nel 2023/24?",
-    "reference_context": "Nell'a.a. 2023/24, il voto medio conseguito dagli studenti iscritti al primo anno è stato di 27,63.",
-    "ground_truth": "27,63.",
-    "document": "didattica_corsi-di-laurea-e-laurea-magistrale_archivio_offerta-formativa-2025-26_c0b653d98fc3.main.html"
   },
   {
     "question": "Quali sono le modalità di verifica dell'apprendimento previste per l'insegnamento DATA INTENSIVE APPLICATIONS AND BIG DATA?",
