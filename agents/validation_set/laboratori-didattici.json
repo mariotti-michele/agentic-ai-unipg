@@ -48,45 +48,9 @@
     "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
   },
   {
-    "question": "Chi organizza la riunione Teams per l’esame di sicurezza?",
-    "reference_context": "Il docente organizza una riunione Teams e invita i candidati fornendo il link al sito web dell’esame.",
-    "ground_truth": "La riunione Teams viene organizzata dal docente.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
-  },
-  {
     "question": "È possibile organizzare sessioni di esame aggiuntive per il corso sulla sicurezza?",
     "reference_context": "A richiesta possono essere organizzate sessioni di esame aggiuntive.",
     "ground_truth": "Sì, su richiesta possono essere organizzate sessioni aggiuntive.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
-  },
-  {
-    "question": "Chi deve contattare uno studente che desidera ricevere chiarimenti sull’attivazione dei laboratori didattici?",
-    "reference_context": "Per informazioni aggiuntive o sessioni extra è indicato il prof. Antonio Moschitta.",
-    "ground_truth": "Deve contattare il prof. Antonio Moschitta.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
-  },
-  {
-    "question": "Un laureato magistrale deve sostenere il corso di sicurezza per accedere ai laboratori?",
-    "reference_context": "Il documento non specifica differenze tra studenti triennali e magistrali.",
-    "ground_truth": "Non specificato nei documenti.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
-  },
-  {
-    "question": "È necessario presentare una domanda cartacea per accedere ai laboratori didattici?",
-    "reference_context": "Il documento non menziona alcuna domanda cartacea.",
-    "ground_truth": "No, non è indicata alcuna domanda cartacea. L’accesso avviene tramite corso online.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
-  },
-  {
-    "question": "Il documento parla di orari dei laboratori didattici?",
-    "reference_context": "Il testo tratta solo delle modalità di accesso e sicurezza, non degli orari.",
-    "ground_truth": "No, gli orari dei laboratori non sono menzionati.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
-  },
-  {
-    "question": "Cosa succede se lo studente non supera l’esame di sicurezza?",
-    "reference_context": "Non viene specificato cosa accade in caso di mancato superamento dell’esame.",
-    "ground_truth": "Non specificato nei documenti.",
     "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
   }
 ]

@@ -18,18 +18,6 @@
     "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
   },
   {
-    "question": "Che cos’è l’A.Di.S.U. e a chi si rivolge?",
-    "reference_context": "L’ufficio A.Di.S.U. (Agenzia per il Diritto allo Studio Universitario) assicura agli studenti capaci e meritevoli in particolari condizioni economiche la possibilità di accedere agli studi universitari.",
-    "ground_truth": "È l’Agenzia per il Diritto allo Studio Universitario, che supporta studenti meritevoli con difficoltà economiche.",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
-    "question": "Dove posso trovare informazioni sui servizi offerti dall’Ateneo?",
-    "reference_context": "L'Ateneo ha attivato una serie di servizi a vantaggio degli studenti, visualizzabili all'indirizzo http://www.unipg.it/servizi.",
-    "ground_truth": "Le informazioni si trovano sul sito http://www.unipg.it/servizi.",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
     "question": "Quali sono i giorni e gli orari di apertura al pubblico della Segreteria Studenti?",
     "reference_context": "Tutte le segreterie sono aperte al pubblico martedì e giovedì dalle 10.00 alle 13.00.",
     "ground_truth": "Martedì e giovedì dalle 10:00 alle 13:00.",
@@ -42,21 +30,9 @@
     "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
   },
   {
-    "question": "Chi è il responsabile della Segreteria Studenti?",
-    "reference_context": "Enrico Cruciani (Responsabile).",
-    "ground_truth": "Il responsabile è Enrico Cruciani.",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
     "question": "Qual è l’indirizzo email della Segreteria Didattica del Dipartimento di Ingegneria?",
     "reference_context": "Contatti: e-mail segr-didattica.ing@unipg.it.",
     "ground_truth": "L’indirizzo è segr-didattica.ing@unipg.it.",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
-    "question": "Quali corsi di laurea magistrale sono seguiti dalla Segreteria Didattica di Ingegneria?",
-    "reference_context": "La Segreteria Didattica gestisce i corsi magistrali in Engineering Management, Ingegneria della sicurezza per il territorio e il costruito (Foligno), Ingegneria elettronica per l’Internet of Things, Ingegneria industriale (Terni), Ingegneria informatica e robotica, e Ingegneria meccanica.",
-    "ground_truth": "Gestisce Engineering Management, Ingegneria della Sicurezza, Elettronica per l’IoT, Industriale, Informatica e Robotica, e Meccanica.",
     "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
   },
   {
@@ -75,30 +51,6 @@
     "question": "È possibile aprire un ticket per richiedere assistenza alla Segreteria Studenti?",
     "reference_context": "È possibile aprire un Ticket, servizio attivo h24, tramite il sito https://www.helpdesk.unipg.it/.",
     "ground_truth": "Sì, tramite il servizio ticket h24 sul sito https://www.helpdesk.unipg.it/.",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
-    "question": "Posso accedere al laboratorio senza aver frequentato il corso sulla sicurezza?",
-    "reference_context": "Non menzionato nel documento.",
-    "ground_truth": "Il documento non contiene informazioni relative all’accesso ai laboratori o ai corsi di sicurezza.",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
-    "question": "Quante segreterie diverse sono elencate nella pagina e quali sono?",
-    "reference_context": "Sono presenti tre sezioni: Segreteria Studenti, Segreteria Didattica del Dipartimento di Ingegneria e Segreteria On-Line Studenti.",
-    "ground_truth": "Tre: Studenti, Didattica di Ingegneria e Online (SOL).",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
-    "question": "Quale contatto email dovrei usare per domande generiche sui corsi di laurea in Ingegneria?",
-    "reference_context": "La segreteria didattica può essere contattata all’indirizzo segr-didattica.ing@unipg.it per i corsi di laurea e laurea magistrale in Ingegneria.",
-    "ground_truth": "segr-didattica.ing@unipg.it è l’indirizzo per domande sui corsi di Ingegneria.",
-    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
-  },
-  {
-    "question": "Il documento specifica gli orari di apertura della Biblioteca Centrale?",
-    "reference_context": "Il documento menziona la Biblioteca Centrale ma non indica orari di apertura.",
-    "ground_truth": "No, non sono indicati orari di apertura della biblioteca.",
     "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
   }
 ]

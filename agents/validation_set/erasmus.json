@@ -30,39 +30,15 @@
     "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
   },
   {
-    "question": "Che differenza c'è tra un tirocinio predefinito e un tirocinio autonomo?",
-    "reference_context": "Il tirocinio può essere predefinito, cioè svolto nell’ambito di un accordo tra UniPG e un’altra istituzione partner, o autonomo, cioè svolto al di fuori di un accordo.",
-    "ground_truth": "Il tirocinio predefinito avviene tramite accordi tra UniPG e un ente partner, mentre quello autonomo è organizzato dallo studente senza un accordo istituzionale.",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
-  },
-  {
     "question": "In quale periodo viene pubblicato il bando Erasmus?",
     "reference_context": "Ogni anno, nei primi mesi, viene pubblicato il bando di selezione.",
     "ground_truth": "Il bando Erasmus viene pubblicato ogni anno nei primi mesi.",
     "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
   },
   {
-    "question": "Chi valuta le candidature Erasmus all'interno del Dipartimento?",
-    "reference_context": "Alla scadenza del bando, la Commissione Erasmus di Dipartimento valuta le domande e redige una graduatoria.",
-    "ground_truth": "Le candidature vengono valutate dalla Commissione Erasmus di Dipartimento.",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
-  },
-  {
     "question": "Dove è possibile trovare i bandi Erasmus aggiornati?",
     "reference_context": "È possibile avere maggiori informazioni nelle pagine di ateneo dedicate al programma Erasmus+, tra cui la Pagina contenente i bandi: https://www.unipg.it/internazionale/bandi-e-news/bandi-per-studenti-dottorandi-specializzandi",
     "ground_truth": "Nella pagina dei bandi Erasmus del sito UniPG: https://www.unipg.it/internazionale/bandi-e-news/bandi-per-studenti-dottorandi-specializzandi",
-    "document": "internazionale_bandi-e-news_bandi-per-studenti-dottorandi-specializzandi_54ee5267aeff.main.html"
-  },
-  {
-    "question": "Quanti bandi Erasmus+ Traineeship risultano aperti nel 2025?",
-    "reference_context": "Bando Erasmus+ Mobilità Traineeship – Azione chiave 1 (KA1) – Call 2024 – Progetto n. 2024-1-IT02-KA131-HED-000226359. Termine presentazione domande: 02.12.2025 ore 13:00.",
-    "ground_truth": "Nel 2025 risulta aperto almeno un bando Erasmus+ Mobilità Traineeship con scadenza 2 dicembre 2025.",
-    "document": "internazionale_bandi-e-news_bandi-per-studenti-dottorandi-specializzandi_54ee5267aeff.main.html"
-  },
-  {
-    "question": "Gli studenti palestinesi possono partecipare a bandi Erasmus UniPG?",
-    "reference_context": "Call for applications for Palestinian students interested in attending university studies at the Università degli Studi di Perugia - Project IUPALS.",
-    "ground_truth": "Sì, esistono bandi specifici come il progetto IUPALS dedicati a studenti palestinesi.",
     "document": "internazionale_bandi-e-news_bandi-per-studenti-dottorandi-specializzandi_54ee5267aeff.main.html"
   },
   {
@@ -78,12 +54,6 @@
     "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
   },
   {
-    "question": "Qual è la differenza tra mobilità in ambito EU e Extra-EU?",
-    "reference_context": "Il programma Erasmus+ promuove la mobilità anche in paesi Extra-EU associati al programma (partner countries).",
-    "ground_truth": "La mobilità in ambito EU riguarda paesi membri dell’Unione Europea, mentre quella Extra-EU coinvolge paesi partner esterni associati al programma Erasmus+.",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_b127c69f6f91.main.html"
-  },
-  {
     "question": "Qual è la lingua richiesta per partecipare a un tirocinio Erasmus?",
     "reference_context": "È necessaria un'adeguata conoscenza della lingua del Paese ospitante o della lingua inglese almeno pari al livello richiesto dall’ente.",
     "ground_truth": "La lingua richiesta può essere quella del Paese ospitante o l’inglese, secondo quanto richiesto dall’ente o dall’università.",
@@ -96,39 +66,9 @@
     "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
   },
   {
-    "question": "Il programma Erasmus+ è riservato solo agli studenti di Ingegneria?",
-    "reference_context": "Erasmus+ offre opportunità agli studenti di qualsiasi indirizzo e ciclo di studi.",
-    "ground_truth": "No, il programma Erasmus+ è aperto a studenti di qualsiasi indirizzo e ciclo di studi.",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_b127c69f6f91.main.html"
-  },
-  {
-    "question": "È possibile svolgere una tesi all'estero tramite Erasmus?",
-    "reference_context": "Tra le attività che è possibile svolgere all'estero rientra anche l'attività di tesi.",
-    "ground_truth": "Sì, durante la mobilità a fini di studio è possibile svolgere la tesi all'estero.",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
-  },
-  {
-    "question": "Dove si trovano i contatti dell'Area Relazioni Internazionali?",
-    "reference_context": "È possibile avere maggiori informazioni nella pagina dei contatti dell'Area Relazioni Internazionali: https://www.unipg.it/internazionale/",
-    "ground_truth": "Nella pagina dei contatti dell’Area Relazioni Internazionali sul sito https://www.unipg.it/internazionale/",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
-  },
-  {
-    "question": "È possibile candidarsi per una mobilità dopo la laurea?",
-    "reference_context": "Il tirocinio può essere svolto anche dopo il completamento del corso di studi (tirocinio post-titolo).",
-    "ground_truth": "Sì, il programma Erasmus+ Traineeship consente anche tirocini post-laurea.",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
-  },
-  {
     "question": "Quali documenti sono richiesti per un tirocinio autonomo?",
     "reference_context": "In caso di Tirocinio Autonomo alla domanda deve essere allegato il Learning Agreement firmato dall’ente/azienda ospitante.",
-    "ground_truth": "Serve allegare il Learning Agreement firmato dall’ente ospitante.",
+    "ground_truth": "Serve allegare alla domanda il Learning Agreement firmato dall’ente ospitante.",
     "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
-  },
-  {
-    "question": "È previsto un bando per borse Erasmus per docenti UniPG?",
-    "reference_context": "Non sono presenti riferimenti a bandi Erasmus destinati ai docenti.",
-    "ground_truth": "Non presente nei documenti.",
-    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_b127c69f6f91.main.html"
   }
 ]

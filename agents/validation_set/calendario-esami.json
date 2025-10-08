@@ -12,24 +12,6 @@
     "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
   },
   {
-    "question": "Quali sono i membri della commissione per il corso di Deep Learning and Robot Perception?",
-    "reference_context": "Deep Learning and Robot Perception — Costante, Valigi, Fravolini, Leomanni, Ferrante, Dionigi, Legittimo, Felicioni, Brilli, Crocetti",
-    "ground_truth": "Costante, Valigi, Fravolini, Leomanni, Ferrante, Dionigi, Legittimo, Felicioni, Brilli e Crocetti.",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
-  },
-  {
-    "question": "Quanti docenti compongono la commissione di Machine to Machine Networks?",
-    "reference_context": "Machine to Machine Networks — Femminella, Reali, Baruffa, Frescura, Banelli, Rugini, Perfetti",
-    "ground_truth": "Sette docenti.",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
-  },
-  {
-    "question": "Il documento specifica le date esatte degli appelli di esame per ogni corso?",
-    "reference_context": "Si.",
-    "ground_truth": "Si.",
-    "document": "_files_didattica_calendario_2025-26_lm32-inginforobo_cal_esami.pdf"
-  },
-  {
     "question": "In che data è previsto l'appello di esame di Dicembre per il corso di Data Intensive Applications and Big Data?",
     "reference_context": "Data Intensive Applications and Big Data — 17 Dicembre 2025",
     "ground_truth": "17 Dicembre 2025",

@@ -30,51 +30,9 @@
     "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
   },
   {
-    "question": "Chi si occupa di pubblicizzare gli appelli straordinari approvati?",
-    "reference_context": "La Segreteria Didattica si farà carico di pubblicizzarlo attraverso i canali istituzionali di comunicazione con gli studenti.",
-    "ground_truth": "È la Segreteria Didattica a pubblicizzare gli appelli straordinari tramite i canali ufficiali.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
-  },
-  {
-    "question": "Il Consiglio Intercorso di Laurea può impedire l’istituzione di un appello straordinario?",
-    "reference_context": "Il Presidente del CIL avrà facoltà di proporre date diverse per l’appello, piuttosto che impedirne l’istituzione.",
-    "ground_truth": "No, il Presidente del CIL può solo proporre date alternative, non impedirne l’istituzione.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
-  },
-  {
-    "question": "Chi informa il Consiglio Intercorso di Laurea (CIL) quando un docente istituisce un appello straordinario?",
-    "reference_context": "Il docente ne dà comunicazione al Presidente, che ne informerà il CIL.",
-    "ground_truth": "Il Presidente del CIL informa il Consiglio una volta ricevuta la comunicazione dal docente.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
-  },
-  {
     "question": "Esiste un limite massimo di appelli straordinari che un docente può istituire?",
     "reference_context": "Nel testo non è indicato alcun limite numerico di appelli straordinari.",
     "ground_truth": "No, non viene specificato alcun limite massimo nel documento.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
-  },
-  {
-    "question": "Il documento specifica procedure per la prenotazione online degli appelli straordinari?",
-    "reference_context": "Il testo non menziona alcuna procedura di prenotazione online.",
-    "ground_truth": "No, non viene menzionata alcuna procedura di prenotazione online per gli appelli straordinari.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
-  },
-  {
-    "question": "Qual è il tema principale del documento?",
-    "reference_context": "L’istituzione di eventuali appelli straordinari, ulteriori rispetto a quelli approvati dal Consiglio Intercorso di Laurea.",
-    "ground_truth": "Il documento tratta i criteri e le modalità per l’istituzione di appelli straordinari nell’Area Informazione.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
-  },
-  {
-    "question": "Chi stabilisce i criteri generali per gli appelli straordinari?",
-    "reference_context": "L’istituzione di eventuali appelli straordinari è regolamentata dai seguenti criteri.",
-    "ground_truth": "I criteri sono stabiliti nel documento stesso, che definisce le regole per l’istituzione degli appelli straordinari.",
-    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
-  },
-  {
-    "question": "Nel documento si parla di orari delle lezioni?",
-    "reference_context": "Il testo tratta esclusivamente degli appelli straordinari.",
-    "ground_truth": "No, il documento non tratta gli orari delle lezioni.",
     "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
   }
 ]
