@@ -20,6 +20,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 def get_llm():
     return ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
+from langsmith.run_helpers import traceable
+
+@traceable(name="RAG Evaluation - UNIPG (v1)")
 def run_evaluation(version: str = "v1"):
     # Esegue la valutazione automatica del Retrieval Agent di UNIPG
     # leggendo un dataset con colonne: question, reference_context, ground_truth, document.
@@ -101,8 +104,6 @@ def run_evaluation(version: str = "v1"):
         embeddings=embeddings
     )
 
-
-
     print("\nRISULTATI RAGAS:")
     for k, v in results.items():
         print(f" - {k}: {v:.3f}")
@@ -110,22 +111,6 @@ def run_evaluation(version: str = "v1"):
     # === Salva CSV versionato ===
     csv_path = base_dir / "ragas_results.csv"
     save_results_to_csv(csv_path, questions, answers, results)
-
-    # === Invia risultati a LangSmith ===
-    langsmith_key = os.getenv("LANGCHAIN_API_KEY")
-    if langsmith_key:
-        print("\nInviando risultati a LangSmith...")
-        client = Client()
-        client.create_run(
-            name=f"RAG Evaluation - UNIPG ({version})",
-            run_type="chain",
-            inputs={"questions": questions},
-            outputs={"results": dict(results)},
-            metadata={"component": "ragas_evaluation"}
-        )
-        print("Risultati inviati a LangSmith.")
-    else:
-        print("ℹ Nessuna API key LangSmith trovata — risultati solo in locale.")
 
 
 def save_results_to_csv(csv_path: Path, questions, answers, metrics):
