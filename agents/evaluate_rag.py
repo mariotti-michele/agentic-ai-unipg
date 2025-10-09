@@ -101,6 +101,8 @@ def run_evaluation(version: str = "v1"):
         embeddings=embeddings
     )
 
+
+
     print("\nRISULTATI RAGAS:")
     for k, v in results.items():
         print(f" - {k}: {v:.3f}")
@@ -114,24 +116,16 @@ def run_evaluation(version: str = "v1"):
     if langsmith_key:
         print("\nInviando risultati a LangSmith...")
         client = Client()
-        run = client.create_run(
+        client.create_run(
             name=f"RAG Evaluation - UNIPG ({version})",
             run_type="chain",
             inputs={"questions": questions},
+            outputs={"results": dict(results)},
             metadata={"component": "ragas_evaluation"}
         )
-        try:
-            client.update_run(
-                run.id,
-                outputs={"results": dict(results)},
-                status="success"
-            )
-            print("✅ Risultati inviati e run chiuso su LangSmith.")
-        except Exception as e:
-            client.update_run(run.id, error=str(e), status="error")
-            print(f"❌ Errore durante l'invio a LangSmith: {e}")
+        print("Risultati inviati a LangSmith.")
     else:
-        print("ℹ Nessuna API key LangSmith trovata — risultati solo in locale.")
+        print("Nessuna API key LangSmith trovata — risultati solo in locale.")
 
 
 def save_results_to_csv(csv_path: Path, questions, answers, metrics):
