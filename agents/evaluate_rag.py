@@ -111,20 +111,21 @@ def run_evaluation(version: str = "v1"):
     csv_path = base_dir / "ragas_results.csv"
     save_results_to_csv(csv_path, questions, answers, results)
 
-    # === Invia risultati a LangSmith (opzionale) ===
+    # === Invia risultati a LangSmith ===
     langsmith_key = os.getenv("LANGCHAIN_API_KEY")
     if langsmith_key:
         print("\nInviando risultati a LangSmith...")
         client = Client()
         client.create_run(
             name=f"RAG Evaluation - UNIPG ({version})",
-            run_type="evaluation",
+            run_type="chain",
             inputs={"questions": questions},
             outputs={"results": dict(results)},
+            metadata={"component": "ragas_evaluation"}
         )
         print("Risultati inviati a LangSmith.")
     else:
-        print("ℹNessuna API key LangSmith trovata — risultati solo in locale.")
+        print("ℹ Nessuna API key LangSmith trovata — risultati solo in locale.")
 
 
 def save_results_to_csv(csv_path: Path, questions, answers, metrics):
