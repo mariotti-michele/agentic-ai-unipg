@@ -17,13 +17,11 @@ from retrieval_agent import answer_query, embeddings, vectorstore
 from pathlib import Path
 from langchain_google_genai import ChatGoogleGenerativeAI
 
+
 def get_llm():
     return ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
 def run_evaluation(version: str = "v1"):
-    # Esegue la valutazione automatica del Retrieval Agent di UNIPG
-    # leggendo un dataset con colonne: question, reference_context, ground_truth, document.
-    # I risultati vengono salvati in evaluations/<version>/ragas_results.csv.
     print(f"Avvio validazione RAG - versione {version}")
     base_dir = Path("evaluations") / version
     base_dir.mkdir(parents=True, exist_ok=True)
@@ -31,25 +29,23 @@ def run_evaluation(version: str = "v1"):
     VALIDATION_DIR = Path(__file__).resolve().parent / "validation_set"
     print(f"Caricamento dataset da: {VALIDATION_DIR}")
 
-    data = []
+    validation_data = []
     for json_file in sorted(VALIDATION_DIR.glob("*.json")):
         print(f"  → Trovato file: {json_file.name}")
         try:
             with open(json_file, "r", encoding="utf-8") as f:
                 content = json.load(f)
                 if isinstance(content, list):
-                    data.extend(content)
+                    validation_data.extend(content)
                 else:
                     print(f"Il file {json_file.name} non contiene una lista JSON valida, ignorato.")
         except Exception as e:
             print(f"Errore nel file {json_file.name}: {e}")
 
-    print(f"Totale domande caricate: {len(data)}")
+    print(f"Totale domande caricate: {len(validation_data)}")
 
-    questions = [d["question"] for d in data]
-    reference_contexts = [d.get("reference_context", []) for d in data]
-    ground_truths = [d.get("ground_truth", None) for d in data]
-    documents = [d.get("document", None) for d in data]
+    questions = [d["question"] for d in validation_data]
+    ground_truths = [d.get("ground_truth", None) for d in validation_data]
 
     answers, retrieved_contexts = [], []
 
@@ -79,37 +75,39 @@ def run_evaluation(version: str = "v1"):
     # === Crea dataset per RAGAS ===
     dataset = Dataset.from_dict({
         "question": questions,
-        "contexts": retrieved_contexts,       # contesto trovato dal retriever
-        "answer": answers,                    # risposta del modello
-        "ground_truth": ground_truths,        # risposta corretta
-        "reference_context": reference_contexts,  # contesto di riferimento
-        "document": documents                 # testo documento (opzionale)
+        "contexts": retrieved_contexts,
+        "answer": answers,
+        "ground_truth": ground_truths
     })
 
     print("\nValutazione con Ragas...")
     llm = get_llm()
-    results = evaluate(
+
+    metrics_list = [
+        faithfulness,
+        answer_relevancy,
+        context_precision,
+        context_recall,
+        answer_correctness,
+    ]
+
+    result = evaluate(
         dataset=dataset,
-        metrics=[
-            faithfulness,
-            answer_relevancy,
-            context_precision,
-            context_recall,
-            answer_correctness,
-        ],
+        metrics=metrics_list,
         llm=llm,
-        embeddings=embeddings
+        embeddings=embeddings,
     )
 
+    result_df = result.to_pandas()
+    results = result_df.mean(numeric_only=True).to_dict()
 
-
-    print("\nRISULTATI RAGAS:")
+    print("\nRISULTATI RAGAS GLOBALI:")
     for k, v in results.items():
         print(f" - {k}: {v:.3f}")
 
     # === Salva CSV versionato ===
     csv_path = base_dir / "ragas_results.csv"
-    save_results_to_csv(csv_path, questions, answers, results)
+    save_results_to_csv(csv_path, dataset, result_df, results)
 
     # === Invia risultati a LangSmith ===
     langsmith_key = os.getenv("LANGCHAIN_API_KEY")
@@ -128,10 +126,7 @@ def run_evaluation(version: str = "v1"):
         print("Nessuna API key LangSmith trovata — risultati solo in locale.")
 
 
-def save_results_to_csv(csv_path: Path, questions, answers, metrics):
-    """
-    Salva i risultati di valutazione in un file CSV versionato.
-    """
+def save_results_to_csv(csv_path: Path, dataset: Dataset, result_df, metrics):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     file_exists = csv_path.exists()
 
@@ -139,22 +134,39 @@ def save_results_to_csv(csv_path: Path, questions, answers, metrics):
         writer = csv.writer(f)
         if not file_exists:
             writer.writerow([
-                "timestamp", "question", "answer",
-                "faithfulness", "answer_relevancy",
-                "context_precision", "context_recall", "answer_correctness"
+                "timestamp", "question", "answer", "faithfulness",
+                "answer_relevancy", "context_precision", "context_recall",
+                "answer_correctness"
             ])
-        for i, q in enumerate(questions):
+
+        for i in range(len(dataset)):
+            row = result_df.iloc[i]
             writer.writerow([
                 timestamp,
-                q,
-                answers[i],
-                f"{metrics['faithfulness']:.3f}",
-                f"{metrics['answer_relevancy']:.3f}",
-                f"{metrics['context_precision']:.3f}",
-                f"{metrics['context_recall']:.3f}",
-                f"{metrics['answer_correctness']:.3f}",
+                dataset[i]["question"],
+                dataset[i]["answer"],
+                f"{row['faithfulness']:.3f}",
+                f"{row['answer_relevancy']:.3f}",
+                f"{row['context_precision']:.3f}",
+                f"{row['context_recall']:.3f}",
+                f"{row['answer_correctness']:.3f}",
             ])
-    print(f"Risultati salvati in: {csv_path}")
+
+    with open(csv_path, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            timestamp,
+            "=== MEDIA TOTALE ===",
+            "",
+            f"{metrics['faithfulness']:.3f}",
+            f"{metrics['answer_relevancy']:.3f}",
+            f"{metrics['context_precision']:.3f}",
+            f"{metrics['context_recall']:.3f}",
+            f"{metrics['answer_correctness']:.3f}",
+        ])
+
+    print(f"Risultati individuali e medi salvati in: {csv_path}")
+
 
 
 if __name__ == "__main__":
