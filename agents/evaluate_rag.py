@@ -13,7 +13,7 @@ from ragas.metrics import (
 from ragas.metrics._answer_relevance import answer_relevancy
 from ragas import evaluate
 from langsmith import Client
-from retrieval_agent import answer_query, embeddings, vectorstore
+from baseline_rag_agent import answer_query, embeddings, vectorstore
 from pathlib import Path
 from langchain_google_genai import ChatGoogleGenerativeAI
 
