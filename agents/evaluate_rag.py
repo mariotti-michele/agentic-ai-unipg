@@ -1,6 +1,9 @@
 import json
 import os
 import csv
+import itertools
+import time
+import numpy as np
 from datetime import datetime
 from pathlib import Path
 from datasets import Dataset
@@ -18,8 +21,38 @@ from pathlib import Path
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 
+def get_next_google_key():
+    """Crea un generatore ciclico di chiavi dalle GOOGLE_API_KEY."""
+    keys = os.getenv("GOOGLE_API_KEY", "").split(",")
+    keys = [k.strip() for k in keys if k.strip()]
+    if not keys:
+        raise ValueError("Nessuna GOOGLE_API_KEY valida trovata nel .env (usa GOOGLE_API_KEY=key1,key2,...)")
+    for key in itertools.cycle(keys):
+        yield key
+
+
+google_key_gen = get_next_google_key()
+
+
+def get_active_google_key():
+    """Restituisce la prossima chiave disponibile dal generatore."""
+    return next(google_key_gen)
+
 def get_llm():
-    return ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+    key = get_active_google_key()
+    os.environ["GOOGLE_API_KEY"] = key
+    os.environ["GOOGLE_API_USE_RETRY"] = "false"
+    print(f"[INFO] Utilizzo API Key: {key[:6]}...")
+
+    try:
+        return ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+    except Exception as e:
+        if "quota" in str(e).lower() or "429" in str(e).lower() or "resourceexhausted" in str(e).lower():
+            print(f"[WARN] Quota esaurita per {key[:6]}... passo alla prossima chiave.")
+            return get_llm()
+        else:
+            print(f"[AVVISO] Errore con chiave {key[:6]} — passo alla successiva. Dettagli: {e}")
+            return get_llm()
 
 def run_evaluation(version: str = "v1"):
     print(f"Avvio validazione RAG - versione {version}")

@@ -73,3 +73,6 @@ timestamp,question,answer,faithfulness,answer_relevancy,context_precision,contex
 2025-10-13 09:57:42,Come si calcola il voto di laurea magistrale?,"Il voto di laurea magistrale si calcola sommando la media curriculare e il punteggio assegnato alla tesi di laurea, arrotondati all'unità.",nan,nan,nan,nan,nan
 2025-10-13 09:57:42,=== MEDIA TOTALE ===,,0.600,0.527,0.125,0.250,0.141
 >>>>>>> b51d939704d13f8d54030a8296350eb469725179
+2025-10-13 10:49:51,Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?,Non presente nei documenti.,0.000,0.000,0.000,0.000,0.141
+2025-10-13 10:49:51,Dove si compila la domanda di laurea online?,"La domanda di laurea può essere compilata online tramite il Sistema Online dei Lavori (SOL) dell'Università degli Studi di Parma. Per farlo, lo studente deve entrare nel SOL con le proprie credenziali, scegliere il link ""Laurea"" e cliccare su ""Conseguimento titolo"", a cui il sistema guiderà nella compilazione della domanda di laurea online.",0.875,0.991,0.583,1.000,0.781
+2025-10-13 10:49:51,=== MEDIA TOTALE ===,,0.438,0.495,0.292,0.500,0.461
