@@ -1,5 +1,11 @@
 [
   {
+    "question": "Cosa accade se il Presidente del CIL non risponde entro una settimana alla proposta di un appello straordinario?",
+    "reference_context": "In assenza di reazione del Presidente del CIL entro una settimana dalla comunicazione, varrà il criterio del silenzio assenso.",
+    "ground_truth": "Se non risponde entro una settimana, si applica il silenzio assenso e l'appello è approvato.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
+  },
+  {
     "question": "Dove si compila la domanda di laurea online?",
     "reference_context": "Entrando nel SOL con le proprie credenziali dal menù scegliere il link ‘Laurea’ e cliccare su ‘Conseguimento titolo’.",
     "ground_truth": "La domanda di laurea si compila accedendo al portale SOL, sezione 'Laurea' → 'Conseguimento titolo'.",

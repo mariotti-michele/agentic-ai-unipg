@@ -4,7 +4,6 @@ from langchain_qdrant import QdrantVectorStore
 from langchain_ollama import OllamaLLM, OllamaEmbeddings
 from langchain.prompts import PromptTemplate
 
-# ---------------- Config ----------------
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://ollama:11434")
 QDRANT_URL = os.getenv("QDRANT_URL", "http://qdrant:6333")
 COLLECTION_NAME = "ing_info_mag_docs"
