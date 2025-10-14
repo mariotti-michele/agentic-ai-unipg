@@ -25,23 +25,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 api_call_counter = {
     "total_calls": 0,
     "calls_by_key": {},
-    "calls_by_metric": {},
-    "total_tokens_input": 0,
-    "total_tokens_output": 0,
-    "total_cost_usd": 0.0
+    "calls_by_metric": {}
 }
 
-
-# Estimatore di token e costi per Gemini
-def estimate_gemini_tokens(text: str) -> int:
-    """Stima del numero di token (1 token ≈ 4 caratteri)"""
-    return int(len(text) / 4)
-
-def estimate_gemini_cost(input_tokens: int, output_tokens: int) -> float:
-    """Costo stimato in USD per Gemini 2.5 Flash (ottobre 2025)"""
-    input_cost = (input_tokens / 1_000_000) * 0.075  # $0.075 per 1M input token
-    output_cost = (output_tokens / 1_000_000) * 0.30  # $0.30 per 1M output token
-    return input_cost + output_cost
 
 # Wrapper semplice che traccia le chiamate
 class TrackedChatGoogleGenerativeAI(ChatGoogleGenerativeAI):
@@ -119,10 +105,6 @@ def print_api_stats():
     for key, count in api_call_counter['calls_by_key'].items():
         print(f"  - {key}...: {count} chiamate")
     print("="*60 + "\n")
-    print(f"Token input totali stimati: {api_call_counter['total_tokens_input']}")
-    print(f"Token output totali stimati: {api_call_counter['total_tokens_output']}")
-    print(f"Costo totale stimato: ${api_call_counter['total_cost_usd']:.4f}")
-
 
 
 def run_evaluation(version: str = "v1"):
@@ -172,21 +154,6 @@ def run_evaluation(version: str = "v1"):
                 answer = response.split("Risposta:")[1].split("\n")[0].strip()
             else:
                 answer = response.strip()
-
-            # === Calcolo token stimati e costi ===
-            prompt_text = q + "\n" + "\n".join(retrieved_ctx)
-            input_tokens = estimate_gemini_tokens(prompt_text)
-            output_tokens = estimate_gemini_tokens(answer)
-            total_tokens = input_tokens + output_tokens
-            total_cost = estimate_gemini_cost(input_tokens, output_tokens)
-
-            # Aggiorna contatori globali
-            api_call_counter["total_tokens_input"] += input_tokens
-            api_call_counter["total_tokens_output"] += output_tokens
-            api_call_counter["total_cost_usd"] += total_cost
-
-            print(f"   → Token stimati: in={input_tokens}, out={output_tokens}, costo=${total_cost:.5f}")
-
 
             answers.append(answer)
             retrieved_contexts.append(retrieved_ctx)
