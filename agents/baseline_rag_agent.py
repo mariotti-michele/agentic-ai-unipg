@@ -31,13 +31,11 @@ QA_CHAIN_PROMPT = PromptTemplate(
     template=prompt_template,
 )
 
-# ---------------- Embeddings ----------------
 embeddings = OllamaEmbeddings(
     model="nomic-embed-text",
     base_url=OLLAMA_BASE_URL
 )
 
-# ---------------- Qdrant ----------------
 print("Connettendo a Qdrant...")
 qdrant_client = QdrantClient(url=QDRANT_URL)
 
@@ -48,14 +46,11 @@ vectorstore = QdrantVectorStore.from_existing_collection(
 )
 print("Connesso al vector store con successo!")
 
-# ---------------- LLM ----------------
 print("Inizializzando LLM...")
 llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
 
-# ---------------- Retriever + QA ----------------
 print("Creando retriever...")
 
-# ---------------- Functions ----------------
 def answer_query(query: str):
     try:
         print(f"Processando query...")
@@ -106,7 +101,6 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
 
 
 def test_connection():
-    """Test connessione al vector store con retrieval MMR"""
     try:
         vec = embeddings.embed_query("test")
         docs = vectorstore.max_marginal_relevance_search_by_vector(vec, k=3, fetch_k=10, lambda_mult=0.5)
@@ -118,7 +112,6 @@ def test_connection():
         print(f"Test connessione fallito: {e}")
         return False
 
-# ---------------- Main ----------------
 if __name__ == "__main__":
     print("Sistema di Q&A avviato.")
 

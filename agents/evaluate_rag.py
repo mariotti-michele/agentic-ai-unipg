@@ -22,7 +22,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 def get_next_google_key():
-    """Crea un generatore ciclico di chiavi dalle GOOGLE_API_KEY."""
+    # crea un generatore ciclico di chiavi dalle GOOGLE_API_KEY
     keys = os.getenv("GOOGLE_API_KEY", "").split(",")
     keys = [k.strip() for k in keys if k.strip()]
     if not keys:
@@ -35,7 +35,7 @@ google_key_gen = get_next_google_key()
 
 
 def get_active_google_key():
-    """Restituisce la prossima chiave disponibile dal generatore."""
+    # restituisce la prossima chiave disponibile dal generatore
     return next(google_key_gen)
 
 def get_llm():
@@ -105,7 +105,6 @@ def run_evaluation(version: str = "v1"):
             answers.append("")
             retrieved_contexts.append([])
 
-    # === Crea dataset per RAGAS ===
     dataset = Dataset.from_dict({
         "question": questions,
         "contexts": retrieved_contexts,
@@ -138,11 +137,9 @@ def run_evaluation(version: str = "v1"):
     for k, v in results.items():
         print(f" - {k}: {v:.3f}")
 
-    # === Salva CSV versionato ===
     csv_path = base_dir / "ragas_results.csv"
     save_results_to_csv(csv_path, dataset, result_df, results)
 
-    # === Invia risultati a LangSmith ===
     langsmith_key = os.getenv("LANGCHAIN_API_KEY")
     if langsmith_key:
         print("\nInviando risultati a LangSmith...")
