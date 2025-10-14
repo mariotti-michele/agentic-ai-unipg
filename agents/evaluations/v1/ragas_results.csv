@@ -106,3 +106,7 @@ timestamp,question,answer,faithfulness,answer_relevancy,context_precision,contex
 2025-10-14 14:24:38,Dove si compila la domanda di laurea online?,"La domanda di laurea può essere compilata online attraverso il sistema SOL (Segreterie On Line) dell'Università di Parma. Per farlo, l'utente deve entrare nel SOL con le proprie credenziali e scegliere il link ""Laurea"", poi cliccare su ""Conseguimento titolo"" per essere guidato alla compilazione della domanda di laurea online.",0.889,0.936,0.583,1.000,0.810
 2025-10-14 14:24:38,=== MEDIA TOTALE ===,,0.694,0.959,0.792,1.000,0.698
 2025-10-14 14:24:38,=== API CALLS: 28 ===,,,,,,
+2025-10-14 14:56:27,Cosa accade se il Presidente del CIL non risponde entro una settimana alla proposta di un appello straordinario?,"Se il Presidente del CIL non risponde entro una settimana dalla comunicazione, varrà il criterio del silenzio assenso.",1.000,0.849,1.000,1.000,0.696
+2025-10-14 14:56:27,Dove si compila la domanda di laurea online?,"La domanda di laurea può essere compilata online attraverso il sistema di gestione delle iscrizioni (SOL) dell'Università degli Studi di Parma. Per fare ciò, lo studente deve accedere al SOL con le proprie credenziali e scegliere il link ""Laurea"", cliccare su ""Conseguimento titolo"" e seguire le istruzioni del sistema per compilare la domanda di laurea online.",0.857,0.991,0.583,1.000,0.786
+2025-10-14 14:56:27,=== MEDIA TOTALE ===,,0.929,0.920,0.792,1.000,0.741
+2025-10-14 14:56:27,=== API CALLS: 29 ===,,,,,,
