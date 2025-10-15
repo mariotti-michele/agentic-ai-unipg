@@ -203,6 +203,66 @@ def run_evaluation(version: str = "v1"):
     cost_total = cost_input + cost_output
     print(f"💰 Costo stimato con GPT-4o-mini: ${cost_total:.3f}")
 
+   # === STIMA COSTI VERTEX AI (GOOGLE) ===
+    # I modelli Gemini e Llama usano una tokenizzazione leggermente diversa da OpenAI (≈ +10-20% token)
+    GOOGLE_TOKEN_MULTIPLIER = 1.15  # correzione media empirica +15%
+
+    # Applica la correzione sui token stimati
+    input_gemini = token_counter["input_tokens"] * GOOGLE_TOKEN_MULTIPLIER
+    output_gemini = token_counter["output_tokens"] * GOOGLE_TOKEN_MULTIPLIER
+    total_gemini = input_gemini + output_gemini
+
+    # Prezzi aggiornati per Vertex AI (USD per 1K token)
+    vertex_prices = {
+        "gemini-2.5-flash": {"input": 0.0004, "output": 0.0016},  # LLM-as-Judge (molto economico)
+        "llama-3.3-70b": {"input": 0.0004, "output": 0.0006},      # RAG model
+        "gemini-1.5-pro": {"input": 0.0025, "output": 0.0100},     # fascia alta
+    }
+
+    def estimate_vertex_cost(model, input_tokens, output_tokens):
+        """Calcola il costo stimato per Vertex AI (Google)"""
+        if model not in vertex_prices:
+            raise ValueError(f"Modello '{model}' non trovato in vertex_prices.")
+        p = vertex_prices[model]
+        return (input_tokens / 1000 * p["input"]) + (output_tokens / 1000 * p["output"])
+
+    # Calcolo dei costi stimati per ciascun modello Vertex AI
+    cost_gemini = estimate_vertex_cost("gemini-2.5-flash", input_gemini, output_gemini)
+    cost_llama = estimate_vertex_cost("llama-3.3-70b", input_gemini, output_gemini)
+    cost_gemini_pro = estimate_vertex_cost("gemini-1.5-pro", input_gemini, output_gemini)
+
+    # === Stampa risultati su console ===
+    print("\n===== STIMA COSTI VERTEX AI (GOOGLE) =====")
+    print(f"(correzione token applicata: +15%)")
+    print(f"Gemini 2.5 Flash  → ${cost_gemini:.3f}")
+    print(f"Llama 3.3 70B     → ${cost_llama:.3f}")
+    print(f"Gemini 1.5 Pro    → ${cost_gemini_pro:.3f}")
+
+    # === Salvataggio su CSV ===
+    csv_vertex_path = Path('evaluations') / version / 'vertexai_costs.csv'
+    csv_vertex_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(csv_vertex_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(['timestamp', 'model', 'input_tokens', 'output_tokens', 'total_tokens', 'cost_est_usd'])
+        for model, cost in {
+            "gemini-2.5-flash": cost_gemini,
+            "llama-3.3-70b": cost_llama,
+            "gemini-1.5-pro": cost_gemini_pro,
+        }.items():
+            writer.writerow([
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                model,
+                round(input_gemini),
+                round(output_gemini),
+                round(total_gemini),
+                round(cost, 4)
+            ])
+
+    print(f"📊 Stima costi Vertex AI salvata in: {csv_vertex_path}")
+
+
+
     # Salva su CSV per analisi successive
     csv_token_path = Path('evaluations') / version / 'token_usage.csv'
     with open(csv_token_path, 'w', newline='', encoding='utf-8') as f:

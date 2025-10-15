@@ -3,19 +3,19 @@ services:
     image: qdrant/qdrant:v1.15.1
     container_name: qdrant
     ports:
-      - "6333:6333"   # REST API
-      - "6334:6334"   # gRPC
+      - "6333:6333"
+      - "6334:6334"
     volumes:
-      - qdrant_data:/qdrant/storage 
-  
+      - qdrant_data:/qdrant/storage
+
   ollama:
     image: ollama/ollama:0.11.11
     container_name: ollama
     restart: unless-stopped
     volumes:
-      - ./ollama_data:/root/.ollama   # cache e modelli scaricati
+      - ./ollama_data:/root/.ollama
     ports:
-      - "11434:11434"  # API REST Ollama
+      - "11434:11434"
     deploy:
       resources:
         limits:
@@ -23,17 +23,14 @@ services:
           memory: 8g
 
   agents:
-    build: ./agents   # cartella agents accanto al docker-compose.yml
+    build: ./agents
     container_name: agents
     env_file:
       - .env
     volumes:
-      - ./agents:/app   # monta la cartella agents dentro /app
+      - ./agents:/app
     working_dir: /app
-    command: tail -f /dev/null  # mantiene il container attivo per sviluppo
-    environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
-      - QDRANT_URL=http://qdrant:6333
+    command: tail -f /dev/null
     depends_on:
       - ollama
       - qdrant
@@ -41,19 +38,16 @@ services:
   indexing:
     build: ./indexing
     container_name: indexing
+    env_file:
+      - .env
     volumes:
       - ./indexing:/app
       - ./qdrant_storage:/qdrant/storage
     working_dir: /app
-    environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
-      - QDRANT_URL=http://qdrant:6333
-      - EMBED_MODEL=nomic-embed-text
-      - COLLECTION=ing_info_mag_docs
+    command: tail -f /dev/null
     depends_on:
       - ollama
       - qdrant
-    command: tail -f /dev/null  # mantiene il container attivo per sviluppo
 
 volumes:
-  qdrant_data: 
+  qdrant_data:
