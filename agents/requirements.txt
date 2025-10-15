@@ -10,3 +10,5 @@ evaluate
 langsmith
 sentence-transformers
 langchain-google-genai
+langchain_google_vertexai
+google-auth

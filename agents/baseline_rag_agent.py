@@ -1,8 +1,27 @@
-import os
+import os, json
 from qdrant_client import QdrantClient
 from langchain_qdrant import QdrantVectorStore
-from langchain_ollama import OllamaLLM, OllamaEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain.prompts import PromptTemplate
+
+#llama locale:
+from langchain_ollama import OllamaLLM
+
+#gemini:
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+#llama 3.3 70b api:
+from langchain_google_vertexai import ChatVertexAI
+from google.oauth2 import service_account
+
+if os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"):
+    creds_dict = json.loads(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
+    creds = service_account.Credentials.from_service_account_info(creds_dict)
+else:
+    creds = None
+
+from langchain_google_vertexai import ChatVertexAI
+
 
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://ollama:11434")
 QDRANT_URL = os.getenv("QDRANT_URL", "http://qdrant:6333")
@@ -46,7 +65,23 @@ vectorstore = QdrantVectorStore.from_existing_collection(
 print("Connesso al vector store con successo!")
 
 print("Inizializzando LLM...")
-llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+# llama locale:
+# llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+
+# gemini:
+# llm = ChatGoogleGenerativeAI(
+#     model="gemini-2.5-flash",
+#     google_api_key=os.getenv("GOOGLE_API_KEY"),
+#     temperature=0.2,
+# )
+
+# llama 3.3 70b api:
+llm = ChatVertexAI(
+    model="llama-3.3-70b-instruct-maas",
+    temperature=0,
+    max_output_tokens=1024,
+    credentials=creds,
+)
 
 print("Creando retriever...")
 
@@ -80,8 +115,12 @@ def answer_query(query: str):
 
 Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
 """
-
+        # llama locale e llama 3.3 70b api:
         answer = llm.invoke(prompt)
+
+        # gemini:
+        # answer = llm.invoke(prompt).content
+
 
         main_source = unique_docs[0].metadata.get("source_url", "N/A")
 

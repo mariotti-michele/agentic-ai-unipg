@@ -1,4 +1,0 @@
-timestamp,model,input_tokens,output_tokens,total_tokens,cost_est_usd
-2025-10-15 08:56:51,gemini-2.5-flash,559,108,667,0.0004
-2025-10-15 08:56:51,llama-3.3-70b,559,108,667,0.0003
-2025-10-15 08:56:51,gemini-1.5-pro,559,108,667,0.0025
