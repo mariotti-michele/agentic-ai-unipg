@@ -1,7 +1,7 @@
 import json
 import os
 import csv
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from datasets import Dataset
 from ragas.metrics import (
@@ -14,7 +14,6 @@ from ragas.metrics._answer_relevance import answer_relevancy
 from ragas import evaluate
 from langsmith import Client
 from baseline_rag_agent import answer_query, embeddings, vectorstore
-from pathlib import Path
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 
@@ -114,7 +113,10 @@ def run_evaluation(version: str = "v1"):
             run_type="chain",
             inputs={"questions": questions},
             outputs={"results": dict(results)},
-            metadata={"component": "ragas_evaluation"}
+            metadata={"component": "ragas_evaluation"},
+            start_time=datetime.now(timezone.utc).isoformat(),
+            end_time=datetime.now(timezone.utc).isoformat(),
+            status="completed"
         )
         print("Risultati inviati a LangSmith.")
     else:

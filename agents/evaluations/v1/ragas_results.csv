@@ -149,3 +149,6 @@ Su rag llama-3.3-70b-instruct-maas:
 2025-10-16 08:21:04,Quando può essere assegnata la lode nella laurea magistrale?,Non presente nei documenti,nan,0.000,0.250,0.000,0.131
 2025-10-16 08:21:04,Come si calcola il voto di laurea magistrale?,"Il voto di laurea magistrale si calcola come indicato nel documento ""Linee guida per l’attribuzione della votazione delle tesi di Laurea Magistrale"", dove si specifica che ""Il voto di laurea si ottiene dalla somma, arrotondata all’unità, della media curriculare e del punteggio assegnato alla tesi di laurea"".",0.600,0.615,0.756,1.000,0.442
 2025-10-16 08:21:04,=== MEDIA TOTALE ===,,0.637,0.428,0.328,0.562,0.332
+2025-10-16 09:30:15,Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?,Non presente nei documenti.,1.000,0.000,0.000,0.000,0.141
+2025-10-16 09:30:15,Dove si compila la domanda di laurea online?,"La domanda di laurea online si compila accedendo al SOL (Segreterie On Line) con le proprie credenziali, selezionando il link ""Laurea"" e cliccando su ""Conseguimento titolo"", il sistema guiderà l’utente alla compilazione della domanda di laurea online, come indicato nella procedura per i laureandi disponibile sul sito dell'università.",0.857,0.991,0.583,1.000,0.661
+2025-10-16 09:30:15,=== MEDIA TOTALE ===,,0.929,0.495,0.292,0.500,0.401
