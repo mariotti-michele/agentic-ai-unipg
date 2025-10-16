@@ -78,6 +78,7 @@ print("Inizializzando LLM...")
 # llama 3.3 70b api:
 llm = ChatVertexAI(
     model="llama-3.3-70b-instruct-maas",
+    location="us-central1",
     temperature=0,
     max_output_tokens=1024,
     credentials=creds,
@@ -115,11 +116,11 @@ def answer_query(query: str):
 
 Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
 """
-        # llama locale e llama 3.3 70b api:
-        answer = llm.invoke(prompt)
+        # llama locale:
+        #answer = llm.invoke(prompt)
 
-        # gemini:
-        # answer = llm.invoke(prompt).content
+        # gemini e llama 3.3 70b api::
+        answer = llm.invoke(prompt).content
 
 
         main_source = unique_docs[0].metadata.get("source_url", "N/A")

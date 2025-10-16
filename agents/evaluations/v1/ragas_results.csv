@@ -115,7 +115,7 @@ timestamp,question,answer,faithfulness,answer_relevancy,context_precision,contex
 
 
 
-
+Su rag llama locale:
 2025-10-15 14:37:16,Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?,Non presente nei documenti.,1.000,0.000,0.000,0.000,0.141
 2025-10-15 14:37:16,Dove si compila la domanda di laurea online?,"La domanda di laurea può essere compilata online attraverso il sistema di gestione delle procedure amministrative (SOL) dell'Università di Parma, facendo riferimento alle fonti fornite. Per farlo, l'utente deve accedere al SOL con le proprie credenziali e scegliere il link ""Laurea"" per poi cliccare su ""Conseguimento titolo"", che lo guiderà alla compilazione della domanda di laurea online.",0.778,0.963,0.583,1.000,0.810
 2025-10-15 14:37:16,Quanto costa la stampa della pergamena se richiesta durante la domanda di laurea?,"La stampa della pergamena è prevista con un contributo di 132 euro. Se richiesta durante la domanda di laurea, il sistema metterà in disponibilità questo contributo nella sezione “Elenco Tasse” della domanda.",0.500,0.917,0.500,1.000,0.522
@@ -126,6 +126,8 @@ timestamp,question,answer,faithfulness,answer_relevancy,context_precision,contex
 2025-10-15 14:37:16,Come si calcola il voto di laurea magistrale?,"Il voto di laurea magistrale si calcola dalla somma, arrotondata all'unità, della media curriculare e del punteggio assegnato alla tesis.",1.000,1.000,0.756,1.000,0.957
 2025-10-15 14:37:16,=== MEDIA TOTALE ===,,0.597,0.483,0.359,0.562,0.380
 
+
+Su rag gemini 2-5-flash: 
 2025-10-15 15:14:17,Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?,Non presente nei documenti.,1.000,0.000,0.000,0.000,0.141
 2025-10-15 15:14:17,Dove si compila la domanda di laurea online?,"La domanda di laurea online si compila entrando nel SOL con le proprie credenziali, dal menù scegliendo il link “Laurea” e cliccando su “Conseguimento titolo”. Il sistema guiderà l’utente alla compilazione.",1.000,0.991,0.583,1.000,0.758
 2025-10-15 15:14:17,Quanto costa la stampa della pergamena se richiesta durante la domanda di laurea?,"Qualora lo studente intenda fare richiesta della stampa della pergamena in fase di compilazione della domanda di laurea, il sistema metterà in disponibilità nella sezione “Elenco Tasse” il contributo di 132 euro comprensivo anche del bollo previsto per la domanda di esame di laurea.",0.500,0.950,0.500,1.000,0.359
@@ -136,12 +138,14 @@ timestamp,question,answer,faithfulness,answer_relevancy,context_precision,contex
 2025-10-15 15:14:17,Come si calcola il voto di laurea magistrale?,"Il voto di laurea si ottiene dalla somma, arrotondata all’unità, della media curriculare e del punteggio assegnato alla tesi di laurea.",1.000,0.593,0.700,1.000,0.962
 2025-10-15 15:14:17,=== MEDIA TOTALE ===,,0.562,0.435,0.321,0.562,0.418
 
-2025-10-15 15:22:50,Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?,Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.000,0.000,0.000,0.110
-2025-10-15 15:22:50,Dove si compila la domanda di laurea online?,Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.429,0.583,1.000,0.123
-2025-10-15 15:22:50,Quanto costa la stampa della pergamena se richiesta durante la domanda di laurea?,Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.000,0.500,1.000,0.095
-2025-10-15 15:22:50,"In base alle linee guida, quanti punti può ottenere una tesi di ricerca per la presentazione e discussione?",Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.000,0.333,1.000,0.090
-2025-10-15 15:22:50,Quali allegati sono obbligatori nella domanda di laurea online?,Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.000,0.000,0.000,0.098
-2025-10-15 15:22:50,Quali sono i criteri di valutazione per una tesi compilativa?,Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.000,0.200,0.500,0.096
-2025-10-15 15:22:50,Quando può essere assegnata la lode nella laurea magistrale?,Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.000,0.500,0.000,0.107
-2025-10-15 15:22:50,Come si calcola il voto di laurea magistrale?,Errore durante la query: GenerativeServiceClient.generate_content() got an unexpected keyword argument 'max_retries',nan,0.000,0.756,1.000,0.098
-2025-10-15 15:22:50,=== MEDIA TOTALE ===,,nan,0.054,0.359,0.562,0.102
+
+Su rag llama-3.3-70b-instruct-maas:
+2025-10-16 08:21:04,Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?,Non presente nei documenti.,1.000,0.000,0.000,0.000,0.141
+2025-10-16 08:21:04,Dove si compila la domanda di laurea online?,"La domanda di laurea online si compila accedendo al SOL (Segreterie On Line) con le proprie credenziali, selezionando il link ""Laurea"" e cliccando su ""Conseguimento titolo"", il sistema guiderà l’utente alla compilazione della domanda di laurea online, come indicato nella procedura per i laureandi disponibile sul sito dell'università.",0.857,0.991,0.583,1.000,0.661
+2025-10-16 08:21:04,Quanto costa la stampa della pergamena se richiesta durante la domanda di laurea?,"Il costo della stampa della pergamena se richiesta durante la domanda di laurea è di 132 euro, che include anche il bollo previsto per la domanda di esame di laurea, come indicato nella sezione ""Elenco Tasse"" del sistema di compilazione della domanda di laurea.",1.000,0.955,0.500,1.000,0.525
+2025-10-16 08:21:04,"In base alle linee guida, quanti punti può ottenere una tesi di ricerca per la presentazione e discussione?","La presentazione e discussione della tesi può ottenere fino a 3 punti secondo alcune linee guida, come indicato in [Fonte 2] e fino a 4 punti secondo [Fonte 3], mentre non ci sono indicazioni specifiche sulla presentazione e discussione in [Fonte 1] e [Fonte 4] che si concentrano sul contenuto della tesi, e [Fonte 5] si concentra anch'esso sul contenuto della tesi, quindi le linee guida riportate indicano un massimo di 3 o 4 punti per la presentazione e discussione.",1.000,0.861,0.333,1.000,0.442
+2025-10-16 08:21:04,Quali allegati sono obbligatori nella domanda di laurea online?,Non presente nei documenti.,0.000,0.000,0.000,0.000,0.164
+2025-10-16 08:21:04,Quali sono i criteri di valutazione per una tesi compilativa?,Non presente nei documenti.,0.000,0.000,0.200,0.500,0.151
+2025-10-16 08:21:04,Quando può essere assegnata la lode nella laurea magistrale?,Non presente nei documenti,nan,0.000,0.250,0.000,0.131
+2025-10-16 08:21:04,Come si calcola il voto di laurea magistrale?,"Il voto di laurea magistrale si calcola come indicato nel documento ""Linee guida per l’attribuzione della votazione delle tesi di Laurea Magistrale"", dove si specifica che ""Il voto di laurea si ottiene dalla somma, arrotondata all’unità, della media curriculare e del punteggio assegnato alla tesi di laurea"".",0.600,0.615,0.756,1.000,0.442
+2025-10-16 08:21:04,=== MEDIA TOTALE ===,,0.637,0.428,0.328,0.562,0.332
