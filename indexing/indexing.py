@@ -23,7 +23,12 @@ def chunk_documents(docs: list[Document]) -> list[Document]:
         chunk_size=1200,
         chunk_overlap=150,
     )
-    chunks = splitter.split_documents(docs)
+    chunks = []
+    for d in docs:
+        if d.metadata.get("element_type") in ["Table", "pdf-table"]:
+            chunks.append(d)
+        else:
+            chunks.extend(splitter.split_documents([d]))
 
     clean_chunks = []
     for i, c in enumerate(chunks):

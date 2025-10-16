@@ -1,14 +1,38 @@
 [
   {
-    "question": "Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?",
-    "reference_context": "45 giorni prima della seduta di laurea: compilazione della domanda di laurea… 20 giorni prima della seduta di laurea: presentazione dell’elaborato presso la Segreteria Studenti.",
-    "ground_truth": "Lo studente deve compilare la domanda di laurea 45 giorni prima e presentare l’elaborato 20 giorni prima della seduta.",
-    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+    "question": "Qual è il periodo di svolgimento delle lezioni del primo semestre per il primo anno?",
+    "reference_context": "Orario delle lezioni a.a. 2025/2026 - I anno - I semestre (15/09/2025 - 12/12/2025)",
+    "ground_truth": "Dal 15 settembre 2025 al 12 dicembre 2025.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
   },
   {
-    "question": "Dove si compila la domanda di laurea online?",
-    "reference_context": "Entrando nel SOL con le proprie credenziali dal menù scegliere il link ‘Laurea’ e cliccare su ‘Conseguimento titolo’.",
-    "ground_truth": "La domanda di laurea si compila accedendo al portale SOL, sezione 'Laurea' → 'Conseguimento titolo'.",
-    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+    "question": "In quali giornate si tengono le lezioni di 'Internet and Web Programming'?",
+    "reference_context": "Internet and Web Programming - W. Didimo - 6 cfu. Giovedì ore 14:30-16:30 aula 11, Venerdì ore 14:30-16:30 aula 8.",
+    "ground_truth": "Le lezioni si tengono il giovedì e venerdì.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "A che ora iniziano le lezioni di 'Machine Learning and Data Analysis' il martedì?",
+    "reference_context": "Machine Learning and Data Analysis: martedì ore 10.30-13.30, aula 11",
+    "ground_truth": "Iniziano alle 10:30.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "Qual è il giorno con più corsi previsti nel secondo anno?",
+    "reference_context": "Analizzando l’orario del II anno, venerdì presenta corsi di Models and Algorithms for Data Visualization, Signal Processing and Optimization for Big Data, Autonomous Robotics, Deep Learning and Robot Perception.",
+    "ground_truth": "Il venerdì.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "È possibile sapere in quale aula si tiene il corso 'Data Security and Blockchain'?",
+    "reference_context": "Data Security and Blockchain - aula 10 e 11 in diversi orari del martedì e giovedì.",
+    "ground_truth": "Le lezioni si tengono principalmente nelle aule 10 e 11.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
+  },
+  {
+    "question": "Nel primo anno c'è lezione il lunedì pomeriggio?",
+    "reference_context": "No, non ci sono.",
+    "ground_truth": "No, non ci sono.",
+    "document": "_files_didattica_lezioni_25-26_lm32-inginforobo_orario.pdf"
   }
 ]
