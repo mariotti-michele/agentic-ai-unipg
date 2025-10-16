@@ -64,7 +64,7 @@ print("Connesso al vector store con successo!")
 
 print("Inizializzando LLM...")
 # llama locale:
-# llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
 
 # gemini:
 # llm = ChatGoogleGenerativeAI(
@@ -74,13 +74,13 @@ print("Inizializzando LLM...")
 # )
 
 # llama 3.3 70b api:
-llm = ChatVertexAI(
-    model="llama-3.3-70b-instruct-maas",
-    location="us-central1",
-    temperature=0,
-    max_output_tokens=1024,
-    credentials=creds,
-)
+# llm = ChatVertexAI(
+#     model="llama-3.3-70b-instruct-maas",
+#     location="us-central1",
+#     temperature=0,
+#     max_output_tokens=1024,
+#     credentials=creds,
+# )
 
 print("Creando retriever...")
 
@@ -115,10 +115,10 @@ def answer_query(query: str):
 Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
 """
         # llama locale:
-        #answer = llm.invoke(prompt)
+        answer = llm.invoke(prompt)
 
         # gemini e llama 3.3 70b api::
-        answer = llm.invoke(prompt).content
+        # answer = llm.invoke(prompt).content
 
 
         main_source = unique_docs[0].metadata.get("source_url", "N/A")

@@ -122,9 +122,8 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
 
     tables = extract_tables_camelot(file_path)
     for t in tables:
-        # print(f"[INFO] Estratta tabella da pagina {t['page_number']} di {file_path.name} con Camelot")
         docs.append(Document(
-            page_content=json.dumps(t["row"], ensure_ascii=False),
+            page_content=t["text"],
             metadata={
                 "source_url": source_url,
                 "doc_type": "pdf-table",
@@ -136,6 +135,7 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
                 "doc_id": sha(source_url)
             }
         ))
+
     return docs
 
 def extract_tables_camelot(file_path: Path) -> list[dict]:
@@ -144,17 +144,17 @@ def extract_tables_camelot(file_path: Path) -> list[dict]:
         tables = camelot.read_pdf(str(file_path), pages="all", flavor="lattice")
         if not tables or len(tables) == 0:
             tables = camelot.read_pdf(str(file_path), pages="all", flavor="stream")
+
         for t_idx, table in enumerate(tables):
             df = table.df
-            for i in range(len(df)):
-                row = df.iloc[i].to_dict()
-                records.append({
-                    "row": row,
-                    "page_number": table.page,
-                    "file_name": file_path.name,
-                    "table_index": t_idx
-                })
-                # print(f"[DEBUG] riga tabella: {row}")
+            table_text = "\n".join([" | ".join(row) for row in df.values.tolist()])
+            records.append({
+                "text": table_text,
+                "page_number": table.page,
+                "file_name": file_path.name,
+                "table_index": t_idx
+            })
     except Exception as e:
         print(f"[WARN] Camelot fallito su {file_path}: {e}")
     return records
+
