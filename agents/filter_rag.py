@@ -21,11 +21,13 @@ if os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"):
 else:
     creds = None
 
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://ollama:11434")
-QDRANT_URL = os.getenv("QDRANT_URL", "http://qdrant:6333")
-COLLECTION_NAME = "ing_info_mag_docs"
 
-prompt_template = """Sei un assistente accademico.
+OLLAMA_BASE_URL = os.environ["OLLAMA_BASE_URL"]
+QDRANT_URL = os.environ["QDRANT_URL"]
+COLLECTION_NAME = os.environ["COLLECTION"]
+
+
+rag_prompt_template = """Sei un assistente accademico.
 Hai accesso a estratti di documenti ufficiali.
 
 Usa SOLO il contesto fornito per rispondere.
@@ -41,11 +43,30 @@ Contesto:
 
 Risposta:"""
 
-
 QA_CHAIN_PROMPT = PromptTemplate(
     input_variables=["context", "question"],
-    template=prompt_template,
+    template=rag_prompt_template,
 )
+
+classifier_prompt = PromptTemplate(
+    input_variables=["question"],
+    template="""
+Sei un classificatore di query.
+
+Se la domanda riguarda saluti, domande generiche, curiosità non legate a regolamenti o procedure accademiche → rispondi SOLO con: semplice
+
+Se la domanda richiede informazioni ufficiali su corsi, tesi, tirocini, lauree, esami, regolamenti, scadenze → rispondi SOLO con: rag
+
+Domanda: {question}
+Categoria:""",
+)
+
+simple_prompt_template = """Sei un assistente accademico gentile.
+Rispondi in modo breve e diretto alla domanda generica seguente:
+
+Domanda: {question}
+Risposta:"""
+
 
 embeddings = OllamaEmbeddings(
     model="nomic-embed-text",
@@ -63,8 +84,9 @@ vectorstore = QdrantVectorStore.from_existing_collection(
 print("Connesso al vector store con successo!")
 
 print("Inizializzando LLM...")
+
 # llama locale:
-# llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
 
 # gemini:
 # llm = ChatGoogleGenerativeAI(
@@ -74,23 +96,52 @@ print("Inizializzando LLM...")
 # )
 
 # llama 3.3 70b api:
-llm = ChatVertexAI(
-    model="llama-3.3-70b-instruct-maas",
-    location="us-central1",
-    temperature=0,
-    max_output_tokens=1024,
-    credentials=creds,
-)
+# llm = ChatVertexAI(
+#     model="llama-3.3-70b-instruct-maas",
+#     location="us-central1",
+#     temperature=0,
+#     max_output_tokens=1024,
+#     credentials=creds,
+# )
 
-print("Creando retriever...")
+
+def classify_query(query: str) -> str:
+    """Classifica la query in 'semplice' o 'rag'"""
+    try:
+        classification = llm.invoke(classifier_prompt.format(question=query))
+        # se il risultato è un oggetto (es. AIMessage), estrai content
+        if hasattr(classification, "content"):
+            classification = classification.content
+        classification = str(classification).strip().lower()
+        if "semplice" in classification:
+            return "semplice"
+        else:
+            return "rag"
+    except Exception as e:
+        print(f"Errore classificazione: {e}")
+        return "rag"
+
+
 
 def answer_query(query: str):
     try:
-        print(f"Processando query...")
+        # STEP 1: classifica la query
+        mode = classify_query(query)
+        print(f"Classificazione query: {mode}")
 
+        # STEP 2: risposta semplice
+        if mode == "semplice":
+            prompt = simple_prompt_template.format(question=query)
+            answer = llm.invoke(prompt)
+            if hasattr(answer, "content"):
+                answer = answer.content
+            return f"Risposta semplice: {answer}"
+
+        # STEP 3: risposta RAG
+        print("Processando query con RAG...")
         vec = embeddings.embed_query(query)
         docs = vectorstore.similarity_search_by_vector(vec, k=8)
-        
+
         seen = set()
         unique_docs = []
         for d in docs:
@@ -104,25 +155,20 @@ def answer_query(query: str):
         if not unique_docs:
             return "Non presente nei documenti"
 
-        
         context = "\n\n".join(
             [f"[Fonte {i+1}] ({doc.metadata.get('source_url', 'N/A')})\n{doc.page_content}"
              for i, doc in enumerate(unique_docs)]
         )
-      
+
         prompt = f"""{QA_CHAIN_PROMPT.format(context=context, question=query)}
 
-Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
-"""
-        # llama locale:
-        #answer = llm.invoke(prompt)
-
-        # gemini e llama 3.3 70b api::
-        answer = llm.invoke(prompt).content
-
+    Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
+    """
+        answer = llm.invoke(prompt)
+        if hasattr(answer, "content"):
+            answer = answer.content
 
         main_source = unique_docs[0].metadata.get("source_url", "N/A")
-
         response = f"Risposta: {answer}\n"
         response += f"\nPer ulteriori informazioni consulta il seguente link: {main_source}\n"
 
@@ -148,6 +194,7 @@ def test_connection():
     except Exception as e:
         print(f"Test connessione fallito: {e}")
         return False
+
 
 if __name__ == "__main__":
     print("Sistema di Q&A avviato.")
