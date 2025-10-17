@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Quali sono i giorni entro cui uno studente deve presentare la domanda di laurea e consegnare la tesi?",
+    "reference_context": "45 giorni prima della seduta di laurea: compilazione della domanda di laurea… 20 giorni prima della seduta di laurea: presentazione dell’elaborato presso la Segreteria Studenti.",
+    "ground_truth": "Lo studente deve compilare la domanda di laurea 45 giorni prima e presentare l’elaborato 20 giorni prima della seduta.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Dove si compila la domanda di laurea online?",
+    "reference_context": "Entrando nel SOL con le proprie credenziali dal menù scegliere il link ‘Laurea’ e cliccare su ‘Conseguimento titolo’.",
+    "ground_truth": "La domanda di laurea si compila accedendo al portale SOL, sezione 'Laurea' → 'Conseguimento titolo'.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Quanto costa la stampa della pergamena se richiesta durante la domanda di laurea?",
+    "reference_context": "Il contributo di 132 euro comprensivo anche del bollo previsto per la domanda di esame di laurea.",
+    "ground_truth": "132 euro.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "In base alle linee guida, quanti punti può ottenere una tesi di ricerca per la presentazione e discussione?",
+    "reference_context": "Fino a 4 punti per la presentazione e discussione della tesi.",
+    "ground_truth": "Fino a 4 punti.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Quali allegati sono obbligatori nella domanda di laurea online?",
+    "reference_context": "Foglio titolo tesi firmato, fotocopia libretto o autocertificazione, ricevuta questionario AlmaLaurea, eventuali altri.",
+    "ground_truth": "Foglio titolo tesi, libretto o autocertificazione, ricevuta AlmaLaurea e altri eventuali documenti.",
+    "document": "didattica_procedure-amministrative_procedure_laureandi_7a068270d5dc.main.html"
+  },
+  {
+    "question": "Quali sono i criteri di valutazione per una tesi compilativa?",
+    "reference_context": "Fino a 1 punto per il contenuto… Fino a 3 punti per la presentazione e discussione.",
+    "ground_truth": "1 punto per il contenuto e 3 punti per la presentazione e discussione.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Quando può essere assegnata la lode nella laurea magistrale?",
+    "reference_context": "La lode può essere attribuita con voto unanime della commissione se la somma è non inferiore a 111 o se è 110 con almeno 2 lodi negli esami di profitto.",
+    "ground_truth": "La lode è attribuita all’unanimità se la somma è almeno 111 o se è 110 con almeno due lodi negli esami.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  },
+  {
+    "question": "Come si calcola il voto di laurea magistrale?",
+    "reference_context": "Il voto di laurea si ottiene dalla somma, arrotondata all’unità, della media curriculare e del punteggio assegnato alla tesi.",
+    "ground_truth": "È la somma tra la media curriculare e il punteggio attribuito alla tesi, arrotondata all’unità.",
+    "document": "_files_didattica_tesi_lineeguidavotodilaurea-lm-29-32.pdf"
+  }
+]
