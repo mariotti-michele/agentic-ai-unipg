@@ -1,7 +1,9 @@
 import json
 import os
 from pathlib import Path
-from baseline_rag_agent import answer_query, embeddings, vectorstore
+#from baseline_rag_agent import answer_query, embeddings, vectorstore
+from filter_rag import embeddings, vectorstore, answer_query_dense, answer_query_tfidf, hybrid_search
+from filter_rag import embeddings, vectorstore, answer_query_dense, answer_query_tfidf, answer_query_bm25, hybrid_search
 
 
 def run_manual_eval():
@@ -33,15 +35,35 @@ def run_manual_eval():
             docs = vectorstore.similarity_search_by_vector(vec, k=5)
             retrieved_ctx = [d.page_content for d in docs]
 
-            response = answer_query(q)
+            #response = answer_query(q)
+            print("→ Retrieval Dense")
+            response_dense = answer_query_dense(q)
 
-            # pulizia risposta
-            if "Risposta:" in response:
-                answer = response.split("Risposta:")[1].split("\n")[0].strip()
-            else:
-                answer = response.strip()
+            print("→ Retrieval Sparse (TF-IDF)")
+            response_sparse = answer_query_tfidf(q)
 
-            print(f"Risposta generata:\n{answer}\n")
+            print("→ Retrieval BM25")
+            response_bm25 = answer_query_bm25(q)
+
+            print("→ Retrieval Ibrido (Hybrid)")
+            response_hybrid = hybrid_search(q, alpha=0.6)
+
+            print("\n📘 Risposta Dense:\n", response_dense)
+            print("\n📗 Risposta Sparse TF-IDF:\n", response_sparse)
+            print("\n📗 Risposta Sparse BM25:\n", response_bm25)
+            print("\n📙 Risposta Ibrida:\n", response_hybrid)
+
+
+
+            # # pulizia risposta
+            # if "Risposta:" in response:
+            #     answer = response.split("Risposta:")[1].split("\n")[0].strip()
+            # else:
+            #     answer = response.strip()
+
+            # print(f"Risposta generata:\n{answer}\n")
+
+
             print("Contesti recuperati:")
             for c in retrieved_ctx:
                 print("-", c[:200], "...")

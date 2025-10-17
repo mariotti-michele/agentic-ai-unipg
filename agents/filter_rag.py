@@ -17,6 +17,9 @@ from google.oauth2 import service_account
 # TF-IDF
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
+# BM25
+from rank_bm25 import BM25Okapi
+
 
 
 if os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"):
@@ -108,7 +111,6 @@ llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
 #     credentials=creds,
 # )
 
-print("Caricamento TUTTI i documenti da Qdrant per TF-IDF...")
 
 all_texts = []
 scroll_filter = None
@@ -127,12 +129,17 @@ while True:
         break
     scroll_filter = next_page
 
-print(f"Caricati {len(all_texts)} documenti dal vectorstore.")
-
 
 vectorizer = TfidfVectorizer()
 tfidf_matrix = vectorizer.fit_transform(all_texts)
-print(f"TF-IDF creato su {len(all_texts)} documenti.")
+
+from nltk.tokenize import word_tokenize
+import nltk
+nltk.download('punkt', quiet=True)
+
+tokenized_corpus = [word_tokenize(text.lower()) for text in all_texts]
+bm25 = BM25Okapi(tokenized_corpus)
+
 
 def tfidf_search(query: str, k: int = 5):
     query_vec = vectorizer.transform([query])
@@ -141,6 +148,13 @@ def tfidf_search(query: str, k: int = 5):
     results = [(all_texts[i], scores[i]) for i in top_indices]
     return results
 
+def bm25_search(query: str, k: int = 5):
+    """Ricerca sparse basata su BM25"""
+    query_tokens = word_tokenize(query.lower())
+    scores = bm25.get_scores(query_tokens)
+    top_indices = np.argsort(scores)[::-1][:k]
+    results = [(all_texts[i], scores[i]) for i in top_indices]
+    return results
 
 
 def classify_query(query: str) -> str:
@@ -212,6 +226,28 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
 
     return f"Risposta TF-IDF: {answer}"
 
+def answer_query_bm25(query: str):
+    """Usa BM25 al posto di TF-IDF"""
+    bm25_results = bm25_search(query, k=5)
+    if not bm25_results:
+        return "Non presente nei documenti"
+
+    context = "\n\n".join(
+        [f"[Fonte {i+1}] (BM25, score={score:.3f})\n{text}"
+         for i, (text, score) in enumerate(bm25_results)]
+    )
+
+    prompt = f"""{QA_CHAIN_PROMPT.format(context=context, question=query)}
+
+Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
+"""
+    answer = llm.invoke(prompt)
+    if hasattr(answer, "content"):
+        answer = answer.content
+
+    return f"Risposta BM25: {answer}"
+
+
 
 def compare_dense_vs_tfidf(query: str):
     """Confronta Dense vs Sparse"""
@@ -226,6 +262,59 @@ def compare_dense_vs_tfidf(query: str):
     print(sparse_answer)
 
     print("="*70)
+
+def hybrid_search(query: str, alpha: float = 0.5, k: int = 5):
+    """
+    Esegue retrieval ibrido combinando Dense (Qdrant) e Sparse (TF-IDF).
+    alpha bilancia i due contributi: 
+      - alpha=1 usa solo Dense
+      - alpha=0 usa solo TF-IDF
+    """
+    # --- Dense retrieval ---
+    dense_vec = embeddings.embed_query(query)
+    dense_docs = vectorstore.similarity_search_with_score_by_vector(dense_vec, k=10)
+    dense_results = {}
+    for doc, score in dense_docs:
+        dense_results[doc.page_content] = 1 - score  # Qdrant restituisce distanza, la inverto
+
+    # --- Sparse retrieval ---
+    #tfidf_results = tfidf_search(query, k=10)
+    tfidf_results = bm25_search(query, k=10)
+    sparse_results = {text: score for text, score in tfidf_results}
+
+    # --- Normalizzazione punteggi ---
+    all_texts = set(dense_results.keys()) | set(sparse_results.keys())
+    dense_scores = np.array([dense_results.get(t, 0) for t in all_texts])
+    sparse_scores = np.array([sparse_results.get(t, 0) for t in all_texts])
+
+    if dense_scores.max() > 0:
+        dense_scores = dense_scores / dense_scores.max()
+    if sparse_scores.max() > 0:
+        sparse_scores = sparse_scores / sparse_scores.max()
+
+    # --- Fusione pesata ---
+    hybrid_scores = alpha * dense_scores + (1 - alpha) * sparse_scores
+
+    # --- Ordina per punteggio combinato ---
+    sorted_indices = np.argsort(hybrid_scores)[::-1][:k]
+    top_texts = [list(all_texts)[i] for i in sorted_indices]
+    top_scores = hybrid_scores[sorted_indices]
+
+    # --- Prepara il contesto per l’LLM ---
+    context = "\n\n".join(
+        [f"[Fonte {i+1}] (Hybrid score={s:.3f})\n{t}" for i, (t, s) in enumerate(zip(top_texts, top_scores))]
+    )
+
+    prompt = f"""{QA_CHAIN_PROMPT.format(context=context, question=query)}
+
+Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
+"""
+    answer = llm.invoke(prompt)
+    if hasattr(answer, "content"):
+        answer = answer.content
+
+    return f"Risposta ibrida (α={alpha}): {answer}"
+
     
 
 # def answer_query(query: str):
@@ -326,6 +415,9 @@ if __name__ == "__main__":
                 else:
                     # confronto automatico Dense vs Sparse
                     compare_dense_vs_tfidf(q)
+                    print("\n--- 📙 Risposta Ibrida (Dense + TF-IDF) ---")
+                    hybrid_answer = hybrid_search(q, alpha=0.6, k=5)
+                    print(hybrid_answer)
 
                 print("-" * 50)
             else:

@@ -1,0 +1,56 @@
+[
+  {
+    "question": "Quali strutture e servizi sono disponibili per gli studenti di Ingegneria a Perugia?",
+    "reference_context": "Gli studenti di Ingegneria hanno a disposizione laboratori di supporto alla didattica e alla ricerca, una Biblioteca Centrale con sale di lettura, spazi attrezzati per lo studio, servizio mensa, ampi spazi verdi e servizio bar.",
+    "ground_truth": "Sono disponibili laboratori didattici e di ricerca, una biblioteca centrale, spazi studio, mensa, aree verdi e bar.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "Dove si trova il campus di Ingegneria e come è possibile raggiungerlo?",
+    "reference_context": "La struttura dispone di un grande parcheggio auto ed è raggiungibile tramite autobus o treno, con fermate immediatamente di fronte al campus.",
+    "ground_truth": "Il campus si trova a Perugia, è dotato di un grande parcheggio e può essere raggiunto in autobus o treno con fermate davanti all’ingresso.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "È disponibile una rete Wi-Fi per gli studenti?",
+    "reference_context": "L’intero campus è dotato di una rete wireless, con accesso gratuito da parte degli studenti regolarmente iscritti.",
+    "ground_truth": "Sì, il campus offre una rete Wi-Fi gratuita per gli studenti iscritti.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "Quali sono i giorni e gli orari di apertura al pubblico della Segreteria Studenti?",
+    "reference_context": "Tutte le segreterie sono aperte al pubblico martedì e giovedì dalle 10.00 alle 13.00.",
+    "ground_truth": "Martedì e giovedì dalle 10:00 alle 13:00.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "Come si può contattare la Segreteria Studenti per telefono?",
+    "reference_context": "È possibile telefonare il martedì e il giovedì dalle 14.30 alle 16.30 ai numeri indicati: +39 075 5853818.",
+    "ground_truth": "Si può telefonare il martedì e giovedì dalle 14:30 alle 16:30 al numero +39 075 5853818.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "Qual è l’indirizzo email della Segreteria Didattica del Dipartimento di Ingegneria?",
+    "reference_context": "Contatti: e-mail segr-didattica.ing@unipg.it.",
+    "ground_truth": "L’indirizzo è segr-didattica.ing@unipg.it.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "Come si può accedere ai servizi di segreteria senza recarsi fisicamente allo sportello?",
+    "reference_context": "SOL è il servizio di segreteria online dell’ateneo, accessibile tramite il sito https://unipg.esse3.cineca.it/.",
+    "ground_truth": "Tramite il servizio online SOL, accessibile su https://unipg.esse3.cineca.it/.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "A chi scrivere per assistenza sulla segreteria online SOL?",
+    "reference_context": "Per chiarimenti o assistenza, contattare help.didattica@unipg.it.",
+    "ground_truth": "Bisogna scrivere a help.didattica@unipg.it.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  },
+  {
+    "question": "È possibile aprire un ticket per richiedere assistenza alla Segreteria Studenti?",
+    "reference_context": "È possibile aprire un Ticket, servizio attivo h24, tramite il sito https://www.helpdesk.unipg.it/.",
+    "ground_truth": "Sì, tramite il servizio ticket h24 sul sito https://www.helpdesk.unipg.it/.",
+    "document": "didattica_strutture-e-servizi_27a9c6e29cde.main.html"
+  }
+]

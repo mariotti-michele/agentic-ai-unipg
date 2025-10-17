@@ -1,0 +1,56 @@
+[
+  {
+    "question": "A chi bisogna rivolgersi per chiedere l'esonero dal corso sulla sicurezza?",
+    "reference_context": "Lo studente può chiedere l’esonero scrivendo all’Ufficio sicurezza luoghi di lavoro all’indirizzo giovanni.chiappavento@unipg.it.",
+    "ground_truth": "Bisogna scrivere all’Ufficio sicurezza luoghi di lavoro, contattando giovanni.chiappavento@unipg.it.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "Chi è il referente per informazioni e sessioni di esame aggiuntive sul corso di sicurezza?",
+    "reference_context": "Per informazioni e sessioni di esame aggiuntive contattare direttamente il prof. Antonio Moschitta (antonio.moschitta@unipg.it).",
+    "ground_truth": "Il referente è il prof. Antonio Moschitta, contattabile all’indirizzo antonio.moschitta@unipg.it.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "Come può ottenere l’attestato lo studente che supera l’esame di sicurezza?",
+    "reference_context": "Una volta superato l’esame, lo studente può scaricare l'attestato dall'area riservata.",
+    "ground_truth": "Può scaricare l’attestato dalla propria area riservata.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "A cosa serve il corso sulla sicurezza nei luoghi di lavoro?",
+    "reference_context": "Per l'accesso ai laboratori è necessario seguire un corso sulla sicurezza nei luoghi di lavoro e sostenere una prova di esame.",
+    "ground_truth": "Serve per garantire la sicurezza degli studenti nei laboratori ed è obbligatorio per potervi accedere.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "Posso accedere al laboratorio senza aver seguito il corso sulla sicurezza?",
+    "reference_context": "Per l'accesso ai laboratori è necessario seguire un corso sulla sicurezza nei luoghi di lavoro e sostenere una prova di esame.",
+    "ground_truth": "No, non è possibile. L’accesso ai laboratori è consentito solo dopo aver seguito il corso e superato l’esame.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "Qual è il link per iscriversi al corso sulla sicurezza nei luoghi di lavoro?",
+    "reference_context": "Collegarsi al link https://unistudium.unipg.it/unistudium/course/view.php?id=17249 per seguire il corso.",
+    "ground_truth": "Il link è https://unistudium.unipg.it/unistudium/course/view.php?id=17249.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "Il corso sulla sicurezza è erogato in presenza o a distanza?",
+    "reference_context": "L'esame è erogato a distanza. Il docente organizza una riunione Teams e invita i candidati fornendo il link.",
+    "ground_truth": "È erogato a distanza tramite riunione su Microsoft Teams.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "Cosa deve fare uno studente che non ha seguito il corso di sicurezza nella scuola superiore?",
+    "reference_context": "Se lo studente non ha seguito tale corso oppure non ha acquisito i crediti richiesti, deve collegarsi al link Unistudium, acquisire i contenuti multimediali e iscriversi agli esami.",
+    "ground_truth": "Deve collegarsi al corso su Unistudium, seguire i contenuti e iscriversi all’esame online.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  },
+  {
+    "question": "È possibile organizzare sessioni di esame aggiuntive per il corso sulla sicurezza?",
+    "reference_context": "A richiesta possono essere organizzate sessioni di esame aggiuntive.",
+    "ground_truth": "Sì, su richiesta possono essere organizzate sessioni aggiuntive.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_8026c7616a5d.main.html"
+  }
+]
