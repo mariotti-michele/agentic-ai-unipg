@@ -13,7 +13,8 @@ from ragas.metrics import (
 from ragas.metrics._answer_relevance import answer_relevancy
 from ragas import evaluate
 from langsmith import Client
-from baseline_rag_agent import answer_query, embeddings, vectorstore
+#from baseline_rag_agent import answer_query, embeddings, vectorstore
+from filter_rag import answer_query_bm25, embeddings, vectorstore
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 
@@ -56,9 +57,13 @@ def run_evaluation(version: str = "v1"):
             docs = vectorstore.similarity_search_by_vector(vec, k=5)
             retrieved_ctx = [d.page_content for d in docs]
 
-            response = answer_query(q)
-            if "Risposta:" in response:
-                answer = response.split("Risposta:")[1].split("\n")[0].strip()
+            #response = answer_query(q)
+            #response = hybrid_search(q, alpha=0.6, k=5)
+            response = answer_query_bm25(q)
+            #if "Risposta:" in response:
+            if "Risposta BM25:" in response:
+                #answer = response.split("Risposta:")[1].split("\n")[0].strip()
+                answer = response.split(":")[-1].strip()
             else:
                 answer = response.strip()
 
@@ -109,7 +114,8 @@ def run_evaluation(version: str = "v1"):
         print("\nInviando risultati a LangSmith...")
         client = Client()
         client.create_run(
-            name=f"RAG Evaluation - UNIPG ({version})",
+            #name=f"RAG Evaluation - UNIPG ({version})",
+            name=f"RAG Evaluation (BM25) - UNIPG ({version})",
             run_type="chain",
             inputs={"questions": questions},
             outputs={"results": dict(results)},
@@ -167,5 +173,6 @@ def save_results_to_csv(csv_path: Path, dataset: Dataset, result_df, metrics):
 
 
 if __name__ == "__main__":
-    version = os.getenv("RAG_EVAL_VERSION", "v1")
+    #version = os.getenv("RAG_EVAL_VERSION", "v1")
+    version = os.getenv("RAG_EVAL_VERSION", "bm25_v1")
     run_evaluation(version)

@@ -1,0 +1,38 @@
+[
+  {
+    "question": "A chi sono riservati principalmente gli appelli straordinari?",
+    "reference_context": "Gli appelli straordinari devono essere principalmente RISERVATI ai Laureandi e comunque solo a studenti che siano a NON PIU' di 1 ESAME dal completamento del proprio piano di studi.",
+    "ground_truth": "Sono riservati ai laureandi o agli studenti che hanno al massimo un esame rimanente nel piano di studi.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
+  },
+  {
+    "question": "Chi decide se istituire o meno un appello straordinario?",
+    "reference_context": "Gli appelli straordinari sono istituiti a DISCREZIONE del docente, al quale gli studenti interessati dovranno eventualmente rivolgersi per richiederne l’apertura.",
+    "ground_truth": "La decisione spetta al docente, che può stabilire se istituire o meno un appello straordinario.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
+  },
+  {
+    "question": "A chi deve comunicare il docente l'istituzione di un appello straordinario?",
+    "reference_context": "Il docente, nel caso istituisca appelli straordinari, ne dovrà comunque dare comunicazione al Presidente, che ne informerà il CIL, e alla Segreteria Didattica.",
+    "ground_truth": "Deve comunicarlo al Presidente del CIL e alla Segreteria Didattica.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
+  },
+  {
+    "question": "Cosa accade se il Presidente del CIL non risponde entro una settimana alla proposta di un appello straordinario?",
+    "reference_context": "In assenza di reazione del Presidente del CIL entro una settimana dalla comunicazione, varrà il criterio del silenzio assenso.",
+    "ground_truth": "Se non risponde entro una settimana, si applica il silenzio assenso e l'appello è approvato.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
+  },
+  {
+    "question": "Quali fattori può considerare il docente nel valutare una richiesta di appello straordinario?",
+    "reference_context": "Il docente potrà considerare autonomamente criteri quali l’utilità dell’appello, la motivata urgenza o criticità sottostante la richiesta, il numero di studenti potenzialmente interessati, la distanza temporale dagli appelli ufficiali.",
+    "ground_truth": "Può valutare utilità, urgenza o criticità della richiesta, numero di studenti interessati e distanza dagli appelli ufficiali.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
+  },
+  {
+    "question": "Esiste un limite massimo di appelli straordinari che un docente può istituire?",
+    "reference_context": "Nel testo non è indicato alcun limite numerico di appelli straordinari.",
+    "ground_truth": "No, non viene specificato alcun limite massimo nel documento.",
+    "document": "didattica_studiare-nei-nostri-corsi_vademecum-studenti_f13e4d45da05.main.html"
+  }
+]

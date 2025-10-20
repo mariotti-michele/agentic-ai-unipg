@@ -93,23 +93,23 @@ print("Connesso al vector store con successo!")
 print("Inizializzando LLM...")
 
 # llama locale:
-llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+# llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
 
 # gemini:
-# llm = ChatGoogleGenerativeAI(
-#     model="gemini-2.5-flash",
-#     google_api_key=os.getenv("GOOGLE_API_KEY"),
-#     temperature=0.2,
-# )
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    google_api_key=os.getenv("GOOGLE_API_KEY"),
+    temperature=0.2,
+)
 
 # llama 3.3 70b api:
-# llm = ChatVertexAI(
-#     model="llama-3.3-70b-instruct-maas",
-#     location="us-central1",
-#     temperature=0,
-#     max_output_tokens=1024,
-#     credentials=creds,
-# )
+#llm = ChatVertexAI(
+#    model="llama-3.3-70b-instruct-maas",
+#    location="us-central1",
+#    temperature=0,
+#    max_output_tokens=1024,
+#    credentials=creds,
+#)
 
 
 all_texts = []
