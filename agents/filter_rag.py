@@ -92,24 +92,37 @@ print("Connesso al vector store con successo!")
 
 print("Inizializzando LLM...")
 
-# llama locale:
-llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+import argparse
 
-# gemini:
-# llm = ChatGoogleGenerativeAI(
-#     model="gemini-2.5-flash",
-#     google_api_key=os.getenv("GOOGLE_API_KEY"),
-#     temperature=0.2,
-# )
+parser = argparse.ArgumentParser(description="Sistema Q&A con modelli selezionabili")
+parser.add_argument("--model", type=str, default="llama-local",
+                    choices=["llama-local", "gemini", "llama-api"],
+                    help="Seleziona il modello da usare")
+args = parser.parse_args()
 
-# llama 3.3 70b api:
-# llm = ChatVertexAI(
-#     model="llama-3.3-70b-instruct-maas",
-#     location="us-central1",
-#     temperature=0,
-#     max_output_tokens=1024,
-#     credentials=creds,
-# )
+print(f"Inizializzando LLM con modello: {args.model}")
+
+if args.model == "llama-local":
+    # llama locale
+    llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+
+elif args.model == "gemini":
+    # gemini
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash",
+        google_api_key=os.getenv("GOOGLE_API_KEY"),
+        temperature=0.2,
+    )
+
+elif args.model == "llama-api":
+    # llama 3.3 70b API (Vertex AI)
+    llm = ChatVertexAI(
+        model="llama-3.3-70b-instruct-maas",
+        location="us-central1",
+        temperature=0,
+        max_output_tokens=1024,
+        credentials=creds,
+    )
 
 
 all_texts = []
@@ -251,14 +264,14 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
 
 def compare_dense_vs_tfidf(query: str):
     """Confronta Dense vs Sparse"""
-    print(f"\n🔎 Query: {query}\n{'='*70}")
+    print(f"\n Query: {query}\n{'='*70}")
 
     dense_answer = answer_query_dense(query)
-    print("\n--- 📘 Risposta Dense (Qdrant) ---")
+    print("\n--- Risposta Dense (Qdrant) ---")
     print(dense_answer)
 
     sparse_answer = answer_query_tfidf(query)
-    print("\n--- 📗 Risposta Sparse (TF-IDF) ---")
+    print("\n--- Risposta Sparse (TF-IDF) ---")
     print(sparse_answer)
 
     print("="*70)

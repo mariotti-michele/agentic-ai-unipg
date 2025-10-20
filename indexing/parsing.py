@@ -17,8 +17,6 @@ logging.getLogger("unstructured").setLevel(logging.ERROR)
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="camelot")
 
-import subprocess
-import tempfile
 from pathlib import Path
 
 def to_documents_from_html(file_path: Path, source_url: str, page_title: str) -> list[Document]:
@@ -88,7 +86,7 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
 
-    # === 1️⃣ Caso speciale: link contenente "orario" ===
+    # === Caso speciale: link contenente "orario" ===
     if "orario" in source_url.lower():
         print(f"[INFO] PDF orario rilevato → estrazione solo JSON: {source_url}")
         tables = extract_tables_camelot(file_path)
@@ -141,7 +139,7 @@ def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
             ))
         return docs
 
-    # === 2️⃣ Caso normale: PDF qualsiasi ===
+    # === Caso normale: PDF qualsiasi ===
     elements = []
     try:
         elements = partition_pdf(
