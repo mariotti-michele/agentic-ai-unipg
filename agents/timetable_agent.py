@@ -45,6 +45,16 @@ Hai nella tua conoscenza le tabelle degli orari delle lezioni in formato JSON st
   }}
 }}
 
+Nota:
+In alcuni rari casi nello stesso slot orario possono comparire più corsi in parallelo svolti in aule diverse. Ad esempio:
+"lunedì": {{
+      "09:00-11:00": [[
+        {{ "corso": "Corso A Corso B", "aula": "A1 B2" }},
+      ]]
+    }}
+Li puoi riconoscere perché il campo "corso" contiene più nomi di corsi separati solo da spazi (senza congiunzioni) e il campo "aula" contiene più aule.
+In questo caso considera ciascun corso con la sua aula come elemento distinto.
+
 Rispondi alle domande relative a giorni, orari, corsi e aule in base ai dati forniti.
 
 Usa SOLO il contesto fornito, senza aggiungere informazioni esterne.
@@ -79,25 +89,37 @@ vectorstore = QdrantVectorStore.from_existing_collection(
 )
 print("Connesso al vector store con successo!")
 
-print("Inizializzando LLM...")
-# llama locale:
-llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+import argparse
 
-# gemini:
-# llm = ChatGoogleGenerativeAI(
-#     model="gemini-2.5-flash",
-#     google_api_key=os.getenv("GOOGLE_API_KEY"),
-#     temperature=0.2,
-# )
+parser = argparse.ArgumentParser(description="Sistema Q&A con modelli selezionabili")
+parser.add_argument("--model", type=str, default="llama-api",
+                    choices=["llama-local", "gemini", "llama-api"],
+                    help="Seleziona il modello da usare")
+args = parser.parse_args()
 
-# llama 3.3 70b api:
-# llm = ChatVertexAI(
-#     model="llama-3.3-70b-instruct-maas",
-#     location="us-central1",
-#     temperature=0,
-#     max_output_tokens=1024,
-#     credentials=creds,
-# )
+print(f"Inizializzando LLM con modello: {args.model}")
+
+if args.model == "llama-local":
+    # llama locale
+    llm = OllamaLLM(model="llama3.2:3b", base_url=OLLAMA_BASE_URL)
+
+elif args.model == "gemini":
+    # gemini
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash",
+        google_api_key=os.getenv("GOOGLE_API_KEY"),
+        temperature=0.2,
+    )
+
+elif args.model == "llama-api":
+    # llama 3.3 70b API (Vertex AI)
+    llm = ChatVertexAI(
+        model="llama-3.3-70b-instruct-maas",
+        location="us-central1",
+        temperature=0,
+        max_output_tokens=1024,
+        credentials=creds,
+    )
 
 print("Creando retriever...")
 
@@ -131,11 +153,9 @@ def answer_query(query: str):
 
 Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o titoli.
 """
-        # llama locale:
         answer = llm.invoke(prompt)
-
-        # gemini e llama 3.3 70b api::
-        # answer = llm.invoke(prompt).content
+        if hasattr(answer, "content"):
+            answer = answer.content
 
 
         main_source = unique_docs[0].metadata.get("source_url", "N/A")
