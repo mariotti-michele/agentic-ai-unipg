@@ -13,8 +13,8 @@ from ragas.metrics import (
 from ragas.metrics._answer_relevance import answer_relevancy
 from ragas import evaluate
 from langsmith import Client
-#from baseline_rag_agent import answer_query, embeddings, vectorstore
-from filter_rag import answer_query_bm25, embeddings, vectorstore
+# importa dall'agente da valutare
+from timetable_agent import answer_query, embeddings, vectorstore
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 
@@ -114,8 +114,8 @@ def run_evaluation(version: str = "v1"):
         print("\nInviando risultati a LangSmith...")
         client = Client()
         client.create_run(
-            #name=f"RAG Evaluation - UNIPG ({version})",
-            name=f"RAG Evaluation (BM25) - UNIPG ({version})",
+            # cambia nome
+            name=f"RAG Evaluation tabelle orari - UNIPG ({version})",
             run_type="chain",
             inputs={"questions": questions},
             outputs={"results": dict(results)},

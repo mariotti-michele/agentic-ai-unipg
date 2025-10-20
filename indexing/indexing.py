@@ -25,7 +25,7 @@ def chunk_documents(docs: list[Document]) -> list[Document]:
     )
     chunks = []
     for d in docs:
-        if d.metadata.get("element_type") in ["Table", "pdf-table"]:
+        if d.metadata.get("element_type") in ["Table", "pdf-table", "ScheduleJSON"]:
             chunks.append(d)
         else:
             chunks.extend(splitter.split_documents([d]))
