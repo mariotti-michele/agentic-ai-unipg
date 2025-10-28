@@ -31,7 +31,7 @@ else:
 
 OLLAMA_BASE_URL = os.environ["OLLAMA_BASE_URL"]
 QDRANT_URL = os.environ["QDRANT_URL"]
-COLLECTION_NAME = os.environ["COLLECTION"]
+COLLECTION_NAME = "ing_calendario_generale"
 
 
 rag_prompt_template = """Sei un assistente accademico.

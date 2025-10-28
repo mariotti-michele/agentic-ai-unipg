@@ -19,7 +19,12 @@ warnings.filterwarnings("ignore", category=UserWarning, module="camelot")
 
 from pathlib import Path
 
+# Hybrid semantic + length-bounded: semantico, ma con limite di lunghezza per chunk troppo lunghi
 def to_documents_from_html(file_path: Path, source_url: str, page_title: str) -> list[Document]:
+    from unstructured.documents.elements import (
+        Title, Header, NarrativeText, ListItem, Text
+    )
+
     raw_html = file_path.read_text(encoding="utf-8")
     soup = BeautifulSoup(raw_html, "html.parser")
 
@@ -31,12 +36,17 @@ def to_documents_from_html(file_path: Path, source_url: str, page_title: str) ->
     tmp_path = file_path.with_suffix(".main.html")
     tmp_path.write_text(main_html, encoding="utf-8")
 
-    elements = partition_html(filename=str(tmp_path), include_page_breaks=False, languages=["ita", "eng"])
+    # Parsing con unstructured
+    elements = partition_html(
+        filename=str(tmp_path),
+        include_page_breaks=False,
+        languages=["ita", "eng"]
+    )
+
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
 
     if not elements:
-        print(f"[WARN] partition_html non ha trovato elementi in {source_url}, uso fallback BeautifulSoup")
         text_fallback = main_el.get_text(separator="\n", strip=True)
         if text_fallback:
             docs.append(Document(
@@ -53,30 +63,83 @@ def to_documents_from_html(file_path: Path, source_url: str, page_title: str) ->
             ))
         return docs
 
+    # --- 💡 Miglior fusione semantica ---
+    merged_chunks = []
+    current_chunk = ""
+    current_section = None
+
+    current_header = None
+
     for el in elements:
-        text = getattr(el, "text", None) or str(el).strip()
+        text = getattr(el, "text", None)
+        if not text:
+            continue
+        text = text.replace("\n", " ").strip()
         if not text:
             continue
 
-        element_type = getattr(el, "category", None) or el.__class__.__name__
-        meta = getattr(el, "metadata", None)
-        meta = meta.to_dict() if meta is not None else {}
+        # 🔸 Se è un titolo, memorizzalo per unirlo al blocco successivo
+        if isinstance(el, (Title, Header)):
+            if current_chunk.strip():
+                merged_chunks.append(current_chunk.strip())
+                current_chunk = ""
+            current_header = text.strip()
+            continue
 
+        # 🔸 Se è un blocco di testo (NarrativeText, ListItem, ecc.)
+        if isinstance(el, (NarrativeText, ListItem, Text)):
+            # Se c’è un titolo precedente, prependilo
+            if current_header:
+                text = f"{current_header}\n{text}"
+                current_header = None
+
+            # Se raggiungiamo ~800 caratteri, chiudiamo il chunk
+            if len(current_chunk) > 700:
+                merged_chunks.append(current_chunk.strip())
+                current_chunk = text
+            else:
+                current_chunk += " " + text
+
+
+    # Aggiungi l’ultimo chunk
+    if current_chunk.strip():
+        merged_chunks.append(current_chunk.strip())
+
+    # 🔸 Unisci sezioni se troppo corte (< 100 char)
+    final_chunks = []
+    temp = ""
+    for ch in merged_chunks:
+        if len(ch) < 100:
+            temp += " " + ch
+        else:
+            if temp.strip():
+                final_chunks.append(temp.strip())
+                temp = ""
+            final_chunks.append(ch)
+    if temp.strip():
+        final_chunks.append(temp.strip())
+
+    # --- 🧾 Conversione in Document ---
+    for chunk in final_chunks:
         doc = Document(
-            page_content=text,
+            page_content=chunk,
             metadata={
                 "source_url": source_url,
                 "doc_type": "html",
                 "page_title": page_title,
-                "element_type": element_type,
-                "lang": meta.get("languages", None),
+                "element_type": "MergedSemanticChunk",
+                "lang": ["ita"],
                 "crawl_ts": crawl_ts,
                 "doc_id": sha(source_url),
             },
         )
         docs.append(doc)
+
+    print(f"[INFO] {len(final_chunks)} chunk creati da {source_url}")
     return docs
 
+
+# DA SISTEMARE PEE I PDF
 
 def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
     """

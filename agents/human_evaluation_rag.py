@@ -40,18 +40,18 @@ def run_manual_eval():
             response_dense = answer_query_dense(q)
 
             #print("→ Retrieval Sparse (TF-IDF)")
-            response_sparse = answer_query_tfidf(q)
+            #response_sparse = answer_query_tfidf(q)
 
             #print("→ Retrieval BM25")
-            response_bm25 = answer_query_bm25(q)
+            #response_bm25 = answer_query_bm25(q)
 
             #print("→ Retrieval Ibrido (Hybrid)")
-            response_hybrid = hybrid_search(q, alpha=0.6)
+            #response_hybrid = hybrid_search(q, alpha=0.6)
 
             print(response_dense, "\n")
-            print(response_sparse, "\n")
-            print(response_bm25, "\n")
-            print(response_hybrid, "\n")
+            #print(response_sparse, "\n")
+            #print(response_bm25, "\n")
+            #print(response_hybrid, "\n")
 
 
 
