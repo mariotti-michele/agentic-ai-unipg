@@ -1,0 +1,44 @@
+[
+  {
+    "question": "Quando inizia e quando termina l'anno accademico 2025/2026?",
+    "reference_context": "Calendario generale delle attività didattiche dell’Università degli Studi di Perugia per l’A.A. 2025/2026. Inizio: 15 settembre 2025 – termine 30 settembre 2026.",
+    "ground_truth": "L'anno accademico 2025/2026 inizia il 15 settembre 2025 e termina il 30 settembre 2026.",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html"
+  },
+  {
+    "question": "Quali sono le principali festività nazionali indicate nel calendario?",
+    "reference_context": "Festività: tutte le domeniche; 1 novembre (Tutti i Santi); 8 dicembre (Immacolata Concezione); 25 dicembre (Natale); 26 dicembre (Santo Stefano); 1 gennaio (Capodanno); 6 gennaio (Epifania); 25 aprile (Liberazione); 1 maggio (Festa del Lavoro); 2 giugno (Festa della Repubblica); 15 agosto (Assunzione).",
+    "ground_truth": "Le principali festività sono: 1 novembre, 8 dicembre, 25 e 26 dicembre, 1 e 6 gennaio, 25 aprile, 1 maggio, 2 giugno e 15 agosto, oltre a tutte le domeniche.",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html"
+  },
+  {
+    "question": "Quali sono i giorni festivi specifici per la sede di Perugia?",
+    "reference_context": "Le festività del Patrono della sede: Perugia 29 gennaio; Foligno 24 gennaio; Terni 14 febbraio; Narni 3 maggio; Assisi 11 agosto.",
+    "ground_truth": "Per la sede di Perugia il giorno festivo del Patrono è il 29 gennaio.",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html"
+  },
+  {
+    "question": "Qual è il periodo previsto per le vacanze natalizie?",
+    "reference_context": "Vacanze Natalizie: di norma il periodo dal 23 dicembre al 6 gennaio.",
+    "ground_truth": "Il periodo delle vacanze natalizie va, di norma, dal 23 dicembre al 6 gennaio.",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html"
+  },
+  {
+    "question": "Quando iniziano e terminano le vacanze pasquali?",
+    "reference_context": "Vacanze Pasquali: di norma dal giovedì precedente la Pasqua (5 aprile 2026) al martedì successivo.",
+    "ground_truth": "Le vacanze pasquali iniziano il giovedì precedente la Pasqua (5 aprile 2026) e terminano il martedì successivo.",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html"
+  },
+  {
+    "question": "Durante quali periodi le attività didattiche sono sospese per le vacanze?",
+    "reference_context": "Vacanze Natalizie: 23 dicembre - 6 gennaio. Vacanze Pasquali: dal giovedì precedente la Pasqua (5 aprile 2026) al martedì successivo.",
+    "ground_truth": "Le attività didattiche sono sospese dal 23 dicembre al 6 gennaio e dal giovedì precedente la Pasqua al martedì successivo.",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html"
+  },
+  {
+    "question": "Le lezioni iniziano a ottobre 2025?",
+    "reference_context": "Inizio: 15 settembre 2025 – termine 30 settembre 2026.",
+    "ground_truth": "No, le lezioni iniziano a settembre 2025, non a ottobre.",
+    "document": "didattica_studiare-nei-nostri-corsi_calendario-generale-attivita-didattiche.html"
+  }
+]

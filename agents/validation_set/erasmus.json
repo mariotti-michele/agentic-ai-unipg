@@ -1,0 +1,74 @@
+[
+  {
+    "question": "Che cos'è il programma Erasmus+?",
+    "reference_context": "Erasmus+ è il Programma dell'Unione Europea per l'istruzione, la formazione, la gioventù e lo sport. Offre l’opportunità agli studenti di studiare o formarsi all’estero presso un istituto partner o di acquisire esperienza lavorativa tramite un tirocinio.",
+    "ground_truth": "Erasmus+ è il programma dell’Unione Europea che consente a studenti di studiare o svolgere tirocini all’estero presso istituti o imprese partner.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_b127c69f6f91.main.html"
+  },
+  {
+    "question": "Quali sono le due tipologie principali di mobilità previste dal programma Erasmus+?",
+    "reference_context": "Il programma Erasmus+ prevede due tipologie di mobilità: mobilità a fini di studio (esami, tesi di laurea) e mobilità a fini di Traineeship (tirocinio o stage anche post-laurea).",
+    "ground_truth": "Le due tipologie sono la mobilità a fini di studio e la mobilità a fini di tirocinio (Traineeship).",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_c566313bbc9d.main.html"
+  },
+  {
+    "question": "Chi è il delegato Erasmus del Dipartimento di Ingegneria?",
+    "reference_context": "Il delegato Erasmus e per l’internazionalizzazione del Dipartimento di Ingegneria è il Prof. Emilio Di Giacomo.",
+    "ground_truth": "Il delegato Erasmus del Dipartimento di Ingegneria è il Prof. Emilio Di Giacomo.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_f9da567377a1.main.html"
+  },
+  {
+    "question": "Quali attività possono essere svolte durante la mobilità a fini di studio?",
+    "reference_context": "Tra le attività che è possibile svolgere all'estero rientra anche l'attività di tesi. Il Learning Agreement descrive le attività che lo studente intende fare in mobilità e i corsi che verranno riconosciuti al ritorno.",
+    "ground_truth": "Durante la mobilità a fini di studio si possono seguire corsi, sostenere esami e svolgere l’attività di tesi.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
+  },
+  {
+    "question": "Quali sono i requisiti per partecipare al programma Erasmus+ Traineeship?",
+    "reference_context": "Gli studenti devono essere regolarmente iscritti all'Università degli Studi di Perugia per l'anno accademico in corso e avere un'adeguata conoscenza della lingua del Paese ospitante o della lingua inglese almeno pari al livello richiesto. La conoscenza deve essere comprovata tramite attestato del CLA o certificazione internazionale riconosciuta.",
+    "ground_truth": "Occorre essere iscritti all’Università degli Studi di Perugia e possedere una conoscenza linguistica adeguata, certificata dal CLA o da un attestato internazionale valido.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
+  },
+  {
+    "question": "In quale periodo viene pubblicato il bando Erasmus?",
+    "reference_context": "Ogni anno, nei primi mesi, viene pubblicato il bando di selezione.",
+    "ground_truth": "Il bando Erasmus viene pubblicato ogni anno nei primi mesi.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
+  },
+  {
+    "question": "Dove è possibile trovare i bandi Erasmus aggiornati?",
+    "reference_context": "È possibile avere maggiori informazioni nelle pagine di ateneo dedicate al programma Erasmus+, tra cui la Pagina contenente i bandi: https://www.unipg.it/internazionale/bandi-e-news/bandi-per-studenti-dottorandi-specializzandi",
+    "ground_truth": "Nella pagina dei bandi Erasmus del sito UniPG: https://www.unipg.it/internazionale/bandi-e-news/bandi-per-studenti-dottorandi-specializzandi",
+    "document": "internazionale_bandi-e-news_bandi-per-studenti-dottorandi-specializzandi_54ee5267aeff.main.html"
+  },
+  {
+    "question": "È possibile riconoscere CFU per un tirocinio svolto con Erasmus Traineeship?",
+    "reference_context": "Nel caso di tirocinio pre-titolo, il tirocinio in mobilità può prevedere il riconoscimento di crediti formativi (CFU) se previsto nel piano di studi.",
+    "ground_truth": "Sì, se il tirocinio è previsto nel piano di studi, possono essere riconosciuti CFU.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
+  },
+  {
+    "question": "Chi deve approvare il Learning Agreement?",
+    "reference_context": "Il Learning Agreement deve essere approvato dal Delegato del Dipartimento e dall'Università ospitante (per studio) o dall’ente ospitante (per tirocinio).",
+    "ground_truth": "Il Learning Agreement deve essere approvato dal Delegato Erasmus del Dipartimento e dall’ente o università ospitante.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_a00796ecbfeb.main.html"
+  },
+  {
+    "question": "Qual è la lingua richiesta per partecipare a un tirocinio Erasmus?",
+    "reference_context": "È necessaria un'adeguata conoscenza della lingua del Paese ospitante o della lingua inglese almeno pari al livello richiesto dall’ente.",
+    "ground_truth": "La lingua richiesta può essere quella del Paese ospitante o l’inglese, secondo quanto richiesto dall’ente o dall’università.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
+  },
+  {
+    "question": "Chi approva il riconoscimento dei CFU dopo il tirocinio Erasmus?",
+    "reference_context": "Al termine del soggiorno all'estero, se previsto il riconoscimento di crediti, la Commissione Erasmus di Dipartimento riconosce i CFU sulla base del Certificate of Traineeship.",
+    "ground_truth": "La Commissione Erasmus di Dipartimento approva il riconoscimento dei CFU sulla base del Certificate of Traineeship.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
+  },
+  {
+    "question": "Quali documenti sono richiesti per un tirocinio autonomo?",
+    "reference_context": "In caso di Tirocinio Autonomo alla domanda deve essere allegato il Learning Agreement firmato dall’ente/azienda ospitante.",
+    "ground_truth": "Serve allegare alla domanda il Learning Agreement firmato dall’ente ospitante.",
+    "document": "didattica_studiare-nei-nostri-corsi_mobilita-internazionale_6103afe39800.main.html"
+  }
+]

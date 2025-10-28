@@ -216,7 +216,7 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
     if hasattr(answer, "content"):
         answer = answer.content
 
-    return f"Risposta Dense: {answer}"
+    return f"Risposta nomic-embed-text: {answer}"
 
 def answer_query_tfidf(query: str):
     """Usa solo Sparse (TF-IDF)"""
