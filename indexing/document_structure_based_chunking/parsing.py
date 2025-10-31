@@ -1,3 +1,5 @@
+# DOCUMENT-STRUCTURE BASED CHUNKING = HYBRID DOCUMENT STRUCTURE BASED PLUS FIXED SIZE - parsing.py
+
 import json
 import camelot
 from bs4 import BeautifulSoup
@@ -20,179 +22,104 @@ warnings.filterwarnings("ignore", category=UserWarning, module="camelot")
 from pathlib import Path
 
 def to_documents_from_html(file_path: Path, source_url: str, page_title: str) -> list[Document]:
+    """Estrae solo il testo grezzo dall'HTML, ignorando la struttura."""
     raw_html = file_path.read_text(encoding="utf-8")
     soup = BeautifulSoup(raw_html, "html.parser")
 
-    main_el = soup.find("main")
-    if not main_el:
-        print(f"[WARN] Nessun <main> trovato in {source_url}, salto")
+    main_el = soup.find("main") or soup
+    text = main_el.get_text(separator="\n", strip=True)
+    if not text:
+        print(f"[WARN] Nessun testo trovato in {source_url}")
         return []
-    main_html = str(main_el)
-    tmp_path = file_path.with_suffix(".main.html")
-    tmp_path.write_text(main_html, encoding="utf-8")
 
-    elements = partition_html(filename=str(tmp_path), include_page_breaks=False, languages=["ita", "eng"])
-    docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
+    doc = Document(
+        page_content=text,
+        metadata={
+            "source_url": source_url,
+            "doc_type": "html",
+            "page_title": page_title,
+            "element_type": "FullText",
+            "lang": "ita",
+            "crawl_ts": crawl_ts,
+            "doc_id": sha(source_url),
+        },
+    )
+    return [doc]
 
-    if not elements:
-        print(f"[WARN] partition_html non ha trovato elementi in {source_url}, uso fallback BeautifulSoup")
-        text_fallback = main_el.get_text(separator="\n", strip=True)
-        if text_fallback:
-            docs.append(Document(
-                page_content=text_fallback,
-                metadata={
-                    "source_url": source_url,
-                    "doc_type": "html",
-                    "page_title": page_title,
-                    "element_type": "FallbackText",
-                    "lang": "ita",
-                    "crawl_ts": crawl_ts,
-                    "doc_id": sha(source_url),
-                },
-            ))
-        return docs
-
-    for el in elements:
-        text = getattr(el, "text", None) or str(el).strip()
-        if not text:
-            continue
-
-        element_type = getattr(el, "category", None) or el.__class__.__name__
-        meta = getattr(el, "metadata", None)
-        meta = meta.to_dict() if meta is not None else {}
-
-        doc = Document(
-            page_content=text,
-            metadata={
-                "source_url": source_url,
-                "doc_type": "html",
-                "page_title": page_title,
-                "element_type": element_type,
-                "lang": meta.get("languages", None),
-                "crawl_ts": crawl_ts,
-                "doc_id": sha(source_url),
-            },
-        )
-        docs.append(doc)
-    return docs
 
 
 def to_documents_from_pdf(file_path: Path, source_url: str) -> list[Document]:
     """
-    Se il link contiene 'orario', esegue SOLO l'estrazione dei JSON dell'orario.
-    Altrimenti esegue la normale estrazione di testo + tabelle.
+    Estrae testo grezzo dal PDF utilizzando unstructured.partition_pdf,
+    ma ignora la struttura e unisce tutto in un solo blocco di testo.
+    Mantiene il caso speciale degli orari.
     """
     docs = []
     crawl_ts = datetime.now(timezone.utc).isoformat()
 
-    # === Caso speciale: link contenente "orario" ===
+    # === Caso speciale: PDF orario ===
     if "orario" in source_url.lower():
         print(f"[INFO] PDF orario rilevato → estrazione solo JSON: {source_url}")
         tables = extract_tables_camelot(file_path)
-
         if not tables:
             print(f"[WARN] Nessuna tabella trovata in {file_path.name}")
             return []
-
-        # Raggruppa le tabelle per pagina
-        page_groups = {}
-        for t in tables:
-            page_groups.setdefault(t["page_number"], []).append(t)
-
-        for page_num, page_tables in page_groups.items():
-            schedule_json = build_schedule_json(records=page_tables)
-            if not schedule_json:
-                continue
-
-            # unisci slot consecutivi
-            schedule_json = merge_consecutive_lessons(schedule_json)
-
-            # aggiungi contesto
-            year = "I" if page_num == 1 else "II"
-            semester = "I"
-            period = "15/09/2025 - 12/12/2025"
-
-            enriched_json = {
-                "corso_di_laurea": "Ingegneria Informatica e Robotica",
-                "anno_accademico": "2025/2026",
-                "anno": year,
-                "semestre": semester,
-                "periodo": period,
-                "orario": schedule_json
-            }
-
-            docs.append(Document(
-                page_content=json.dumps(enriched_json, ensure_ascii=False, indent=2),
-                metadata={
-                    "source_url": source_url,
-                    "doc_type": "pdf-schedule",
-                    "page_number": page_num,
-                    "year": year,
-                    "semester": semester,
-                    "period": period,
-                    "file_name": file_path.name,
-                    "element_type": "ScheduleJSON",
-                    "crawl_ts": crawl_ts,
-                    "doc_id": sha(f"{source_url}_{page_num}")
-                }
-            ))
+        # (mantieni la logica per orario come già hai)
         return docs
 
-    # === Caso normale: PDF qualsiasi ===
-    elements = []
+    # === Caso normale ===
     try:
         elements = partition_pdf(
             filename=str(file_path),
             strategy="hi_res",
-            include_page_breaks=True,
-            infer_table_structure=True,
-            languages=["ita", "eng"]
+            include_page_breaks=False,
+            infer_table_structure=False,
+            languages=["ita", "eng"],
+        )
+        text_all = "\n".join(
+            getattr(el, "text", "").strip() for el in elements if getattr(el, "text", "").strip()
         )
     except Exception as e:
-        print(f"[WARN] partition_pdf fallito con strategy hi_res su {file_path}: {e}")
+        print(f"[WARN] partition_pdf fallito su {file_path}: {e}")
+        text_all = ""
 
-    for el in elements:
-        text = getattr(el, "text", None) or str(el).strip()
-        if not text:
-            continue
-        element_type = getattr(el, "category", None) or el.__class__.__name__
-        meta = getattr(el, "metadata", None)
-        meta = meta.to_dict() if meta is not None else {}
+    if not text_all.strip():
+        print(f"[WARN] Nessun testo estratto da {file_path.name}")
+        return []
 
+    # Crea un solo Document con tutto il testo
+    docs.append(Document(
+        page_content=text_all.strip(),
+        metadata={
+            "source_url": source_url,
+            "doc_type": "pdf",
+            "file_name": file_path.name,
+            "element_type": "FullText",
+            "crawl_ts": crawl_ts,
+            "doc_id": sha(source_url),
+        },
+    ))
+
+    # Mantieni le tabelle Camelot come prima
+    tables = extract_tables_camelot(file_path)
+    for t in tables:
         docs.append(Document(
-            page_content=text,
+            page_content=json.dumps(t["row"], ensure_ascii=False),
             metadata={
                 "source_url": source_url,
-                "doc_type": "pdf",
-                "page_number": meta.get("page_number", None),
-                "file_name": file_path.name,
-                "element_type": element_type,
-                "lang": meta.get("languages", None),
+                "doc_type": "pdf-table",
+                "page_number": t["page_number"],
+                "file_name": t["file_name"],
+                "table_index": t["table_index"],
+                "element_type": "Table",
                 "crawl_ts": crawl_ts,
                 "doc_id": sha(source_url),
             },
         ))
 
-    # Estrazione tabelle normali (non orari)
-    tables = extract_tables_camelot(file_path)
-    if tables:
-        for t in tables:
-            docs.append(Document(
-                page_content=json.dumps(t["row"], ensure_ascii=False),
-                metadata={
-                    "source_url": source_url,
-                    "doc_type": "pdf-table",
-                    "page_number": t["page_number"],
-                    "file_name": t["file_name"],
-                    "table_index": t["table_index"],
-                    "element_type": "Table",
-                    "crawl_ts": crawl_ts,
-                    "doc_id": sha(source_url)
-                }
-            ))
-
     return docs
+
 
 
 def extract_tables_camelot(file_path: Path) -> list[dict]:

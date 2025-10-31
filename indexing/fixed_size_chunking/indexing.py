@@ -1,3 +1,5 @@
+#  HYBRID DOC STRUCTURE PLUS FIXED SIZE CHUNKING = FIXED SIZE CHUNKING INDEXING SCRIPT
+
 import os, asyncio, uuid
 from dotenv import load_dotenv
 from pathlib import Path

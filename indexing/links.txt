@@ -1,11 +1,8 @@
 # ing_info_mag_regolamenti_didattici
 https://www.unipg.it/didattica/corsi-di-laurea-e-laurea-magistrale/archivio/offerta-formativa-2025-26?idcorso=8643&annoregolamento=2025&tab=INS --depth 1
 
-# ing_info_mag__orari
+# ing_info_mag_orari
 https://ing.unipg.it/files/didattica/lezioni/25-26/lm32-inginforobo_orario.pdf
-
-# ing_info_mag_calendario_esami
-https://ing.unipg.it/files/didattica/calendario/2025-26/lm32-inginforobo_cal_esami.pdf
 
 # ing_info_calendario_lauree
 https://ing.unipg.it/files/didattica/calendario/2025-26/l0816_lm29_lm32-ing_informazione_cal_lauree.pdf
