@@ -31,7 +31,8 @@ else:
 
 OLLAMA_BASE_URL = os.environ["OLLAMA_BASE_URL"]
 QDRANT_URL = os.environ["QDRANT_URL"]
-COLLECTION_NAME = "ing_calendario_generale"
+COLLECTION_NAMES = os.getenv("COLLECTION_NAMES", "").split(",")
+COLLECTION_NAMES = [c.strip() for c in COLLECTION_NAMES if c.strip()]
 
 
 rag_prompt_template = """Sei un assistente accademico.
@@ -83,12 +84,19 @@ embeddings = OllamaEmbeddings(
 print("Connettendo a Qdrant...")
 qdrant_client = QdrantClient(url=QDRANT_URL)
 
-vectorstore = QdrantVectorStore.from_existing_collection(
-    embedding=embeddings,
-    collection_name=COLLECTION_NAME,
-    url=QDRANT_URL,
-)
-print("Connesso al vector store con successo!")
+# Crea un vectorstore per ogni collezione
+vectorstores = {
+    name: QdrantVectorStore.from_existing_collection(
+        embedding=embeddings,
+        collection_name=name,
+        url=QDRANT_URL,
+    )
+    for name in COLLECTION_NAMES
+}
+
+print(f"Connesso a {len(vectorstores)} collezioni:")
+for name in vectorstores:
+    print(f"  - {name}")
 
 print("Inizializzando LLM...")
 
@@ -126,21 +134,27 @@ elif args.model == "llama-api":
 
 
 all_texts = []
-scroll_filter = None
-while True:
-    points, next_page = qdrant_client.scroll(
-        collection_name=COLLECTION_NAME,
-        with_payload=True,
-        limit=1000, 
-        offset=scroll_filter
-    )
-    for p in points:
-        text = p.payload.get("page_content", "")
-        if text:
-            all_texts.append(text)
-    if next_page is None:
-        break
-    scroll_filter = next_page
+
+for COLLECTION_NAME in COLLECTION_NAMES:
+    #print(f"Leggendo documenti da collezione: {COLLECTION_NAME}")
+    scroll_filter = None
+    while True:
+        points, next_page = qdrant_client.scroll(
+            collection_name=COLLECTION_NAME,
+            with_payload=True,
+            limit=1000,
+            offset=scroll_filter
+        )
+        for p in points:
+            text = p.payload.get("page_content", "")
+            if text:
+                all_texts.append(text)
+        if next_page is None:
+            break
+        scroll_filter = next_page
+
+#print(f"Totale documenti caricati: {len(all_texts)}")
+
 
 
 vectorizer = TfidfVectorizer()
@@ -186,13 +200,22 @@ def classify_query(query: str) -> str:
         return "rag"
 
 def answer_query_dense(query: str):
-    """Usa solo Dense (Qdrant)"""
+    """Usa tutte le collezioni Dense (Qdrant)"""
     vec = embeddings.embed_query(query)
-    docs = vectorstore.similarity_search_by_vector(vec, k=8)
+    all_docs = []
+
+    for name, store in vectorstores.items():
+        try:
+            docs = store.similarity_search_by_vector(vec, k=5)
+            for d in docs:
+                d.metadata["collection"] = name
+            all_docs.extend(docs)
+        except Exception as e:
+            print(f"[WARN] Errore su {name}: {e}")
 
     seen = set()
     unique_docs = []
-    for d in docs:
+    for d in all_docs:
         text = d.page_content.strip()
         if text not in seen:
             seen.add(text)
@@ -204,7 +227,7 @@ def answer_query_dense(query: str):
         return "Non presente nei documenti"
 
     context = "\n\n".join(
-        [f"[Fonte {i+1}] ({doc.metadata.get('source_url', 'N/A')})\n{doc.page_content}"
+        [f"[Fonte {i+1}] ({doc.metadata.get('collection', 'N/A')})\n{doc.page_content}"
          for i, doc in enumerate(unique_docs)]
     )
 
@@ -217,6 +240,7 @@ Rispondi in un unico paragrafo chiaro e completo, senza aggiungere sezioni o tit
         answer = answer.content
 
     return f"Risposta nomic-embed-text: {answer}"
+
 
 def answer_query_tfidf(query: str):
     """Usa solo Sparse (TF-IDF)"""
